@@ -20,10 +20,10 @@
         /* Header & Navigation */
         header {
             background: white;
-            padding: 20px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
@@ -39,12 +39,12 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
             text-decoration: none;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             color: #0d5d4d;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         .logo-dot {
@@ -53,7 +53,6 @@
             background: #ffc107;
             border-radius: 50%;
             display: inline-block;
-            margin-left: 4px;
         }
 
         nav {
@@ -67,6 +66,7 @@
             color: #333;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 15px;
         }
 
         nav a:hover {
@@ -76,23 +76,97 @@
         .cta-button {
             background: #0d5d4d;
             color: white;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
         }
 
         .cta-button:hover {
             background: #0a4a3a;
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #0d5d4d;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            padding: 20px;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu a:hover {
+            color: #0d5d4d;
+        }
+
+        .mobile-menu .cta-button {
+            width: 100%;
+            text-align: center;
+            border-bottom: none;
+        }
+
         @media (max-width: 768px) {
             nav {
                 display: none;
             }
+            .menu-toggle {
+                display: flex;
+            }
             .logo {
-                font-size: 22px;
+                font-size: 20px;
             }
         }
 
@@ -119,22 +193,36 @@
             position: relative;
             color: white;
             text-align: center;
+            background-size: cover;
+            background-position: center;
         }
 
+        /* Add hero background images */
         .hero-slide-1 {
-            background: linear-gradient(135deg, #0d5d4d 0%, #0a4a3a 100%);
+            background-image: url('https://images.unsplash.com/photo-1579621970563-430f63602d4e?w=1200&h=600&fit=crop');
         }
 
         .hero-slide-2 {
-            background: linear-gradient(135deg, #1a3a3a 0%, #0d5d4d 100%);
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop');
         }
 
         .hero-slide-3 {
-            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop');
         }
 
         .hero-slide-4 {
-            background: linear-gradient(135deg, #2c5f56 0%, #0d5d4d 100%);
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop');
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
         }
 
         .hero-content {
@@ -146,13 +234,14 @@
             font-size: 56px;
             font-weight: 800;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-content p {
             font-size: 20px;
             margin-bottom: 30px;
             opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .hero-controls {
@@ -547,9 +636,10 @@
             padding-top: 30px;
             text-align: center;
             color: rgba(255,255,255,0.7);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .section-title {
                 font-size: 32px;
@@ -568,23 +658,43 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with Mobile Menu -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 Mndeni<span class="logo-dot"></span>
             </a>
+            
+            <!-- Desktop Navigation -->
             <nav>
-                <a href="#why">Why Mndeni</a>
-                <a href="#process">Process</a>
-                <a href="#products">Products</a>
-                <a href="#contact">Contact</a>
-                <a href="#" class="cta-button">Apply Now</a>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html">Apply</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
             </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+            <a href="apply.html">Apply</a>
+            <a href="apply.html" class="cta-button">Apply Now</a>
         </div>
     </header>
 
-    <!-- Hero Section with Auto-Swipe -->
+    <!-- Hero Section with Auto-Swipe and Background Images -->
     <section class="hero">
         <div class="hero-slides" id="heroSlides">
             <div class="hero-slide hero-slide-1">
@@ -713,7 +823,7 @@
                         <li>Fast approval in 24 hours</li>
                         <li>Competitive interest rates</li>
                     </ul>
-                    <a href="#" class="product-btn">Learn More</a>
+                    <a href="apply.html" class="product-btn">Learn More</a>
                 </div>
 
                 <div class="product-card">
@@ -725,7 +835,7 @@
                         <li>Build your dream home</li>
                         <li>No hidden charges</li>
                     </ul>
-                    <a href="#" class="product-btn">Learn More</a>
+                    <a href="apply.html" class="product-btn">Learn More</a>
                 </div>
 
                 <div class="product-card">
@@ -737,7 +847,7 @@
                         <li>Flexible terms up to 72 months</li>
                         <li>Quick disbursement process</li>
                     </ul>
-                    <a href="#" class="product-btn">Learn More</a>
+                    <a href="apply.html" class="product-btn">Learn More</a>
                 </div>
 
                 <div class="product-card">
@@ -749,7 +859,7 @@
                         <li>Support your educational goals</li>
                         <li>Competitive student rates</li>
                     </ul>
-                    <a href="#" class="product-btn">Learn More</a>
+                    <a href="apply.html" class="product-btn">Learn More</a>
                 </div>
 
                 <div class="product-card">
@@ -761,7 +871,7 @@
                         <li>Quick approval for entrepreneurs</li>
                         <li>Flexible repayment schedules</li>
                     </ul>
-                    <a href="#" class="product-btn">Learn More</a>
+                    <a href="apply.html" class="product-btn">Learn More</a>
                 </div>
 
                 <div class="product-card">
@@ -773,7 +883,7 @@
                         <li>Flexible small amounts</li>
                         <li>Minimal documentation required</li>
                     </ul>
-                    <a href="#" class="product-btn">Learn More</a>
+                    <a href="apply.html" class="product-btn">Learn More</a>
                 </div>
             </div>
         </div>
@@ -859,10 +969,10 @@
     </section>
 
     <!-- CTA Banner -->
-    <section class="cta-banner" id="contact">
+    <section class="cta-banner">
         <h2>Ready to Take Control of Your Financial Future?</h2>
         <p>Join thousands of satisfied customers who have found financial freedom with Mndeni Easy Loans</p>
-        <a href="#" class="cta-primary">Apply for a Loan Today</a>
+        <a href="apply.html" class="cta-primary">Apply for a Loan Today</a>
     </section>
 
     <!-- Footer -->
@@ -877,11 +987,11 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#why">Why Mndeni</a></li>
-                    <li><a href="#process">How It Works</a></li>
-                    <li><a href="#products">Our Products</a></li>
-                    <li><a href="#">Apply Now</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
 
@@ -892,7 +1002,7 @@
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Disclaimer</a></li>
                     <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
 
@@ -913,6 +1023,25 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Hero Slider
         let currentIndex = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot');
