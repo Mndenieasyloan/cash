@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mndeni Easy Loans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .logo-text {
+            color: #0d5d4d;
+        }
+        
+        .logo-dot {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0d5d4d;
+        }
+        
+        .apply-btn {
+            background-color: #0d5d4d;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .apply-btn:hover {
+            background-color: #0a4639;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0d5d4d;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .story-section {
+            background-color: #f8f9fa;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .story-section h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #ffc107;
+        }
+        
+        .mission-card h3 {
+            color: #0d5d4d;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .mission-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .principles {
+            margin: 3rem 0;
+        }
+        
+        .principles h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .principle-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #0d5d4d;
+        }
+        
+        .principle-item h3 {
+            color: #0d5d4d;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .principle-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .team-section {
+            margin: 3rem 0;
+        }
+        
+        .team-section h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 3px solid #ffc107;
+        }
+        
+        .team-member h3 {
+            color: #0d5d4d;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .team-member p {
+            color: #0d5d4d;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .registered-section {
+            background-color: #0d5d4d;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .registered-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+            background-color: #ffc107;
+            color: #0d5d4d;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffb300;
+        }
+        
+        footer {
+            background-color: #0d5d4d;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-text">Mndeni</span><span class="logo-dot">.</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html">Apply</a>
+                <button class="apply-btn">Apply Now</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Story</h1>
+                <p>More than a lender, we're part of the family.</p>
+            </div>
+
+            <div class="story-section">
+                <h2>Welcome to Mndeni Easy Loans</h2>
+                <p>Founded on the principle of 'ubuntu', Mndeni Easy Loans was born from a simple idea: financial support should be accessible, understandable, and built on a foundation of trust. In isiZulu, 'Mndeni' means family—and that is exactly how we see our clients.</p>
+                <p>We are not just a financial institution; we are a community partner dedicated to empowering the households and entrepreneurs of South Africa. We understand the challenges and dreams that drive you. Whether it's funding your child's education, expanding a small business, or handling an unexpected expense, we provide the financial tools you need with the respect and care you deserve.</p>
+            </div>
+
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To empower every South African family with accessible, fair, and compassionate financial solutions that build brighter futures. We strive to simplify the lending process, making it a positive and supportive experience for everyone.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Our Vision</h3>
+                    <p>To be South Africa's most trusted financial partner, known for our unwavering commitment to community upliftment and the personal and economic success of every family we serve.</p>
+                </div>
+            </div>
+
+            <div class="principles">
+                <h2>Our Guiding Principles</h2>
+                <div class="principles-grid">
+                    <div class="principle-item">
+                        <h3>A Commitment to You</h3>
+                        <p>We treat every client with the care and respect of a family member, putting your needs at the heart of what we do.</p>
+                    </div>
+                    <div class="principle-item">
+                        <h3>Unwavering Integrity</h3>
+                        <p>We operate with complete transparency. No hidden fees, no confusing terms—just honest financial partnership.</p>
+                    </div>
+                    <div class="principle-item">
+                        <h3>Community Empowerment</h3>
+                        <p>Our goal is to provide a hand-up. We empower you with the resources to build a better, more secure future for your mndeni.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2>Meet the Mndeni Team</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">The dedicated professionals behind our commitment to you.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div style="width: 100px; height: 100px; background-color: #0d5d4d; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">JD</div>
+                        <h3>Jabulani Dlamini</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                    <div class="team-member">
+                        <div style="width: 100px; height: 100px; background-color: #0d5d4d; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">NZ</div>
+                        <h3>Nomusa Zulu</h3>
+                        <p>Head of Client Relations</p>
+                    </div>
+                    <div class="team-member">
+                        <div style="width: 100px; height: 100px; background-color: #0d5d4d; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">PV</div>
+                        <h3>Pieter van der Merwe</h3>
+                        <p>Chief Financial Officer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="registered-section">
+                <h3>Your Trusted, Registered Partner</h3>
+                <p>Mndeni Easy Loans (PTY) LTD is a proud and fully compliant financial services provider, committed to responsible lending practices.</p>
+                <p style="margin-top: 1rem;">NCR Registration No.: NCRCP19616</p>
+                <p>Legal Registration No.: 2024/157205/07</p>
+                <a href="apply.html" class="cta-button">Start Your Application</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mndeni Easy Loans (PTY) LTD. All Rights Reserved.</p>
+        <div class="footer-links">
+            <p>NCR Registration No.: NCRCP19616 | Legal Registration No.: 2024/157205/07.</p>
+        </div>
+    </footer>
+</body>
+</html>
