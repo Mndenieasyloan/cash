@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews - Mndeni Easy Loans</title>
+    <title>About Us - Mndeni Easy Loans</title>
     <style>
         * {
             margin: 0;
@@ -176,7 +176,7 @@
         
         .page-header {
             text-align: center;
-            margin: 3rem 0;
+            margin: 3rem 0 2rem;
         }
         
         .page-header h1 {
@@ -188,169 +188,155 @@
         .page-header p {
             font-size: 1.1rem;
             color: #666;
-            margin-bottom: 2rem;
         }
         
-        .rating-summary {
+        .story-section {
             background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .rating-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #ffc107;
-        }
-        
-        .rating-text {
-            color: #666;
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .review-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #ffc107;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .reviewer-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-        
-        .reviewer-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #0d5d4d;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        
-        .reviewer-details h3 {
-            color: #0d5d4d;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-        
-        .review-text {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-        
-        .review-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #999;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
-        }
-        
-        .verified-badge {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .loan-amount {
-            color: #0d5d4d;
-            font-weight: 600;
-        }
-        
-        .submit-review-section {
-            background-color: #0d5d4d;
-            color: white;
             padding: 3rem 2rem;
             border-radius: 10px;
             margin: 3rem 0;
         }
         
-        .submit-review-section h2 {
-            font-size: 1.8rem;
+        .story-section h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
             margin-bottom: 1.5rem;
         }
         
-        .review-form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .story-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
         }
         
-        .form-group {
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #ffc107;
+        }
+        
+        .mission-card h3 {
+            color: #0d5d4d;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: white;
+        .mission-card p {
+            color: #666;
+            line-height: 1.8;
         }
         
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            font-family: inherit;
+        .principles {
+            margin: 3rem 0;
+        }
+        
+        .principles h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .principle-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #0d5d4d;
+        }
+        
+        .principle-item h3 {
+            color: #0d5d4d;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .principle-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .team-section {
+            margin: 3rem 0;
+        }
+        
+        .team-section h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 3px solid #ffc107;
+        }
+        
+        .team-member h3 {
+            color: #0d5d4d;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .team-member p {
+            color: #0d5d4d;
+            font-weight: 600;
             font-size: 0.95rem;
         }
         
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-            grid-column: 1 / -1;
+        .registered-section {
+            background-color: #0d5d4d;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
         }
         
-        .submit-btn {
+        .registered-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button-secondary {
             background-color: #ffc107;
             color: #0d5d4d;
             padding: 0.8rem 2rem;
-            border: none;
             border-radius: 5px;
-            cursor: pointer;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            display: inline-block;
+            margin-top: 1rem;
             transition: background-color 0.3s;
-            grid-column: 1 / -1;
+            border: none;
         }
         
-        .submit-btn:hover {
+        .cta-button-secondary:hover {
             background-color: #ffb300;
         }
 
@@ -409,11 +395,15 @@
                 font-size: 1.8rem;
             }
             
-            .rating-number {
-                font-size: 2.5rem;
+            .mission-vision {
+                grid-template-columns: 1fr;
             }
             
-            .reviews-grid {
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -456,217 +446,73 @@
     <main>
         <div class="container">
             <div class="page-header">
-                <h1>Hear from Our Mndeni</h1>
-                <p>Real stories from South Africans we've proudly supported on their financial journeys.</p>
+                <h1>Our Story</h1>
+                <p>More than a lender, we're part of the family.</p>
             </div>
 
-            <div class="rating-summary">
-                <div class="rating-number">4.9</div>
-                <div class="rating-text">based on 60+ reviews</div>
+            <div class="story-section">
+                <h2>Welcome to Mndeni Easy Loans</h2>
+                <p>Founded on the principle of 'ubuntu', Mndeni Easy Loans was born from a simple idea: financial support should be accessible, understandable, and built on a foundation of trust. In isiZulu, 'Mndeni' means family—and that is exactly how we see our clients.</p>
+                <p>We are not just a financial institution; we are a community partner dedicated to empowering the households and entrepreneurs of South Africa. We understand the challenges and dreams that drive you. Whether it's funding your child's education, expanding a small business, or handling an unexpected expense, we provide the financial tools you need with the respect and care you deserve.</p>
             </div>
 
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">DM</div>
-                        <div class="reviewer-details">
-                            <h3>David Miller</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"I needed to purchase new equipment for my photography business. The loan I received from Mndeni was approved quickly and had a very competitive rate. My business is now more productive than ever."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 300,000</span></span>
-                    </div>
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To empower every South African family with accessible, fair, and compassionate financial solutions that build brighter futures. We strive to simplify the lending process, making it a positive and supportive experience for everyone.</p>
                 </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">HS</div>
-                        <div class="reviewer-details">
-                            <h3>Heidi Scholtz</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"The entire process, from application to receiving the funds, was incredibly smooth. I am very impressed and will definitely use their services again if the need arises."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 40,000</span></span>
-                    </div>
+                <div class="mission-card">
+                    <h3>Our Vision</h3>
+                    <p>To be South Africa's most trusted financial partner, known for our unwavering commitment to community upliftment and the personal and economic success of every family we serve.</p>
                 </div>
+            </div>
 
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">PK</div>
-                        <div class="reviewer-details">
-                            <h3>Pieter Kruger</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
+            <div class="principles">
+                <h2>Our Guiding Principles</h2>
+                <div class="principles-grid">
+                    <div class="principle-item">
+                        <h3>A Commitment to You</h3>
+                        <p>We treat every client with the care and respect of a family member, putting your needs at the heart of what we do.</p>
                     </div>
-                    <div class="review-text">"The online platform is excellent and easy to use. I completed my entire application from my phone and got feedback the same day. This is how lending should be in the 21st century."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 180,000</span></span>
+                    <div class="principle-item">
+                        <h3>Unwavering Integrity</h3>
+                        <p>We operate with complete transparency. No hidden fees, no confusing terms—just honest financial partnership.</p>
                     </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">JK</div>
-                        <div class="reviewer-details">
-                            <h3>Jacques Kallis</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"Used the loan to build a lapa and pool area at our home. The family loves it. The process with Mndeni was seamless and much faster than I expected. Great experience all around."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 375,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">MC</div>
-                        <div class="reviewer-details">
-                            <h3>Mandla Cele</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"The service exceeded my expectations. I appreciated the clear communication and the fact that there were no surprises. A very professional and ethical company to deal with."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 50,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">AB</div>
-                        <div class="reviewer-details">
-                            <h3>Anel Botha</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"Ek moes my huis aanpas vir my bejaarde ouers. Die R450,000 lening het dit moontlik gemaak om alles rolstoelvriendelik te maak. Mndeni se deernis en spoedige diens het 'n moeilike tyd soveel makliker gemaak."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 450,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">BN</div>
-                        <div class="reviewer-details">
-                            <h3>Brendon Naidoo</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"I needed to cover the costs of my family emigrating. Mndeni provided the short-term bridging finance we required. Their efficiency was key to our smooth transition."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 65,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">TP</div>
-                        <div class="reviewer-details">
-                            <h3>Tania Pretorius</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"I am a single mom and needed help with unexpected school-related costs. The team at Mndeni was so supportive. They offered me a payment plan I could actually afford. It's a huge relief."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 42,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">MP</div>
-                        <div class="reviewer-details">
-                            <h3>Michelle Pillay</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"A quick, no-fuss loan to fix my geyser. It saved me so much trouble. The interest rate was very reasonable for a short-term loan."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 12,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">NG</div>
-                        <div class="reviewer-details">
-                            <h3>Nomvula Gwala</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"Taking a course to upskill myself was made possible by Mndeni. The loan process was clear and the consultants were encouraging. It's an investment in my future."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 60,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">TM</div>
-                        <div class="reviewer-details">
-                            <h3>Thabo Mbeki</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"Excellent customer service from start to finish. They keep you informed every step of the way. It really feels like you are dealing with people who care, not just a faceless company."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 45,000</span></span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="reviewer-info">
-                        <div class="reviewer-avatar">RM</div>
-                        <div class="reviewer-details">
-                            <h3>Refilwe Modise</h3>
-                            <span class="verified-badge">Verified Customer</span>
-                        </div>
-                    </div>
-                    <div class="review-text">"My guesthouse needed urgent plumbing repairs before the holiday season. Mndeni provided a quick business loan that saved us from disaster. Their speed and understanding were phenomenal."</div>
-                    <div class="review-meta">
-                        <span>Loan: <span class="loan-amount">R 85,000</span></span>
+                    <div class="principle-item">
+                        <h3>Community Empowerment</h3>
+                        <p>Our goal is to provide a hand-up. We empower you with the resources to build a better, more secure future for your mndeni.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="submit-review-section">
-                <h2>Share Your Experience</h2>
-                <form onsubmit="handleReviewSubmit(event)" class="review-form-grid">
-                    <div class="form-group">
-                        <label for="reviewer-name">Your Full Name</label>
-                        <input type="text" id="reviewer-name" name="name" required>
+            <div class="team-section">
+                <h2>Meet the Mndeni Team</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">The dedicated professionals behind our commitment to you.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div style="width: 100px; height: 100px; background-color: #0d5d4d; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">JD</div>
+                        <h3>Jabulani Dlamini</h3>
+                        <p>Founder & CEO</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="loan-amount">Loan Amount (e.g., R50,000)</label>
-                        <input type="text" id="loan-amount" name="amount" required>
+                    <div class="team-member">
+                        <div style="width: 100px; height: 100px; background-color: #0d5d4d; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">NZ</div>
+                        <h3>Nomusa Zulu</h3>
+                        <p>Head of Client Relations</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="rating">Your Rating</label>
-                        <select id="rating" name="rating" required>
-                            <option value="">Select rating</option>
-                            <option value="5">5 - Excellent</option>
-                            <option value="4">4 - Very Good</option>
-                            <option value="3">3 - Good</option>
-                            <option value="2">2 - Fair</option>
-                            <option value="1">1 - Poor</option>
-                        </select>
+                    <div class="team-member">
+                        <div style="width: 100px; height: 100px; background-color: #0d5d4d; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">PV</div>
+                        <h3>Pieter van der Merwe</h3>
+                        <p>Chief Financial Officer</p>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="review-text">Your Review</label>
-                        <textarea id="review-text" name="review" placeholder="Share your experience with Mndeni..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Submit My Review</button>
-                </form>
+                </div>
+            </div>
+
+            <div class="registered-section">
+                <h3>Your Trusted, Registered Partner</h3>
+                <p>Mndeni Easy Loans (PTY) LTD is a proud and fully compliant financial services provider, committed to responsible lending practices.</p>
+                <p style="margin-top: 1rem;">NCR Registration No.: NCRCP19616</p>
+                <p>Legal Registration No.: 2024/157205/07</p>
+                <a href="apply.html" class="cta-button-secondary">Start Your Application</a>
             </div>
         </div>
     </main>
@@ -701,8 +547,8 @@
             <div class="footer-section">
                 <h4>Contact Info</h4>
                 <ul>
-                    <li>📞 1-800-MNDENI-1</li>
-                    <li>📧 support@mndeni.com</li>
+                    <li>📞 +27 78 238 5248</li>
+                    <li>📧 mndenieasyloans@aol.com</li>
                 </ul>
             </div>
         </div>
@@ -728,12 +574,6 @@
                 mobileMenu.classList.remove('active');
             });
         });
-
-        function handleReviewSubmit(event) {
-            event.preventDefault();
-            alert('Thank you for sharing your review! We appreciate your feedback.');
-            event.target.reset();
-        }
     </script>
 </body>
 </html>
