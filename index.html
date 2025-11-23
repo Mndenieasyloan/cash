@@ -199,7 +199,7 @@
 
         /* Add hero background images */
         .hero-slide-1 {
-            background-image: url('https://images.unsplash.com/photo-1579621970563-430f63602d4e?w=1200&h=600&fit=crop');
+            background-image: url('image/43d.png');
         }
 
         .hero-slide-2 {
@@ -547,6 +547,7 @@
             font-weight: 800;
             color: #0d5d4d;
             margin-bottom: 10px;
+            min-height: 60px; /* Added to ensure consistent height for numbers */
         }
 
         .stat-item p {
@@ -818,9 +819,9 @@
                     <div class="product-icon">💳</div>
                     <h3>Personal Loans</h3>
                     <ul class="product-features">
-                        <li>Amounts from R1,000 - R100,000</li>
+                        <li>Amounts from R5,000 - R1.000,000</li>
                         <li>Repayment terms up to 60 months</li>
-                        <li>Fast approval in 24 hours</li>
+                        <li>Fast approval in 2 hours</li>
                         <li>Competitive interest rates</li>
                     </ul>
                     <a href="apply.html" class="product-btn">Learn More</a>
@@ -844,7 +845,7 @@
                     <ul class="product-features">
                         <li>Finance your new or used car</li>
                         <li>Low interest rates available</li>
-                        <li>Flexible terms up to 72 months</li>
+                        <li>Flexible terms up to 172 months</li>
                         <li>Quick disbursement process</li>
                     </ul>
                     <a href="apply.html" class="product-btn">Learn More</a>
@@ -867,7 +868,7 @@
                     <h3>Business Loans</h3>
                     <ul class="product-features">
                         <li>Start or expand your business</li>
-                        <li>Amounts up to R500,000</li>
+                        <li>Amounts up to R5,000,000</li>
                         <li>Quick approval for entrepreneurs</li>
                         <li>Flexible repayment schedules</li>
                     </ul>
@@ -890,22 +891,22 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section">
+    <section class="stats-section" id="statsSection">
         <div class="section-container">
             <h2 class="section-title">Our Impact</h2>
             <p class="section-subtitle">Trusted by thousands of families across South Africa</p>
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>5K+</h3>
+                    <h3><span class="counter" data-target="5000" data-suffix="K+">0K+</span></h3>
                     <p>Happy Customers</p>
                 </div>
                 <div class="stat-item">
-                    <h3>R8.5M+</h3>
+                    <h3><span class="counter currency" data-target="8500000" data-prefix="R" data-suffix="M+">R0M+</span></h3>
                     <p>Loans Disbursed</p>
                 </div>
                 <div class="stat-item">
-                    <h3>100%</h3>
+                    <h3><span class="counter" data-target="100" data-suffix="%">0%</span></h3>
                     <p>Customer Satisfaction</p>
                 </div>
                 <div class="stat-item">
@@ -1081,6 +1082,100 @@
             if (e.key === 'ArrowLeft') prevSlide();
             if (e.key === 'ArrowRight') nextSlide();
         });
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const prefix = counter.dataset.prefix || '';
+                const suffix = counter.dataset.suffix || '';
+                let current = 0;
+                const increment = target / 50; // Animate over 50 steps
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        if (counter.classList.contains('currency')) {
+                            // Display in millions with one decimal place
+                            counter.textContent = prefix + (Math.round(current) / 1000000).toFixed(1) + suffix;
+                        } else {
+                            counter.textContent = Math.floor(current) + suffix;
+                        }
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        if (counter.classList.contains('currency')) {
+                            counter.textContent = prefix + (target / 1000000).toFixed(1) + suffix;
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Trigger animation when stats section is in view
+        const statsSection = document.getElementById('statsSection');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Modified hero carousel code to use the new currentIndex variable
+        let currentSlideIndex = 0;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            
+            if (n >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (n < 0) {
+                currentSlideIndex = slides.length - 1;
+            } else {
+                currentSlideIndex = n;
+            }
+            
+            document.getElementById('heroSlides').style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[currentSlideIndex]) {
+                dots[currentSlideIndex].classList.add('active');
+            }
+        }
+
+        function currentSlide(n) {
+            showSlide(n);
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex--;
+            showSlide(currentSlideIndex);
+        }
+
+        // Re-adding the interval for auto-advancing slides
+        // The original `currentIndex` variable was also used in the interval, so we align it
+        setInterval(nextSlide, 5000); 
+
+        // The original JS for hero carousel had the event listeners for next/prev buttons already,
+        // and also the interval. We've consolidated the logic into the new `currentSlideIndex` and `showSlide` functions.
+        // The existing event listeners and interval are still functional.
+
     </script>
 </body>
 </html>
