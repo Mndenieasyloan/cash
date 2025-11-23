@@ -1,1 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mndeni Easy Loans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
 
+        /* Unified header styles */
+        header {
+            background: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 800;
+            color: #0d5d4d;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            background: #ffc107;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #0d5d4d;
+        }
+
+        .cta-button {
+            background: #0d5d4d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cta-button:hover {
+            background: #0a4a3a;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #0d5d4d;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: white;
+            flex-direction: column;
+            padding: 20px;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu a:hover {
+            color: #0d5d4d;
+        }
+
+        .mobile-menu .cta-button {
+            width: 100%;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .logo {
+                font-size: 20px;
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0d5d4d;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .story-section {
+            background-color: #f8f9fa;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .story-section h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #ffc107;
+        }
+        
+        .mission-card h3 {
+            color: #0d5d4d;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .mission-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .principles {
+            margin: 3rem 0;
+        }
+        
+        .principles h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .principle-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #0d5d4d;
+        }
+        
+        .principle-item h3 {
+            color: #0d5d4d;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .principle-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .team-section {
+            margin: 3rem 0;
+        }
+        
+        .team-section h2 {
+            font-size: 2rem;
+            color: #0d5d4d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 3px solid #ffc107;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+            border: 4px solid #0d5d4d;
+        }
+        
+        .team-member h3 {
+            color: #0d5d4d;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .team-member p {
+            color: #0d5d4d;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .registered-section {
+            background-color: #0d5d4d;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .registered-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button-secondary {
+            background-color: #ffc107;
+            color: #0d5d4d;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+            border: none;
+        }
+        
+        .cta-button-secondary:hover {
+            background-color: #ffb300;
+        }
+
+        /* Unified footer styles */
+        footer {
+            background: #0d5d4d;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffc107;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffc107;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Mobile Menu -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                Mndeni<span class="logo-dot"></span>
+            </a>
+            
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html">Apply</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+            <a href="apply.html">Apply</a>
+            <a href="apply.html" class="cta-button">Apply Now</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Story</h1>
+                <p>More than a lender, we're part of the family.</p>
+            </div>
+
+            <div class="story-section">
+                <h2>Welcome to Mndeni Easy Loans</h2>
+                <p>Founded on the principle of 'ubuntu', Mndeni Easy Loans was born from a simple idea: financial support should be accessible, understandable, and built on a foundation of trust. In isiZulu, 'Mndeni' means family—and that is exactly how we see our clients.</p>
+                <p>We are not just a financial institution; we are a community partner dedicated to empowering the households and entrepreneurs of South Africa. We understand the challenges and dreams that drive you. Whether it's funding your child's education, expanding a small business, or handling an unexpected expense, we provide the financial tools you need with the respect and care you deserve.</p>
+            </div>
+
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To empower every South African family with accessible, fair, and compassionate financial solutions that build brighter futures. We strive to simplify the lending process, making it a positive and supportive experience for everyone.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Our Vision</h3>
+                    <p>To be South Africa's most trusted financial partner, known for our unwavering commitment to community upliftment and the personal and economic success of every family we serve.</p>
+                </div>
+            </div>
+
+            <div class="principles">
+                <h2>Our Guiding Principles</h2>
+                <div class="principles-grid">
+                    <div class="principle-item">
+                        <h3>A Commitment to You</h3>
+                        <p>We treat every client with the care and respect of a family member, putting your needs at the heart of what we do.</p>
+                    </div>
+                    <div class="principle-item">
+                        <h3>Unwavering Integrity</h3>
+                        <p>We operate with complete transparency. No hidden fees, no confusing terms—just honest financial partnership.</p>
+                    </div>
+                    <div class="principle-item">
+                        <h3>Community Empowerment</h3>
+                        <p>Our goal is to provide a hand-up. We empower you with the resources to build a better, more secure future for your mndeni.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2>Meet the Mndeni Team</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #666;">The dedicated professionals behind our commitment to you.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="image/8db6f9eb-e216-4c11-a99c-34af6a4925b6-1.jpeg" alt="Jabulani Dlamini" class="team-member-image">
+                        <h3>Jabulani Dlamini</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="image/simphiwe-mhlongo-1080x675.jpg" alt="Nomusa Zulu" class="team-member-image">
+                        <h3>Nomusa Zulu</h3>
+                        <p>Head of Client Relations</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop" alt="Pieter van der Merwe" class="team-member-image">
+                        <h3>Pieter van der Merwe</h3>
+                        <p>Chief Financial Officer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="registered-section">
+                <h3>Your Trusted, Registered Partner</h3>
+                <p>Mndeni Easy Loans (PTY) LTD is a proud and fully compliant financial services provider, committed to responsible lending practices.</p>
+                <p style="margin-top: 1rem;">NCR Registration No.: NCRCP19616</p>
+                <p>Legal Registration No.: 2024/157205/07</p>
+                <a href="apply.html" class="cta-button-secondary">Start Your Application</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Mndeni</h4>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Mndeni Easy Loans is committed to providing accessible financial solutions to families across South Africa.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>📞 +27 78 238 5248</li>
+                    <li>📧 mndenieasyloans@aol.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mndeni Easy Loans (PTY) LTD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
