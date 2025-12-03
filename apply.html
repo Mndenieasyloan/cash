@@ -3,521 +3,1096 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply - Mndeni Easy Loans</title>
+    <title>Mining Tracks - V0 Trade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- TradingView Lightweight Charts -->
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: rgb(203 213 225);
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+        .sidebar-link:hover {
+            background-color: rgb(168 85 247 / 0.1);
+            color: rgb(168 85 247);
+        }
+        .sidebar-link.active {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            color: rgb(168 85 247);
+            font-weight: 600;
         }
         
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Unified header styles */
-        header {
-            background: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: 800;
-            color: #0d5d4d;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-dot {
-            width: 12px;
-            height: 12px;
-            background: #ffc107;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 15px;
-        }
-
-        nav a:hover {
-            color: #0d5d4d;
-        }
-
-        .cta-button {
-            background: #0d5d4d;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .cta-button:hover {
-            background: #0a4a3a;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #0d5d4d;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: white;
-            flex-direction: column;
-            padding: 20px;
-            gap: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            z-index: 999;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .mobile-menu a:hover {
-            color: #0d5d4d;
-        }
-
-        .mobile-menu .cta-button {
-            width: 100%;
-            text-align: center;
-            border-bottom: none;
-        }
-
+        /* Updated mobile sidebar behavior to use toggle button instead of hover */
         @media (max-width: 768px) {
-            nav {
-                display: none;
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 40;
+                width: 240px;
             }
-            .menu-toggle {
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 30;
+            }
+            .sidebar-overlay.active {
+                display: block;
+            }
+            .sidebar-toggle {
                 display: flex;
             }
-            .logo {
-                font-size: 20px;
+        }
+        
+        @media (min-width: 769px) {
+            .sidebar-toggle {
+                display: none;
             }
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .mobile-menu { display: none; }
+        .mobile-menu.active { display: block; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: rgb(15 23 42 / 0.95); min-width: 12rem; border: 1px solid rgb(168 85 247 / 0.2); border-radius: 0.5rem; padding: 0.5rem; z-index: 1000; backdrop-filter: blur(10px); }
+        .dropdown:hover .dropdown-content { display: block; }
+        
+        .mining-plan-card {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
         }
         
-        .page-header {
-            text-align: center;
-            margin: 3rem 0 2rem;
+        .mining-plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.5);
         }
         
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: #0d5d4d;
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-        
-        .why-section {
-            background-color: #f8f9fa;
-            padding: 3rem 2rem;
-            border-radius: 10px;
-            margin: 3rem 0;
-        }
-        
-        .why-section h2 {
-            font-size: 2rem;
-            color: #0d5d4d;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .benefit-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #ffc107;
-        }
-        
-        .benefit-card h3 {
-            color: #0d5d4d;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .benefit-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-        
-        .faq-section {
-            margin: 3rem 0;
-        }
-        
-        .faq-section h2 {
-            font-size: 2rem;
-            color: #0d5d4d;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .faq-item {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
             overflow: hidden;
         }
         
-        .faq-question {
-            padding: 1.5rem;
-            background-color: #f8f9fa;
-            cursor: pointer;
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #a855f7, #ec4899);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .plan-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #0d5d4d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
-        .faq-question:hover {
-            background-color: #efefef;
+        .badge-micro { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .badge-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .badge-silver { background: linear-gradient(135deg, #9ca3af, #6b7280); color: white; }
+        .badge-diamond { background: linear-gradient(135deg, #06b6d4, #0e7490); color: white; }
+        
+        .chart-container {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
         }
         
-        .faq-answer {
+        .tracking-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 1rem;
             padding: 1.5rem;
-            color: #666;
-            display: none;
-            line-height: 1.8;
+            backdrop-filter: blur(10px);
         }
         
-        .faq-answer.open {
-            display: block;
+        .candle-chart {
+            height: 300px;
+            width: 100%;
         }
         
-        .faq-toggle {
-            font-size: 1.5rem;
-            color: #ffc107;
-        }
-
-        /* Unified footer styles */
-        footer {
-            background: #0d5d4d;
-            color: white;
-            padding: 60px 20px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #ffc107;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: #ffc107;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            text-align: center;
-            color: rgba(255,255,255,0.7);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
+        .stats-card {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.05));
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
         }
     </style>
 </head>
-<body>
-    <!-- Header with Mobile Menu -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                Mndeni<span class="logo-dot"></span>
-            </a>
-            
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="reviews.html">Reviews</a>
-                <a href="contact.html">Contact</a>
-                <a href="apply.html">Apply</a>
-                <a href="apply.html" class="cta-button">Apply Now</a>
-            </nav>
+<body class="bg-slate-950">
+    
+    <!-- Added hamburger toggle button for mobile -->
+    <button onclick="toggleSidebar()" class="sidebar-toggle fixed left-4 top-20 z-50 bg-purple-500 hover:bg-purple-600 text-white p-2 rounded-lg shadow-lg transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+    
+    <!-- Added overlay for mobile sidebar -->
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <header class="sticky top-0 z-50 border-b border-purple-500/20 bg-slate-950/80 backdrop-blur-md">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
+                    <div class="h-10 w-10">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color: #a78bfa; stop-opacity: 1" />
+                                    <stop offset="50%" style="stop-color: #ec4899; stop-opacity: 1" />
+                                    <stop offset="100%" style="stop-color: #06b6d4; stop-opacity: 1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="95" fill="url(#logoGradient)" opacity="0.2" />
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="url(#logoGradient)" stroke-width="2" />
+                            <path d="M 50 60 L 80 140 M 150 60 L 120 140" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" fill="none" />
+                            <circle cx="100" cy="100" r="25" fill="none" stroke="url(#logoGradient)" stroke-width="6" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">V0 Trade</span>
+                </a>
 
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="index.html" class="text-sm text-gray-300 hover:text-white transition">Home</a>
+                    <div class="dropdown">
+                        <button class="text-sm text-gray-300 hover:text-white transition flex items-center gap-1">Invest <span>▼</span></button>
+                        <div class="dropdown-content">
+                            <a href="cryptocurrencies.html" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 rounded">Cryptocurrencies</a>
+                            <a href="precious-metals.html" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 rounded">Precious Metals</a>
+                            <a href="stocks.html" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 rounded">Stocks</a>
+                            <a href="etfs.html" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 rounded">ETFs</a>
+                        </div>
+                    </div>
+                    <a href="btc-miner.html" class="text-sm text-gray-300 hover:text-white transition">BTC Miner</a>
+                    <a href="about.html" class="text-sm text-gray-300 hover:text-white transition">About</a>
+                    <a href="security.html" class="text-sm text-gray-300 hover:text-white transition">Security</a>
+                    <div class="dropdown">
+                        <button class="text-sm text-gray-300 hover:text-white transition flex items-center gap-1">Support <span>▼</span></button>
+                        <div class="dropdown-content">
+                            <a href="contact.html" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 rounded">Contact Support</a>
+                            <a href="faq.html" class="block px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-purple-500/10 rounded">FAQ</a>
+                        </div>
+                    </div>
+                </nav>
 
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="contact.html">Contact</a>
-            <a href="apply.html">Apply</a>
-            <a href="apply.html" class="cta-button">Apply Now</a>
+                <div class="hidden items-center gap-4 md:flex">
+                    <a href="dashboard.html" class="text-sm text-purple-400 hover:text-purple-300 transition">Dashboard</a>
+                    <span class="text-sm text-gray-400" id="userEmailDisplay">user@email.com</span>
+                    <a href="index.html" class="text-sm text-gray-300 hover:text-white transition">Logout</a>
+                </div>
+
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobileMenu" class="mobile-menu border-t border-purple-500/20 py-4 md:hidden">
+                <nav class="flex flex-col gap-3">
+                    <a href="index.html" class="text-sm text-gray-300 hover:text-white">Home</a>
+                    <a href="cryptocurrencies.html" class="text-sm text-gray-300 hover:text-white">Cryptocurrencies</a>
+                    <a href="precious-metals.html" class="text-sm text-gray-300 hover:text-white">Precious Metals</a>
+                    <a href="stocks.html" class="text-sm text-gray-300 hover:text-white">Stocks</a>
+                    <a href="etfs.html" class="text-sm text-gray-300 hover:text-white">ETFs</a>
+                    <a href="btc-miner.html" class="text-sm text-gray-300 hover:text-white">BTC Miner</a>
+                    <a href="about.html" class="text-sm text-gray-300 hover:text-white">About</a>
+                    <a href="security.html" class="text-sm text-gray-300 hover:text-white">Security</a>
+                    <a href="contact.html" class="text-sm text-gray-300 hover:text-white">Contact</a>
+                    <a href="faq.html" class="text-sm text-gray-300 hover:text-white">FAQ</a>
+                    <a href="dashboard.html" class="text-sm text-purple-400 hover:text-purple-300">Dashboard</a>
+                    <a href="index.html" class="text-sm text-gray-300 hover:text-white">Logout</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <main>
-        <div class="container">
-            <div class="page-header">
-                <h1>Your Loan Application</h1>
-                <p>A few simple steps to secure your financial future.</p>
+    <div class="flex min-h-screen">
+        <!-- Added id attribute for mobile toggle functionality -->
+        <aside id="sidebar" class="sidebar w-64 bg-slate-900/50 border-r border-purple-500/20 p-4 backdrop-blur-sm">
+            <div class="space-y-1 mb-6">
+                <a href="deposit.html" class="sidebar-link">
+                    <span>💰</span>
+                    <span class="sidebar-text">Deposit</span>
+                </a>
+                <a href="withdraw.html" class="sidebar-link">
+                    <span>💸</span>
+                    <span class="sidebar-text">Withdraw</span>
+                </a>
             </div>
-<iframe data-tally-src="https://tally.so/embed/3NjGlW?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0" title="Apply for Your Loan with 
+            
+            <div class="mb-6">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span>📊</span>
+                    <span class="sidebar-text">Dashboard</span>
+                </a>
+                <a href="coin-wallets.html" class="sidebar-link">
+                    <span>🪙</span>
+                    <span class="sidebar-text">Coin Wallets</span>
+                </a>
+                <a href="mining-tracks.html" class="sidebar-link active">
+                    <span>⛏️</span>
+                    <span class="sidebar-text">Mining Tracks</span>
+                </a>
+                <a href="investment-tracks.html" class="sidebar-link">
+                    <span>📈</span>
+                    <span class="sidebar-text">Investment Tracks</span>
+                </a>
+            </div>
 
-Mndeni Easy Loans (PTY) LTD
+            <div class="mb-2">
+                <p class="text-xs font-semibold text-gray-500 uppercase px-4 mb-2 sidebar-text">Report</p>
+                <a href="referral-commissions.html" class="sidebar-link">
+                    <span>🎁</span>
+                    <span class="sidebar-text">Ref. Commissions</span>
+                </a>
+                <a href="deposit-history.html" class="sidebar-link">
+                    <span>📥</span>
+                    <span class="sidebar-text">Deposit History</span>
+                </a>
+                <a href="order-history.html" class="sidebar-link">
+                    <span>📋</span>
+                    <span class="sidebar-text">Order History</span>
+                </a>
+                <a href="withdrawals-log.html" class="sidebar-link">
+                    <span>📤</span>
+                    <span class="sidebar-text">Withdrawals Log</span>
+                </a>
+                <a href="transactions.html" class="sidebar-link">
+                    <span>💳</span>
+                    <span class="sidebar-text">Transactions</span>
+                </a>
+            </div>
 
-"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-            <div class="why-section">
-                <h2>Why Apply With Mndeni?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <h3>Family-Focused</h3>
-                        <p>We understand your needs because we see you as part of our family.</p>
+            <div>
+                <p class="text-xs font-semibold text-gray-500 uppercase px-4 mb-2 sidebar-text">Support</p>
+                <a href="open-ticket.html" class="sidebar-link">
+                    <span>🎫</span>
+                    <span class="sidebar-text">Open New Ticket</span>
+                </a>
+                <a href="support-tickets.html" class="sidebar-link">
+                    <span>📨</span>
+                    <span class="sidebar-text">Support Tickets</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-4 md:p-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+            <div class="max-w-7xl">
+                <!-- Header with refresh button -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-8 gap-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold text-white">Mining Tracks</h1>
+                        <p class="text-gray-400 mt-2">Track your active Bitcoin mining plans and returns</p>
                     </div>
-                    <div class="benefit-card">
-                        <h3>Transparent Process</h3>
-                        <p>No jargon, no hidden fees. We explain everything clearly.</p>
+                    <button onclick="refreshMiningData()" class="flex items-center gap-2 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-medium transition w-full md:w-auto justify-center">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        Refresh Data
+                    </button>
+                </div>
+
+                <!-- Summary Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <div class="stats-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-sm text-gray-400">Active Plans</p>
+                            <span class="text-2xl">⛏️</span>
+                        </div>
+                        <p id="activePlansCount" class="text-2xl font-bold text-white">0</p>
                     </div>
-                    <div class="benefit-card">
-                        <h3>Quick & Easy</h3>
-                        <p>Our online application is designed to be fast and straightforward.</p>
+                    
+                    <div class="stats-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-sm text-gray-400">Total Investment</p>
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <p id="totalInvestment" class="text-2xl font-bold text-white">$0</p>
                     </div>
-                    <div class="benefit-card">
-                        <h3>NCR Registered</h3>
-                        <p>Apply with confidence knowing we are a registered and responsible credit provider (NCRCP19616).</p>
+                    
+                    <div class="stats-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-sm text-gray-400">Estimated Returns</p>
+                            <span class="text-2xl">📈</span>
+                        </div>
+                        <p id="estimatedReturns" class="text-2xl font-bold text-white">$0</p>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-sm text-gray-400">Mining Hashrate</p>
+                            <span class="text-2xl">⚡</span>
+                        </div>
+                        <p id="totalHashrate" class="text-2xl font-bold text-white">0 TH/s</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Candlestick Chart -->
+                    <div class="lg:col-span-2 tracking-card">
+                        <h3 class="text-lg font-semibold text-white mb-4">Mining Performance</h3>
+                        <div id="candlestickChart" class="candle-chart"></div>
+                    </div>
+                    
+                    <!-- Pie Chart -->
+                    <div class="tracking-card">
+                        <h3 class="text-lg font-semibold text-white mb-4">Plan Distribution</h3>
+                        <div class="relative">
+                            <canvas id="planDistributionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line Chart for Returns -->
+                <div class="tracking-card mb-8">
+                    <h3 class="text-lg font-semibold text-white mb-4">Daily Returns Projection</h3>
+                    <canvas id="returnsChart"></canvas>
+                </div>
+
+                <!-- Active Mining Plans -->
+                <div id="activeMiningPlans" class="space-y-6 mb-8">
+                    <!-- Plans will be loaded here -->
+                </div>
+
+                <!-- No Plans Message -->
+                <div id="noPlansMessage" class="bg-slate-900/80 backdrop-blur-sm rounded-xl border border-purple-500/20 p-8 text-center mb-8">
+                    <div class="text-6xl mb-4">⛏️</div>
+                    <h2 class="text-2xl font-semibold text-white mb-4">No Active Mining Plans</h2>
+                    <p class="text-gray-400 mb-6">Start mining Bitcoin today with our AI-powered cloud mining platform</p>
+                    <a href="btc-miner.html" class="inline-block bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-3 rounded-lg font-semibold transition">
+                        Browse Mining Plans
+                    </a>
+                </div>
+
+                <!-- Plan Details Table -->
+                <div class="tracking-card">
+                    <h3 class="text-lg font-semibold text-white mb-4">Mining Plan Details</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-purple-500/20">
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Plan</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Investment</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Duration</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Hashrate</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Daily Return</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Progress</th>
+                                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="planDetailsTable">
+                                <!-- Plan details will be loaded here -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
-            <div class="faq-section">
-                <h2>Application FAQ</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>What documents will I need later?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You may need a copy of your ID and latest payslip or bank statement. We'll let you know if these are required.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Is my information secure?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely. We use industry-standard encryption to protect your data at all times.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>How soon will I get a response?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We pride ourselves on quick decisions, often within a few business hours.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>About Mndeni</h4>
-                <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Mndeni Easy Loans is committed to providing accessible financial solutions to families across South Africa.</p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="apply.html">Apply Now</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <ul>
-                    <li>📞 +27 78 238 5248</li>
-                    <li>📧 mndenieasyloans@aol.com</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 Mndeni Easy Loans (PTY) LTD. All rights reserved.</p>
-        </div>
-    </footer>
+        </main>
+    </div>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        // Constants
+        const TRANSACTIONS_DATA_KEY = "v0trade_transactions_data";
+        
+        // Mining plan configurations - UPDATED WITH EXACT PLAN NAMES
+        const MINING_PLANS = {
+            'micro plan btc miner': {
+                name: 'Micro Plan',
+                investment: 600,
+                duration: 3,
+                hashrate: '130 TH/s',
+                dailyReturn: 36,
+                badgeClass: 'badge-micro',
+                color: '#3b82f6'
+            },
+            'gold plan btc miner': {
+                name: 'Gold Plan',
+                investment: 1850,
+                duration: 6,
+                hashrate: '720 TH/s',
+                dailyReturn: 48,
+                badgeClass: 'badge-gold',
+                color: '#f59e0b'
+            },
+            'silver plan btc miner': {
+                name: 'Silver Plan',
+                investment: 2450,
+                duration: 13,
+                hashrate: '2,114 TH/s',
+                dailyReturn: 40,
+                badgeClass: 'badge-silver',
+                color: '#9ca3af'
+            },
+            'diamond plan btc miner': {
+                name: 'Diamond Plan',
+                investment: 2200,
+                duration: 7,
+                hashrate: '3,288 TH/s',
+                dailyReturn: 80,
+                badgeClass: 'badge-diamond',
+                color: '#06b6d4'
+            }
+        };
+        
+        let charts = {
+            candlestick: null,
+            distribution: null,
+            returns: null
+        };
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        function toggleFAQ(element) {
-            const answer = element.nextElementSibling;
-            const toggle = element.querySelector('.faq-toggle');
+        window.addEventListener('DOMContentLoaded', function() {
+            const userEmail = localStorage.getItem("v0trade_user_email");
             
-            document.querySelectorAll('.faq-answer').forEach(item => {
-                if (item !== answer) {
-                    item.classList.remove('open');
-                    item.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+            if (!userEmail) {
+                alert("Please login to access this page.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Update header with user email
+            const emailDisplay = document.getElementById('userEmailDisplay');
+            if (emailDisplay) {
+                emailDisplay.textContent = userEmail;
+            }
+            
+            // Load mining data
+            loadMiningData(userEmail);
+            
+            // Initialize charts
+            initializeCharts();
+        });
+
+        function loadMiningData(email) {
+            try {
+                console.log("Loading mining data for:", email);
+                
+                // Get cached transactions from localStorage
+                const cachedData = localStorage.getItem(`${TRANSACTIONS_DATA_KEY}_${email}`);
+                
+                if (!cachedData) {
+                    console.log("No cached data found");
+                    showNoPlansMessage();
+                    updateSummaryStats([], {});
+                    return;
+                }
+                
+                const allTransactions = JSON.parse(cachedData);
+                console.log("Total transactions found:", allTransactions.length);
+                
+                // Filter to get only mining plan transactions - FIXED FILTERING
+                const miningTransactions = allTransactions.filter(transaction => {
+                    // Check transaction type or method for mining plans
+                    const type = (transaction.type || '').toLowerCase();
+                    const method = (transaction.method || '').toLowerCase();
+                    
+                    // Check if transaction contains any mining plan keywords
+                    const transactionText = (type + ' ' + method).toLowerCase();
+                    
+                    return transactionText.includes('micro') || 
+                           transactionText.includes('gold') || 
+                           transactionText.includes('silver') || 
+                           transactionText.includes('diamond') ||
+                           transactionText.includes('btc miner') ||
+                           transactionText.includes('mining');
+                });
+                
+                console.log("Mining transactions found:", miningTransactions);
+                
+                if (miningTransactions.length === 0) {
+                    console.log("No mining transactions found");
+                    showNoPlansMessage();
+                    updateSummaryStats([], {});
+                    return;
+                }
+                
+                // Group transactions by plan type and calculate stats
+                const miningStats = processMiningTransactions(miningTransactions);
+                console.log("Processed mining stats:", miningStats);
+                
+                // Update UI with mining data
+                updateMiningPlansDisplay(miningStats);
+                updateSummaryStats(miningTransactions, miningStats);
+                updatePlanDetailsTable(miningStats);
+                updateCharts(miningStats);
+                
+            } catch (err) {
+                console.error("Error loading mining data:", err);
+                showNoPlansMessage();
+            }
+        }
+        
+        function processMiningTransactions(transactions) {
+            const planStats = {};
+            const now = new Date();
+            
+            transactions.forEach(transaction => {
+                const type = (transaction.type || '').toLowerCase();
+                const method = (transaction.method || '').toLowerCase();
+                const amount = parseFloat(transaction.amount) || 0;
+                const transactionDate = new Date(transaction.date || now);
+                
+                console.log("Processing transaction:", { type, method, amount });
+                
+                // Find matching plan - check both type and method
+                let planKey = null;
+                const transactionText = (type + ' ' + method).toLowerCase();
+                
+                // Check for exact plan matches
+                for (const key in MINING_PLANS) {
+                    if (transactionText.includes(key)) {
+                        planKey = key;
+                        break;
+                    }
+                }
+                
+                // If no exact match, try partial matches
+                if (!planKey) {
+                    if (transactionText.includes('micro')) planKey = 'micro plan btc miner';
+                    else if (transactionText.includes('gold')) planKey = 'gold plan btc miner';
+                    else if (transactionText.includes('silver')) planKey = 'silver plan btc miner';
+                    else if (transactionText.includes('diamond')) planKey = 'diamond plan btc miner';
+                }
+                
+                if (!planKey) {
+                    console.log("No plan match found for transaction");
+                    return;
+                }
+                
+                console.log("Matched plan:", planKey);
+                
+                if (!planStats[planKey]) {
+                    planStats[planKey] = {
+                        count: 0,
+                        totalInvestment: 0,
+                        transactions: [],
+                        planInfo: MINING_PLANS[planKey]
+                    };
+                }
+                
+                planStats[planKey].count++;
+                planStats[planKey].totalInvestment += amount;
+                planStats[planKey].transactions.push({
+                    ...transaction,
+                    transactionDate: transactionDate
+                });
+            });
+            
+            return planStats;
+        }
+        
+        function updateMiningPlansDisplay(planStats) {
+            const container = document.getElementById('activeMiningPlans');
+            const noPlansDiv = document.getElementById('noPlansMessage');
+            
+            if (Object.keys(planStats).length === 0) {
+                showNoPlansMessage();
+                return;
+            }
+            
+            // Hide no plans message
+            noPlansDiv.classList.add('hidden');
+            container.innerHTML = '';
+            
+            // Create plan cards
+            for (const [planKey, stats] of Object.entries(planStats)) {
+                const plan = stats.planInfo;
+                const now = new Date();
+                
+                // Get the most recent transaction for this plan
+                let latestTransaction = stats.transactions.reduce((latest, current) => {
+                    return current.transactionDate > latest ? current.transactionDate : latest;
+                }, new Date(0));
+                
+                if (latestTransaction.getTime() === 0) {
+                    latestTransaction = now;
+                }
+                
+                const endDate = new Date(latestTransaction);
+                endDate.setDate(endDate.getDate() + plan.duration);
+                
+                // Calculate progress
+                const totalTime = plan.duration * 24 * 60 * 60 * 1000;
+                const elapsedTime = now - latestTransaction;
+                const progress = Math.min(Math.max((elapsedTime / totalTime) * 100, 0), 100);
+                
+                // Calculate estimated returns
+                const dailyReturnAmount = (plan.investment * plan.dailyReturn) / 100;
+                const totalReturn = dailyReturnAmount * plan.duration * stats.count;
+                
+                const card = document.createElement('div');
+                card.className = 'mining-plan-card';
+                
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="${plan.badgeClass} plan-badge">${plan.name}</span>
+                                <span class="text-sm text-gray-400">${stats.count} Active</span>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                                <div>
+                                    <p class="text-sm text-gray-400">Investment</p>
+                                    <p class="text-lg font-bold text-white">$${plan.investment.toLocaleString()}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Hashrate</p>
+                                    <p class="text-lg font-bold text-white">${plan.hashrate}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Daily Return</p>
+                                    <p class="text-lg font-bold text-green-400">${plan.dailyReturn}%</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Est. Total</p>
+                                    <p class="text-lg font-bold text-amber-400">$${totalReturn.toLocaleString()}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <div class="flex justify-between text-sm text-gray-400 mb-1">
+                                    <span>Progress</span>
+                                    <span>${progress.toFixed(1)}%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${progress}%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between text-sm text-gray-400">
+                                <span>Started: ${latestTransaction.toLocaleDateString()}</span>
+                                <span>Ends: ${endDate.toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col items-center">
+                            <div class="text-5xl mb-2">⛏️</div>
+                            <span class="text-sm font-medium text-white">${Math.round(progress)}% Complete</span>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            }
+        }
+        
+        function updateSummaryStats(transactions, planStats) {
+            let totalInvestment = 0;
+            let totalHashrate = 0;
+            let totalEstimatedReturns = 0;
+            let activePlansCount = 0;
+            
+            for (const [planKey, stats] of Object.entries(planStats)) {
+                activePlansCount += stats.count;
+                totalInvestment += stats.totalInvestment;
+                totalEstimatedReturns += (stats.planInfo.investment * stats.planInfo.dailyReturn / 100) * stats.planInfo.duration * stats.count;
+                
+                // Parse hashrate number
+                const hashrateStr = stats.planInfo.hashrate.replace(/[^0-9]/g, '');
+                totalHashrate += parseInt(hashrateStr) * stats.count;
+            }
+            
+            document.getElementById('activePlansCount').textContent = activePlansCount;
+            document.getElementById('totalInvestment').textContent = `$${totalInvestment.toLocaleString()}`;
+            document.getElementById('estimatedReturns').textContent = `$${Math.round(totalEstimatedReturns).toLocaleString()}`;
+            document.getElementById('totalHashrate').textContent = `${totalHashrate.toLocaleString()} TH/s`;
+        }
+        
+        function updatePlanDetailsTable(planStats) {
+            const tableBody = document.getElementById('planDetailsTable');
+            tableBody.innerHTML = '';
+            
+            for (const [planKey, stats] of Object.entries(planStats)) {
+                const plan = stats.planInfo;
+                const now = new Date();
+                
+                // Get the most recent transaction for this plan
+                let latestTransaction = stats.transactions.reduce((latest, current) => {
+                    return current.transactionDate > latest ? current.transactionDate : latest;
+                }, new Date(0));
+                
+                if (latestTransaction.getTime() === 0) {
+                    latestTransaction = now;
+                }
+                
+                const endDate = new Date(latestTransaction);
+                endDate.setDate(endDate.getDate() + plan.duration);
+                
+                const totalTime = plan.duration * 24 * 60 * 60 * 1000;
+                const elapsedTime = now - latestTransaction;
+                const progress = Math.min(Math.max((elapsedTime / totalTime) * 100, 0), 100);
+                
+                const row = document.createElement('tr');
+                row.className = 'border-b border-purple-500/10 hover:bg-purple-500/5';
+                
+                row.innerHTML = `
+                    <td class="py-3 px-4">
+                        <span class="${plan.badgeClass} plan-badge">${plan.name}</span>
+                    </td>
+                    <td class="py-3 px-4 text-white font-medium">$${plan.investment.toLocaleString()}</td>
+                    <td class="py-3 px-4 text-gray-300">${plan.duration} Days</td>
+                    <td class="py-3 px-4 text-gray-300">${plan.hashrate}</td>
+                    <td class="py-3 px-4 text-green-400 font-medium">${plan.dailyReturn}%</td>
+                    <td class="py-3 px-4">
+                        <div class="flex items-center gap-2">
+                            <div class="progress-bar flex-1">
+                                <div class="progress-fill" style="width: ${progress}%"></div>
+                            </div>
+                            <span class="text-sm text-gray-400">${Math.round(progress)}%</span>
+                        </div>
+                    </td>
+                    <td class="py-3 px-4">
+                        <span class="inline-flex items-center gap-1 ${progress >= 100 ? 'text-blue-400' : 'text-green-400'}">
+                            <span class="w-2 h-2 ${progress >= 100 ? 'bg-blue-400' : 'bg-green-400'} rounded-full animate-pulse"></span>
+                            ${progress >= 100 ? 'Completed' : 'Active'}
+                        </span>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            }
+        }
+        
+        function initializeCharts() {
+            // Initialize distribution pie chart
+            const distCtx = document.getElementById('planDistributionChart').getContext('2d');
+            charts.distribution = new Chart(distCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#94a3b8',
+                                padding: 20,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
                 }
             });
             
-            answer.classList.toggle('open');
-            toggle.textContent = answer.classList.contains('open') ? '−' : '+';
+            // Initialize returns line chart
+            const returnsCtx = document.getElementById('returnsChart').getContext('2d');
+            charts.returns = new Chart(returnsCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Daily Returns',
+                        data: [],
+                        borderColor: '#a855f7',
+                        backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#ec4899',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutQuart'
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#94a3b8'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(168, 85, 247, 0.1)'
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(168, 85, 247, 0.1)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
+        
+        function updateCharts(planStats) {
+            // Update distribution chart
+            const planNames = [];
+            const planCounts = [];
+            const planColors = [];
+            
+            for (const [planKey, stats] of Object.entries(planStats)) {
+                planNames.push(stats.planInfo.name);
+                planCounts.push(stats.count);
+                planColors.push(stats.planInfo.color);
+            }
+            
+            charts.distribution.data.labels = planNames;
+            charts.distribution.data.datasets[0].data = planCounts;
+            charts.distribution.data.datasets[0].backgroundColor = planColors;
+            charts.distribution.update();
+            
+            // Update returns chart with projected data
+            const days = [];
+            const returns = [];
+            
+            // Generate 30 days of projected returns
+            let totalDailyReturn = 0;
+            for (const [planKey, stats] of Object.entries(planStats)) {
+                const plan = stats.planInfo;
+                totalDailyReturn += (plan.investment * plan.dailyReturn / 100) * stats.count;
+            }
+            
+            // Start from today
+            const today = new Date();
+            for (let i = 0; i < 30; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() + i);
+                days.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+                returns.push(totalDailyReturn * (i + 1));
+            }
+            
+            charts.returns.data.labels = days;
+            charts.returns.data.datasets[0].data = returns;
+            charts.returns.update();
+            
+            // Create candlestick chart if not exists
+            if (!charts.candlestick) {
+                const candlestickElement = document.getElementById('candlestickChart');
+                charts.candlestick = LightweightCharts.createChart(candlestickElement, {
+                    width: candlestickElement.clientWidth,
+                    height: 300,
+                    layout: {
+                        background: { color: 'transparent' },
+                        textColor: '#94a3b8',
+                    },
+                    grid: {
+                        vertLines: { color: 'rgba(168, 85, 247, 0.1)' },
+                        horzLines: { color: 'rgba(168, 85, 247, 0.1)' },
+                    },
+                });
+                
+                const candlestickSeries = charts.candlestick.addCandlestickSeries({
+                    upColor: '#10b981',
+                    downColor: '#ef4444',
+                    borderVisible: false,
+                    wickUpColor: '#10b981',
+                    wickDownColor: '#ef4444',
+                });
+                
+                // Generate sample candlestick data for mining performance
+                const now = new Date();
+                const candlestickData = [];
+                let currentPrice = 50000; // Starting mining performance value
+                
+                for (let i = 19; i >= 0; i--) {
+                    const date = new Date(now);
+                    date.setDate(date.getDate() - i);
+                    
+                    const open = currentPrice;
+                    const change = (Math.random() - 0.5) * 1000;
+                    const close = open + change;
+                    const high = Math.max(open, close) + Math.random() * 500;
+                    const low = Math.min(open, close) - Math.random() * 500;
+                    
+                    candlestickData.push({
+                        time: date.toISOString().split('T')[0],
+                        open: open,
+                        high: high,
+                        low: low,
+                        close: close
+                    });
+                    
+                    currentPrice = close;
+                }
+                
+                candlestickSeries.setData(candlestickData);
+                
+                // Add a simple moving average
+                const smaSeries = charts.candlestick.addLineSeries({
+                    color: '#a855f7',
+                    lineWidth: 2,
+                });
+                
+                // Calculate SMA
+                const smaData = [];
+                const period = 5;
+                for (let i = period - 1; i < candlestickData.length; i++) {
+                    let sum = 0;
+                    for (let j = 0; j < period; j++) {
+                        sum += candlestickData[i - j].close;
+                    }
+                    smaData.push({
+                        time: candlestickData[i].time,
+                        value: sum / period
+                    });
+                }
+                smaSeries.setData(smaData);
+            }
+        }
+        
+        function showNoPlansMessage() {
+            const container = document.getElementById('activeMiningPlans');
+            const noPlansDiv = document.getElementById('noPlansMessage');
+            const tableBody = document.getElementById('planDetailsTable');
+            
+            container.innerHTML = '';
+            noPlansDiv.classList.remove('hidden');
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="py-8 text-center text-gray-400">
+                        No active mining plans found. Visit the BTC Miner page to start mining.
+                    </td>
+                </tr>
+            `;
+            
+            // Reset summary stats
+            document.getElementById('activePlansCount').textContent = '0';
+            document.getElementById('totalInvestment').textContent = '$0';
+            document.getElementById('estimatedReturns').textContent = '$0';
+            document.getElementById('totalHashrate').textContent = '0 TH/s';
+            
+            // Clear charts data
+            if (charts.distribution) {
+                charts.distribution.data.labels = [];
+                charts.distribution.data.datasets[0].data = [];
+                charts.distribution.update();
+            }
+            
+            if (charts.returns) {
+                charts.returns.data.labels = [];
+                charts.returns.data.datasets[0].data = [];
+                charts.returns.update();
+            }
+        }
+        
+        function refreshMiningData() {
+            const userEmail = localStorage.getItem("v0trade_user_email");
+            if (!userEmail) return;
+            
+            // Show loading state
+            const refreshBtn = document.querySelector('button[onclick="refreshMiningData()"]');
+            const originalText = refreshBtn.innerHTML;
+            refreshBtn.innerHTML = `
+                <svg class="animate-spin w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Refreshing...
+            `;
+            refreshBtn.disabled = true;
+            
+            setTimeout(() => {
+                loadMiningData(userEmail);
+                
+                // Show success indicator
+                refreshBtn.innerHTML = '✓ Refreshed';
+                refreshBtn.classList.remove('bg-purple-500', 'hover:bg-purple-600');
+                refreshBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                
+                setTimeout(() => {
+                    refreshBtn.innerHTML = originalText;
+                    refreshBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    refreshBtn.classList.add('bg-purple-500', 'hover:bg-purple-600');
+                    refreshBtn.disabled = false;
+                }, 2000);
+            }, 1500);
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+        
+        // Handle window resize for charts
+        window.addEventListener('resize', function() {
+            if (charts.candlestick) {
+                const candlestickElement = document.getElementById('candlestickChart');
+                charts.candlestick.applyOptions({ width: candlestickElement.clientWidth });
+            }
+        });
+        
+        // Auto-refresh when returning to the page
+        window.addEventListener('focus', () => {
+            const userEmail = localStorage.getItem("v0trade_user_email");
+            if (userEmail) {
+                console.log("Page focused, refreshing mining data...");
+                loadMiningData(userEmail);
+            }
+        });
+        
+        // Add debug function to check localStorage data
+        window.debugMiningData = function() {
+            const userEmail = localStorage.getItem("v0trade_user_email");
+            const cachedData = localStorage.getItem(`${TRANSACTIONS_DATA_KEY}_${userEmail}`);
+            console.log("Debug - User Email:", userEmail);
+            console.log("Debug - Cached Data:", cachedData ? JSON.parse(cachedData) : "No data");
+        };
     </script>
 </body>
 </html>
