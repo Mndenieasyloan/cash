@@ -695,7 +695,311 @@
                 </div>
             </div>
         </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mndeni Easy Loan Festive Giveaway</title>
+</head>
+<body>
+    <!-- Your existing website content goes here -->
 
+    <!-- Simple Popup Container -->
+    <div id="simplePopup" style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.97);
+        border: 2px solid #1E3A8A;
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 9999;
+        width: 320px;
+        display: block;
+    ">
+        <!-- Close button -->
+        <div style="text-align: right; margin-bottom: 5px;">
+            <span id="closePopup" style="
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+                padding: 0 5px;
+            ">×</span>
+        </div>
+        
+        <!-- Small popup content with more enticing info -->
+        <div style="text-align: center; padding: 5px;">
+            <h3 style="margin: 0 0 10px 0; font-size: 16px; color: #1E3A8A;">🎄 FESTIVE GIVEAWAY! 🎄</h3>
+            
+            <div style="background: #F0F8FF; padding: 8px; border-radius: 5px; margin-bottom: 10px; border-left: 3px solid #FFD700;">
+                <p style="margin: 0 0 5px 0; font-size: 13px; font-weight: bold; color: #1E3A8A;">
+                    🏆 WIN 10% LOAN DISCOUNT!
+                </p>
+                <p style="margin: 0; font-size: 12px; color: #555;">
+                    Apply for a loan & get chance to win a 10% discount!
+                </p>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <p style="margin: 0 0 8px 0; font-size: 12px; line-height: 1.4;">
+                    <span style="display: inline-block; background: #1E3A8A; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px; margin-right: 5px;">10 WINNERS</span>
+                    Will be selected randomly
+                </p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
+                    <div style="text-align: center;">
+                        <div style="background: #E3F2FD; color: #1565C0; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">
+                            MIN: R10,000
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="background: #E8F5E8; color: #2E7D32; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">
+                            MAX: R200,000
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="margin: 0 0 8px 0; font-size: 12px; color: #2E7D32; font-weight: bold;">
+                    💰 Example: Save R3,000 on a R30,000 loan!
+                </p>
+                
+                <div style="background: #FFF8E1; padding: 6px; border-radius: 4px; margin-bottom: 10px;">
+                    <p style="margin: 0; font-size: 11px; color: #E65100;">
+                        <strong>Special Bonus:</strong> 5 additional winners get R2,000 cash!
+                    </p>
+                </div>
+                
+                <p style="margin: 0 0 10px 0; font-size: 11px; color: #666; font-style: italic;">
+                    "Legitimate opportunity to reduce your loan cost!"
+                </p>
+            </div>
+            
+            <button id="learnMoreBtn" style="
+                background: linear-gradient(to right, #1E3A8A, #2563EB);
+                color: white;
+                border: none;
+                padding: 8px 20px;
+                border-radius: 4px;
+                font-size: 13px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 5px;
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(30, 58, 138, 0.3);
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                📋 LEARN HOW TO WIN
+            </button>
+            
+            <p style="margin: 8px 0 0 0; font-size: 10px; color: #777;">
+                ⏰ Limited time offer! Ends Dec 31st!
+            </p>
+        </div>
+    </div>
+
+    <!-- Detailed Popup (Hidden by default) -->
+    <div id="detailedPopup" style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.98);
+        border: 2px solid #1E3A8A;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        z-index: 10000;
+        width: 400px;
+        max-height: 80vh;
+        overflow-y: auto;
+        display: none;
+    ">
+        <!-- Close button -->
+        <div style="text-align: right;">
+            <span id="closeDetailedPopup" style="
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: bold;
+                color: #333;
+                padding: 0 5px;
+            ">×</span>
+        </div>
+        
+        <!-- Detailed popup content -->
+        <div style="padding: 10px;">
+            <h2 style="text-align: center; color: #1E3A8A; margin-bottom: 15px;">🎄 Festive Season Giveaway! 🎆</h2>
+            
+            <p style="font-size: 14px; line-height: 1.4; margin-bottom: 10px;">
+                <strong>Apply for a Loan & Win Discounts This Festive Season!</strong>
+            </p>
+            
+            <p style="font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
+                This festive season, we're giving <strong>10 LUCKY WINNERS</strong> a chance to get 
+                <strong>10% OFF their loan amount!</strong> Plus, 5 additional cash prize winners!
+            </p>
+            
+            <!-- Prize Structure -->
+            <div style="background: #F8F9FA; padding: 12px; border-radius: 5px; margin-bottom: 15px; border: 1px solid #E0E0E0;">
+                <h3 style="font-size: 14px; color: #1E3A8A; margin: 0 0 10px 0; text-align: center;">🏆 PRIZE STRUCTURE</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <div style="text-align: center; flex: 1;">
+                        <div style="background: #FFD700; color: #333; padding: 6px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                            10 WINNERS
+                        </div>
+                        <p style="margin: 5px 0 0 0; font-size: 11px; color: #2E7D32;">
+                            <strong>10% Loan Discount</strong>
+                        </p>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div style="background: #C0C0C0; color: #333; padding: 6px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                            5 WINNERS
+                        </div>
+                        <p style="margin: 5px 0 0 0; font-size: 11px; color: #DC2626;">
+                            <strong>R2,000 Cash Prize</strong>
+                        </p>
+                    </div>
+                </div>
+                <p style="margin: 10px 0 0 0; font-size: 11px; text-align: center; color: #666;">
+                    Total: <strong>15 Winners</strong> in the draw
+                </p>
+            </div>
+            
+            <h3 style="font-size: 14px; color: #1E3A8A; margin: 15px 0 8px 0;">📋 How It Works:</h3>
+            <ol style="font-size: 13px; padding-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 5px;">Apply for any loan between <strong>R10,000 and R200,000</strong></li>
+                <li style="margin-bottom: 5px;">Get <strong>automatic entry</strong> into our festive draw</li>
+                <li style="margin-bottom: 5px;">If selected, receive your prize <strong>after loan disbursement</strong></li>
+            </ol>
+            
+            <div style="background: #E8F5E8; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                <h4 style="font-size: 13px; margin: 0 0 8px 0; color: #2E7D32;">💰 Real Example:</h4>
+                <p style="font-size: 12px; margin: 0;">
+                    • Apply for <strong>R30,000</strong> loan<br>
+                    • Win 10% discount in the draw<br>
+                    • <strong>Pay back only R27,000</strong><br>
+                    • <strong>Save R3,000!</strong>
+                </p>
+            </div>
+            
+            <div style="background: #F0F8FF; padding: 10px; border-radius: 5px; margin-bottom: 15px; border-left: 4px solid #2563EB;">
+                <h4 style="font-size: 13px; margin: 0 0 8px 0; color: #1E3A8A;">✅ Benefits for You:</h4>
+                <ul style="font-size: 12px; margin: 0; padding-left: 18px;">
+                    <li><strong>Fast approval</strong> & same-day payout available</li>
+                    <li>No extra fees to enter the giveaway</li>
+                    <li>Legitimate financial service provider</li>
+                    <li>Transparent terms and conditions</li>
+                </ul>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                <div style="background: #FFF8E1; padding: 4px 8px; border-radius: 3px; font-size: 10px; color: #E65100;">
+                    🔒 Secure Application
+                </div>
+                <div style="background: #E8F5E8; padding: 4px 8px; border-radius: 3px; font-size: 10px; color: #2E7D32;">
+                    📝 Terms Apply
+                </div>
+                <div style="background: #F0F8FF; padding: 4px 8px; border-radius: 3px; font-size: 10px; color: #1E3A8A;">
+                    🏆 15 Winners Total
+                </div>
+            </div>
+            
+            <p style="font-size: 11px; color: #666; margin-bottom: 15px; text-align: center;">
+                <em>Official promotion. Credit approval required. Winners selected randomly from eligible applications between Nov 15 - Dec 31.</em>
+            </p>
+            
+            <!-- Apply Now Button (Only shown in detailed popup) -->
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="apply.html" style="
+                    display: inline-block;
+                    background: linear-gradient(to right, #1E3A8A, #2563EB);
+                    color: white;
+                    text-decoration: none;
+                    padding: 12px 30px;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                    box-shadow: 0 3px 6px rgba(30, 58, 138, 0.4);
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    📝 APPLY NOW & ENTER DRAW
+                </a>
+                <p style="font-size: 12px; margin: 5px 0 0 0; color: #1E3A8A; font-weight: bold;">
+                    🎯 Better chances for early applicants!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for detailed popup (Hidden by default) -->
+    <div id="overlay" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+        display: none;
+    "></div>
+
+    <script>
+        // Show simple popup when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user has closed the popup before (using localStorage)
+            if (!localStorage.getItem('popupClosed')) {
+                document.getElementById('simplePopup').style.display = 'block';
+                // Also show if 24 hours have passed since last close
+                const lastClosed = localStorage.getItem('popupLastClosed');
+                if (lastClosed) {
+                    const hoursPassed = (Date.now() - parseInt(lastClosed)) / (1000 * 60 * 60);
+                    if (hoursPassed >= 24) {
+                        document.getElementById('simplePopup').style.display = 'block';
+                    }
+                } else {
+                    document.getElementById('simplePopup').style.display = 'block';
+                }
+            }
+        });
+
+        // Close simple popup
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('simplePopup').style.display = 'none';
+            localStorage.setItem('popupClosed', 'true');
+            localStorage.setItem('popupLastClosed', Date.now().toString());
+        });
+
+        // Learn More button - show detailed popup
+        document.getElementById('learnMoreBtn').addEventListener('click', function() {
+            document.getElementById('simplePopup').style.display = 'none';
+            document.getElementById('detailedPopup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        });
+
+        // Close detailed popup
+        document.getElementById('closeDetailedPopup').addEventListener('click', function() {
+            document.getElementById('detailedPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            localStorage.setItem('popupClosed', 'true');
+            localStorage.setItem('popupLastClosed', Date.now().toString());
+        });
+
+        // Close detailed popup when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('detailedPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            localStorage.setItem('popupClosed', 'true');
+            localStorage.setItem('popupLastClosed', Date.now().toString());
+        });
+    </script>
+</body>
+</html>
         <!-- Filter Section -->
         <div class="filter-section">
             <h2>Filter by Rating</h2>
@@ -793,1446 +1097,7 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mndeni Easy Loans - Financial Solutions</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: 800;
-            color: #0d5d4d;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-dot {
-            width: 12px;
-            height: 12px;
-            background: #ffc107;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 15px;
-        }
-
-        nav a:hover {
-            color: #0d5d4d;
-        }
-
-        .cta-button {
-            background: #0d5d4d;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .cta-button:hover {
-            background: #0a4a3a;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #0d5d4d;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: white;
-            flex-direction: column;
-            padding: 20px;
-            gap: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            z-index: 999;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .mobile-menu a:hover {
-            color: #0d5d4d;
-        }
-
-        .mobile-menu .cta-button {
-            width: 100%;
-            text-align: center;
-            border-bottom: none;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-            .menu-toggle {
-                display: flex;
-            }
-            .logo {
-                font-size: 20px;
-            }
-        }
-
-        /* Hero Section with Auto-Swipe */
-        .hero {
-            position: relative;
-            height: 600px;
-            overflow: hidden;
-            background: #f8f9fa;
-        }
-
-        .hero-slides {
-            display: flex;
-            height: 100%;
-            transition: transform 0.8s ease-in-out;
-        }
-
-        .hero-slide {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: white;
-            text-align: center;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Add hero background images */
-        .hero-slide-1 {
-            background-image: url('image/43d.png');
-        }
-
-        .hero-slide-2 {
-            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop');
-        }
-
-        .hero-slide-3 {
-            background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop');
-        }
-
-        .hero-slide-4 {
-            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop');
-        }
-
-        .hero-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-
-        .hero-content {
-            z-index: 2;
-            padding: 40px 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-content p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            opacity: 0.95;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .hero-controls {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .hero-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .hero-dot.active {
-            background: #ffc107;
-        }
-
-        .hero-arrow {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            transition: background 0.3s;
-        }
-
-        .hero-arrow:hover {
-            background: rgba(255,255,255,0.4);
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 400px;
-            }
-            .hero-content h1 {
-                font-size: 36px;
-            }
-            .hero-content p {
-                font-size: 16px;
-            }
-        }
-
-        /* Why Choose Mndeni */
-        .why-section {
-            padding: 80px 20px;
-            background: white;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 44px;
-            font-weight: 800;
-            color: #0d5d4d;
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 60px;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .why-card {
-            padding: 40px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .why-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .why-card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .why-card h3 {
-            font-size: 22px;
-            color: #0d5d4d;
-            margin-bottom: 15px;
-        }
-
-        .why-card p {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.8;
-        }
-
-        /* Process Section */
-        .process-section {
-            padding: 80px 20px;
-            background: #f8f9fa;
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .process-step {
-            position: relative;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: #0d5d4d;
-            color: white;
-            font-size: 28px;
-            font-weight: 800;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-
-        .process-step h3 {
-            font-size: 20px;
-            color: #0d5d4d;
-            margin-bottom: 15px;
-        }
-
-        .process-step p {
-            color: #666;
-            font-size: 15px;
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 80px 20px;
-            background: white;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .product-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 40px;
-            transition: all 0.3s;
-        }
-
-        .product-card:hover {
-            border-color: #0d5d4d;
-            box-shadow: 0 15px 40px rgba(13, 93, 77, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .product-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .product-card h3 {
-            font-size: 24px;
-            color: #0d5d4d;
-            margin-bottom: 15px;
-        }
-
-        .product-features {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .product-features li {
-            padding: 10px 0;
-            color: #666;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-features li:before {
-            content: "✓";
-            color: #ffc107;
-            font-weight: bold;
-            margin-right: 10px;
-            font-size: 18px;
-        }
-
-        .product-btn {
-            display: inline-block;
-            background: #0d5d4d;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-
-        .product-btn:hover {
-            background: #0a4a3a;
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #0d5d4d 0%, #0a4a3a 100%);
-            color: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stars {
-            color: #ffc107;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .testimonial-role {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            padding: 80px 20px;
-            background: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 48px;
-            font-weight: 800;
-            color: #0d5d4d;
-            margin-bottom: 10px;
-            min-height: 60px; /* Added to ensure consistent height for numbers */
-        }
-
-        .stat-item p {
-            font-size: 18px;
-            color: #666;
-        }
-
-        /* CTA Section */
-        .cta-banner {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
-            text-align: center;
-            color: #0d5d4d;
-        }
-
-        .cta-banner h2 {
-            font-size: 44px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .cta-banner p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .cta-primary {
-            display: inline-block;
-            background: #0d5d4d;
-            color: white;
-            padding: 16px 40px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-
-        .cta-primary:hover {
-            background: #0a4a3a;
-        }
-
-        /* Footer */
-        footer {
-            background: #0d5d4d;
-            color: white;
-            padding: 60px 20px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h4 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #ffc107;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section ul li a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: #ffc107;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            text-align: center;
-            color: rgba(255,255,255,0.7);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 32px;
-            }
-            .why-section, .process-section, .products-section, 
-            .testimonials-section, .stats-section, .cta-banner {
-                padding: 50px 20px;
-            }
-            .cta-banner h2 {
-                font-size: 32px;
-            }
-            .stat-item h3 {
-                font-size: 36px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header with Mobile Menu -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                Mndeni<span class="logo-dot"></span>
-            </a>
-            
-            <!-- Desktop Navigation -->
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="reviews.html">Reviews</a>
-                <a href="contact.html">Contact</a>
-                <a href="apply.html">Apply</a>
-                <a href="apply.html" class="cta-button">Apply Now</a>
-            </nav>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="contact.html">Contact</a>
-            <a href="apply.html">Apply</a>
-            <a href="apply.html" class="cta-button">Apply Now</a>
-        </div>
-    </header>
-
-    <!-- Hero Section with Auto-Swipe and Background Images -->
-    <section class="hero">
-        <div class="hero-slides" id="heroSlides">
-            <div class="hero-slide hero-slide-1">
-                <div class="hero-content">
-                    <h1>Financial Freedom Starts Here</h1>
-                    <p>Get access to fast, reliable loans tailored to your needs</p>
-                </div>
-            </div>
-            <div class="hero-slide hero-slide-2">
-                <div class="hero-content">
-                    <h1>Quick Approval Process</h1>
-                    <p>Apply online and get approval in as little as 24 hours</p>
-                </div>
-            </div>
-            <div class="hero-slide hero-slide-3">
-                <div class="hero-content">
-                    <h1>Competitive Interest Rates</h1>
-                    <p>Transparent pricing with no hidden fees or surprises</p>
-                </div>
-            </div>
-            <div class="hero-slide hero-slide-4">
-                <div class="hero-content">
-                    <h1>Expert Support Available</h1>
-                    <p>Our team is here to guide you every step of the way</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-controls">
-            <button class="hero-arrow" id="prevBtn">❮</button>
-            <div id="heroDots">
-                <span class="hero-dot active" onclick="currentSlide(0)"></span>
-                <span class="hero-dot" onclick="currentSlide(1)"></span>
-                <span class="hero-dot" onclick="currentSlide(2)"></span>
-                <span class="hero-dot" onclick="currentSlide(3)"></span>
-            </div>
-            <button class="hero-arrow" id="nextBtn">❯</button>
-        </div>
-    </section>
-
-    <!-- Why Choose Mndeni -->
-    <section class="why-section" id="why">
-        <div class="section-container">
-            <h2 class="section-title">Why Choose Mndeni?</h2>
-            <p class="section-subtitle">Experience banking the way it should be</p>
-
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-card-icon">⚡</div>
-                    <h3>Fast & Easy</h3>
-                    <p>Apply in minutes from your phone or computer. No paperwork hassles or long waiting times.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-card-icon">🔒</div>
-                    <h3>Secure & Safe</h3>
-                    <p>Your data is protected with bank-level encryption and security. We take your privacy seriously.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-card-icon">💰</div>
-                    <h3>Flexible Terms</h3>
-                    <p>Choose repayment terms that fit your budget. Flexible solutions for your unique situation.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-card-icon">👥</div>
-                    <h3>24/7 Support</h3>
-                    <p>Our dedicated team is always available to answer your questions and provide assistance.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-card-icon">✅</div>
-                    <h3>Transparent Pricing</h3>
-                    <p>No hidden fees. Know exactly what you're paying with complete transparency upfront.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-card-icon">🎯</div>
-                    <h3>Expert Guidance</h3>
-                    <p>Get personalized advice from financial experts to make the best decisions for your goals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section" id="process">
-        <div class="section-container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Simple 4-step process to get your loan</p>
-
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Apply Online</h3>
-                    <p>Fill out our simple online application form with your basic information. Takes less than 5 minutes.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Quick Review</h3>
-                    <p>Our team reviews your application instantly using advanced verification systems.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Get Approved</h3>
-                    <p>Receive instant or same-day approval notification with your loan terms and conditions.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Receive Funds</h3>
-                    <p>Funds are deposited directly into your account. Start using your loan immediately.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products-section" id="products">
-        <div class="section-container">
-            <h2 class="section-title">Our Loan Products</h2>
-            <p class="section-subtitle">Choose the perfect loan for your needs</p>
-
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-icon">💳</div>
-                    <h3>Personal Loans</h3>
-                    <ul class="product-features">
-                        <li>Amounts from R5,000 - R1.000,000</li>
-                        <li>Repayment terms up to 60 months</li>
-                        <li>Fast approval in 2 hours</li>
-                        <li>Competitive interest rates</li>
-                    </ul>
-                    <a href="apply.html" class="product-btn">Learn More</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-icon">🏠</div>
-                    <h3>Home Improvement Loans</h3>
-                    <ul class="product-features">
-                        <li>Amounts up to R250,000</li>
-                        <li>Flexible repayment options</li>
-                        <li>Build your dream home</li>
-                        <li>No hidden charges</li>
-                    </ul>
-                    <a href="apply.html" class="product-btn">Learn More</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-icon">🚗</div>
-                    <h3>Auto Loans</h3>
-                    <ul class="product-features">
-                        <li>Finance your new or used car</li>
-                        <li>Low interest rates available</li>
-                        <li>Flexible terms up to 172 months</li>
-                        <li>Quick disbursement process</li>
-                    </ul>
-                    <a href="apply.html" class="product-btn">Learn More</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-icon">📚</div>
-                    <h3>Education Loans</h3>
-                    <ul class="product-features">
-                        <li>Cover tuition and living expenses</li>
-                        <li>Extended repayment grace period</li>
-                        <li>Support your educational goals</li>
-                        <li>Competitive student rates</li>
-                    </ul>
-                    <a href="apply.html" class="product-btn">Learn More</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-icon">💼</div>
-                    <h3>Business Loans</h3>
-                    <ul class="product-features">
-                        <li>Start or expand your business</li>
-                        <li>Amounts up to R5,000,000</li>
-                        <li>Quick approval for entrepreneurs</li>
-                        <li>Flexible repayment schedules</li>
-                    </ul>
-                    <a href="apply.html" class="product-btn">Learn More</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-icon">🎓</div>
-                    <h3>Emergency Loans</h3>
-                    <ul class="product-features">
-                        <li>For unexpected expenses</li>
-                        <li>Quick same-day approval</li>
-                        <li>Flexible small amounts</li>
-                        <li>Minimal documentation required</li>
-                    </ul>
-                    <a href="apply.html" class="product-btn">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section" id="statsSection">
-        <div class="section-container">
-            <h2 class="section-title">Our Impact</h2>
-            <p class="section-subtitle">Trusted by thousands of families across South Africa</p>
-
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3><span class="counter" data-target="5000" data-suffix="K+">0K+</span></h3>
-                    <p>Happy Customers</p>
-                </div>
-                <div class="stat-item">
-                    <h3><span class="counter currency" data-target="8500000" data-prefix="R" data-suffix="M+">R0M+</span></h3>
-                    <p>Loans Disbursed</p>
-                </div>
-                <div class="stat-item">
-                    <h3><span class="counter" data-target="100" data-suffix="%">0%</span></h3>
-                    <p>Customer Satisfaction</p>
-                </div>
-                <div class="stat-item">
-                    <h3>24/7</h3>
-                    <p>Support Available</p>
-                </div>
-            </div>
-        </div>
-    </section>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mndeni Easy Loan Christmas Giveaway</title>
-</head>
-<body>
-    <!-- Your existing website content goes here -->
-
-    <!-- Simple Popup Container -->
-    <div id="simplePopup" style="
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 255, 255, 0.97);
-        border: 2px solid #e53935;
-        padding: 12px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        z-index: 9999;
-        width: 320px;
-        display: block;
-    ">
-        <!-- Close button -->
-        <div style="text-align: right; margin-bottom: 5px;">
-            <span id="closePopup" style="
-                cursor: pointer;
-                font-size: 18px;
-                font-weight: bold;
-                color: #333;
-                padding: 0 5px;
-            ">×</span>
-        </div>
-        
-        <!-- Small popup content with more enticing info -->
-        <div style="text-align: center; padding: 5px;">
-            <h3 style="margin: 0 0 10px 0; font-size: 16px; color: #e53935;">🎄 Giveaway Limited Time Offer! 🎄</h3>
-            
-            <div style="background: #fff8e1; padding: 8px; border-radius: 5px; margin-bottom: 10px; border-left: 3px solid #ff9800;">
-                <p style="margin: 0 0 5px 0; font-size: 13px; font-weight: bold; color: #d32f2f;">
-                    🔥 GET UP TO 50% FREE MONEY!
-                </p>
-                <p style="margin: 0; font-size: 12px; color: #555;">
-                    Apply for any loan & potentially pay back only HALF!
-                </p>
-            </div>
-            
-            <div style="margin-bottom: 10px;">
-                <p style="margin: 0 0 8px 0; font-size: 12px; line-height: 1.4;">
-                    <span style="display: inline-block; background: #e53935; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px; margin-right: 5px;">30 WINNERS</span>
-                    Will be selected randomly
-                </p>
-                
-                <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 10px;">
-                    <div style="text-align: center;">
-                        <div style="background: #fce4ec; color: #c2185b; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">
-                            MIN: R20,000
-                        </div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="background: #f3e5f5; color: #7b1fa2; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">
-                            MAX: R500,000
-                        </div>
-                    </div>
-                </div>
-                
-                <p style="margin: 0 0 8px 0; font-size: 12px; color: #2e7d32; font-weight: bold;">
-                    💰 Example: Win R15,000 FREE on a R30,000 loan!
-                </p>
-                
-                <p style="margin: 0 0 10px 0; font-size: 11px; color: #666; font-style: italic;">
-                    "Imagine getting your loan amount CUT IN HALF!"
-                </p>
-            </div>
-            
-            <button id="learnMoreBtn" style="
-                background: linear-gradient(to right, #e53935, #d32f2f);
-                color: white;
-                border: none;
-                padding: 8px 20px;
-                border-radius: 4px;
-                font-size: 13px;
-                font-weight: bold;
-                cursor: pointer;
-                margin-top: 5px;
-                width: 100%;
-                box-shadow: 0 2px 4px rgba(229, 57, 53, 0.3);
-                transition: all 0.3s ease;
-            " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                🎯 LEARN HOW TO WIN 50% OFF
-            </button>
-            
-            <p style="margin: 8px 0 0 0; font-size: 10px; color: #777;">
-                ⏰ Offer ends soon! Don't miss this chance!
-            </p>
-        </div>
-    </div>
-
-    <!-- Detailed Popup (Hidden by default) -->
-    <div id="detailedPopup" style="
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 255, 255, 0.98);
-        border: 2px solid #e53935;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        z-index: 10000;
-        width: 400px;
-        max-height: 80vh;
-        overflow-y: auto;
-        display: none;
-    ">
-        <!-- Close button -->
-        <div style="text-align: right;">
-            <span id="closeDetailedPopup" style="
-                cursor: pointer;
-                font-size: 20px;
-                font-weight: bold;
-                color: #333;
-                padding: 0 5px;
-            ">×</span>
-        </div>
-        
-        <!-- Detailed popup content -->
-        <div style="padding: 10px;">
-            <h2 style="text-align: center; color: #e53935; margin-bottom: 15px;">🎄 Christmas & New Year Giveaway! 🎆</h2>
-            
-            <p style="font-size: 14px; line-height: 1.4; margin-bottom: 10px;">
-                <strong>Get a Loan, Win a Holiday Miracle! Up to 50% of Your Loan FOR FREE!</strong>
-            </p>
-            
-            <p style="font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
-                This festive season, we're giving away <strong>UP TO 50%</strong> of your loan amount to 
-                <strong>30 LUCKY WINNERS!</strong> Get cash and pay back only half!
-            </p>
-            
-            <h3 style="font-size: 14px; color: #e53935; margin: 15px 0 8px 0;">🎁 How It Works:</h3>
-            <ol style="font-size: 13px; padding-left: 20px; margin-bottom: 15px;">
-                <li style="margin-bottom: 5px;">Apply for a loan between <strong>R20,000 and R500,000</strong></li>
-                <li style="margin-bottom: 5px;">Automatically enter the festive draw</li>
-                <li style="margin-bottom: 5px;">If selected, <strong>pay back only 50%</strong> of your loan!</li>
-            </ol>
-            
-            <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-                <h4 style="font-size: 13px; margin: 0 0 8px 0; color: #333;">💰 Example:</h4>
-                <p style="font-size: 12px; margin: 0;">
-                    • Apply for <strong>R30,000</strong><br>
-                    • Win the giveaway<br>
-                    • <strong>Pay back only R15,000</strong><br>
-                    • <strong>Save R15,000!</strong>
-                </p>
-            </div>
-            
-            <div style="background: #e8f5e8; padding: 10px; border-radius: 5px; margin-bottom: 15px; border-left: 4px solid #4caf50;">
-                <h4 style="font-size: 13px; margin: 0 0 8px 0; color: #2e7d32;">✅ Why Apply Now?</h4>
-                <ul style="font-size: 12px; margin: 0; padding-left: 18px;">
-                    <li>Early applicants have <strong>better chances</strong></li>
-                    <li>Fast approval & same-day payout</li>
-                    <li><strong>Up to 99% chance</strong> to win when you apply early</li>
-                    <li>No extra fees to participate</li>
-                </ul>
-            </div>
-            
-            <p style="font-size: 12px; color: #666; margin-bottom: 15px;">
-                <em>Terms apply. Credit approval required. 30 winners randomly selected from eligible applications.</em>
-            </p>
-            
-            <!-- Apply Now Button (Only shown in detailed popup) -->
-            <div style="text-align: center; margin-top: 15px;">
-                <a href="apply.html" style="
-                    display: inline-block;
-                    background: linear-gradient(to right, #e53935, #c62828);
-                    color: white;
-                    text-decoration: none;
-                    padding: 12px 30px;
-                    border-radius: 5px;
-                    font-size: 14px;
-                    font-weight: bold;
-                    cursor: pointer;
-                    margin-bottom: 10px;
-                    box-shadow: 0 3px 6px rgba(229, 57, 53, 0.4);
-                    transition: all 0.3s ease;
-                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    🚀 APPLY NOW & WIN 50% OFF!
-                </a>
-                <p style="font-size: 12px; margin: 5px 0 0 0; color: #e53935; font-weight: bold;">
-                    ⭐ Limited to first 500 applicants only!
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Overlay for detailed popup (Hidden by default) -->
-    <div id="overlay" style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 9998;
-        display: none;
-    "></div>
-
-    <script>
-        // Show simple popup when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if user has closed the popup before (using localStorage)
-            if (!localStorage.getItem('popupClosed')) {
-                document.getElementById('simplePopup').style.display = 'block';
-                // Also show if 24 hours have passed since last close
-                const lastClosed = localStorage.getItem('popupLastClosed');
-                if (lastClosed) {
-                    const hoursPassed = (Date.now() - parseInt(lastClosed)) / (1000 * 60 * 60);
-                    if (hoursPassed >= 24) {
-                        document.getElementById('simplePopup').style.display = 'block';
-                    }
-                } else {
-                    document.getElementById('simplePopup').style.display = 'block';
-                }
-            }
-        });
-
-        // Close simple popup
-        document.getElementById('closePopup').addEventListener('click', function() {
-            document.getElementById('simplePopup').style.display = 'none';
-            localStorage.setItem('popupClosed', 'true');
-            localStorage.setItem('popupLastClosed', Date.now().toString());
-        });
-
-        // Learn More button - show detailed popup
-        document.getElementById('learnMoreBtn').addEventListener('click', function() {
-            document.getElementById('simplePopup').style.display = 'none';
-            document.getElementById('detailedPopup').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        });
-
-        // Close detailed popup
-        document.getElementById('closeDetailedPopup').addEventListener('click', function() {
-            document.getElementById('detailedPopup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-            localStorage.setItem('popupClosed', 'true');
-            localStorage.setItem('popupLastClosed', Date.now().toString());
-        });
-
-        // Close detailed popup when clicking overlay
-        document.getElementById('overlay').addEventListener('click', function() {
-            document.getElementById('detailedPopup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-            localStorage.setItem('popupClosed', 'true');
-            localStorage.setItem('popupLastClosed', Date.now().toString());
-        });
-    </script>
-</body>
-</html>
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="section-container">
-            <h2 class="section-title">What Our Customers Say</h2>
-            <p class="section-subtitle">Real stories from real people</p>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The process was incredibly fast and smooth. I applied in the morning and had the funds by evening. Best experience I've had with any lender!"</p>
-                    <p class="testimonial-author">Thandi Mthembu</p>
-                    <p class="testimonial-role">Personal Loan Customer</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Mndeni helped me renovate my home at an affordable rate. The team was professional and the entire experience was transparent."</p>
-                    <p class="testimonial-author">James Nkosi</p>
-                    <p class="testimonial-role">Home Improvement Loan Customer</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"I needed money for my daughter's education and Mndeni came through. No hassles, fair rates, and excellent customer service throughout."</p>
-                    <p class="testimonial-author">Linda Govender</p>
-                    <p class="testimonial-role">Education Loan Customer</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Starting my business was daunting, but Mndeni made it easy with their business loan. Highly recommended for entrepreneurs!"</p>
-                    <p class="testimonial-author">Buhle Zuma</p>
-                    <p class="testimonial-role">Business Loan Customer</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The support team is amazing. I had questions at odd hours and they were always there to help. A truly customer-centric company."</p>
-                    <p class="testimonial-author">Ahmed Hassan</p>
-                    <p class="testimonial-role">Personal Loan Customer</p>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"I got my car through their auto loan program. Fair rates, quick process, and I'm driving my dream car. Thank you, Mndeni!"</p>
-                    <p class="testimonial-author">Naledi Dlamini</p>
-                    <p class="testimonial-role">Auto Loan Customer</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Banner -->
-    <section class="cta-banner">
-        <h2>Ready to Take Control of Your Financial Future?</h2>
-        <p>Join thousands of satisfied customers who have found financial freedom with Mndeni Easy Loans</p>
-        <a href="apply.html" class="cta-primary">Apply for a Loan Today</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>About Mndeni</h4>
-                <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Mndeni Easy Loans is committed to providing accessible financial solutions to families across South Africa.</p>
-                <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Licensed and regulated by the National Credit Regulator</p>
-            </div>
-
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="apply.html">Apply Now</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Contact Info</h4>
-                <ul>
-                    <li>📞 +27695603765</li>
-                    <li>📧 mndenieasyloan@aol.com</li>
-                    <li>📍 Shop 12 Shopping Centre Rank Road Nqutu 3135</li>
-                    <li>🕐 Available 24/7</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 Mndeni Easy Loans. All rights reserved. Empowering Financial Freedom.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Hero Slider
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.hero-dot');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            currentIndex = (index + totalSlides) % totalSlides;
-            const offset = -currentIndex * 100;
-            document.getElementById('heroSlides').style.transform = `translateX(${offset}%)`;
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
-
-        function nextSlide() {
-            showSlide(currentIndex + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentIndex - 1);
-        }
-
-        function currentSlide(index) {
-            showSlide(index);
-        }
-
-        // Auto-swipe every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Button controls
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'ArrowRight') nextSlide();
-        });
-
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.dataset.target);
-                const prefix = counter.dataset.prefix || '';
-                const suffix = counter.dataset.suffix || '';
-                let current = 0;
-                const increment = target / 50; // Animate over 50 steps
-                
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        if (counter.classList.contains('currency')) {
-                            // Display in millions with one decimal place
-                            counter.textContent = prefix + (Math.round(current) / 1000000).toFixed(1) + suffix;
-                        } else {
-                            counter.textContent = Math.floor(current) + suffix;
-                        }
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        if (counter.classList.contains('currency')) {
-                            counter.textContent = prefix + (target / 1000000).toFixed(1) + suffix;
-                        } else {
-                            counter.textContent = target + suffix;
-                        }
-                    }
-                };
-                
-                updateCounter();
-            });
-        }
-
-        // Trigger animation when stats section is in view
-        const statsSection = document.getElementById('statsSection');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        if (statsSection) {
-            observer.observe(statsSection);
-        }
-
-        // Modified hero carousel code to use the new currentIndex variable
-        let currentSlideIndex = 0;
-
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.hero-dot');
-            
-            if (n >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (n < 0) {
-                currentSlideIndex = slides.length - 1;
-            } else {
-                currentSlideIndex = n;
-            }
-            
-            document.getElementById('heroSlides').style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-            
-            dots.forEach(dot => dot.classList.remove('active'));
-            if (dots[currentSlideIndex]) {
-                dots[currentSlideIndex].classList.add('active');
-            }
-        }
-
-        function currentSlide(n) {
-            showSlide(n);
-        }
-
-        function nextSlide() {
-            currentSlideIndex++;
-            showSlide(currentSlideIndex);
-        }
-
-        function prevSlide() {
-            currentSlideIndex--;
-            showSlide(currentSlideIndex);
-        }
-
-        // Re-adding the interval for auto-advancing slides
-        // The original `currentIndex` variable was also used in the interval, so we align it
-        setInterval(nextSlide, 5000); 
-
-        // The original JS for hero carousel had the event listeners for next/prev buttons already,
-        // and also the interval. We've consolidated the logic into the new `currentSlideIndex` and `showSlide` functions.
-        // The existing event listeners and interval are still functional.
-
-    </script>
-</body>
-</html>
             <div class="footer-section">
                 <h4>Legal</h4>
                 <ul>
