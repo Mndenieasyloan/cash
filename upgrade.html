@@ -634,7 +634,7 @@
                         </div>
                         <div class="detail-item">
                             <div class="detail-label">Credit Score Status</div>
-                            <div class="status-badge status-upgrade" id="display-">Upgrade Required</div>
+                            <div class="status-badge status-upgrade" id="-">Upgrade Required</div>
                         </div>
                     </div>
                     <button class="btn btn-warning btn-block mt-3" id="showNotification">
@@ -925,7 +925,7 @@ Id Number
             let creditScore;
             if (monthlyIncome) {
                 const income = parseInt(monthlyIncome);
-                if (income >= 25000) creditScore = 650;
+                if (income >= 25000) creditScore = 520;
                 else if (income >= 15000) creditScore = 580;
                 else creditScore = 520;
             } else {
