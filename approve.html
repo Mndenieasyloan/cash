@@ -653,24 +653,25 @@
                 <p>10.4 <strong>Dispute Resolution.</strong> The parties agree to first seek an amicable resolution through good-faith negotiation. Failing this, disputes shall be submitted to mediation or, as a last resort, to the competent courts of South Africa.</p>
             </div>
 
-            <div class="section-title">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
-            <div class="section-content">
-                <p>By signing below, the Borrower (YOU), hereby:</p>
-                <div class="bullet-item">
-                    <p>• Accepts the approved loan of <span id="acceptedLoanAmount"></span> under the terms stated above</p>
-                </div>
-            </div>
+            <<div class="section-title">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
+<div class="section-content">
+    <p>By signing below, the Borrower (YOU), hereby:</p>
+    <div class="bullet-item">
+        <p>• Accepts the approved loan of <span id="acceptedLoanAmount"></span> under the terms stated above</p>
+    </div>
+</div>
 
-            <daiv class="signature-title">SIGNATURE FOR THE LENDER (MNDENI):</div>
-            <p class="signatures-label">Signatures</p>
-            
-            <div class="signature-section">
+<div class="signature-title">SIGNATURE FOR THE LENDER (MNDENI):</div>
+<p class="signatures-label">Signatures</p>
+
+<div class="signature-section">
+    <!-- LENDER SIGNATURE (IMAGE URL ONLY) -->
     <div class="signature-box">
         <h4>Lender (Mndeni):</h4>
 
-        <div class="signature-image">
+        <div class="signature-line">
             <img 
-                src="image/img48.jpg" 
+                src="image/img48.jpg"
                 alt="Lender Signature"
                 style="max-width: 220px; height: auto;"
             >
@@ -679,34 +680,46 @@
         <div class="name-line">
             <strong>Name:</strong> Thomas Jeffery
         </div>
+        <div class="date-line-sig">
+            <strong>Date:</strong> <span id="lenderSignDate"></span>
+        </div>
+    </div>
+
+    <!-- BORROWER SIGNATURE (UNCHANGED) -->
+    <div class="signature-box">
+        <h4>Borrower (YOU):</h4>
+        <div class="signature-line"></div>
+        <div class="signature-label">
+            <strong>Signature:</strong> _______________________
+        </div>
+        <div class="name-line">
+            <strong>Name:</strong> _______________________
+        </div>
+        <div class="date-line-sig">
+            <strong>Date:</strong> <span id="borrowerSignDate"></span>
+        </div>
     </div>
 </div>
 
-                    <div class="date-line-sig"><strong>Date:</strong> <span id="lenderSignDate"></span></div>
-                </div>
-                <div class="signature-box">
-                    <h4>Borrower (YOU):</h4>
-                    <div class="signature-line"></div>
-                    <div class="signature-label"><strong>Signature:</strong> _______________________</div>
-                    <div class="name-line"><strong>Name:</strong> _______________________</div>
-                    <div class="date-line-sig"><strong>Date:</strong> <span id="borrowerSignDate"></span></div>
-                </div>
-            </div>
-
-            <div style="margin-top: 25px; padding-top: 12px; border-top: 2px solid #0d7377;">
-                <div style="text-align: center; margin-bottom: 12px;">
-                    <div class="mndeni-logo" style="font-size: 24pt;">Mndeni<span>.</span></div>
-                    <p style="font-size: 8pt; color: #666; margin-top: 3px;"><em>"Empowering Financial Growth Through Responsible Lending"</em></p>
-                </div>
-                <p style="font-size: 7.5pt; text-align: center; color: #666;">
-                    This document is a legally binding agreement. Please retain a copy for your records.<br>
-                    For any queries, contact us at mndenieasyloan@aol.com or +27 69 560 3765
-                </p>
-            </div>
-            
-            <div class="page-footer">Page 4 of 4 | Mndeni Easy Loans Loan Agreement | Contract No: <span id="contractNoFooter"></span></div>
-        </div>
+<div style="margin-top: 25px; padding-top: 12px; border-top: 2px solid #0d7377;">
+    <div style="text-align: center; margin-bottom: 12px;">
+        <div class="mndeni-logo" style="font-size: 24pt;">Mndeni<span>.</span></div>
+        <p style="font-size: 8pt; color: #666; margin-top: 3px;">
+            <em>"Empowering Financial Growth Through Responsible Lending"</em>
+        </p>
     </div>
+
+    <p style="font-size: 7.5pt; text-align: center; color: #666;">
+        This document is a legally binding agreement. Please retain a copy for your records.<br>
+        For any queries, contact us at mndenieasyloan@aol.com or +27 69 560 3765
+    </p>
+</div>
+
+<div class="page-footer">
+    Page 4 of 4 | Mndeni Easy Loans Loan Agreement | Contract No:
+    <span id="contractNoFooter"></span>
+</div>
+
 
     <script>
         function parseInputData(text) {
