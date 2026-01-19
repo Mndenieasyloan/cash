@@ -382,6 +382,1020 @@
                 <h1>Your Loan Application</h1>
                 <p>A few simple steps to secure your financial future.We doNot give oans Below 10,000.00 any application below 10,000 will not be processed.</p>
             </div>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process Flow Animation</title>
+  <style>
+    /* ========== SCOPED STYLES - Won't affect other elements ========== */
+    .pfh-hero-wrapper {
+      /* Premium Color Palette */
+      --pfh-bg-start: #0f0f23;
+      --pfh-bg-end: #1a1a3e;
+      --pfh-primary: #6366f1;
+      --pfh-primary-light: #818cf8;
+      --pfh-secondary: #8b5cf6;
+      --pfh-accent: #06b6d4;
+      --pfh-success: #10b981;
+      --pfh-gold: #fbbf24;
+      --pfh-rose: #f43f5e;
+      --pfh-whatsapp: #25d366;
+      --pfh-text: #24a328;
+      --pfh-text-muted: #94a3b8;
+      --pfh-glow-primary: rgba(99, 102, 241, 0.6);
+      --pfh-glow-accent: rgba(6, 182, 212, 0.5);
+      --pfh-glow-success: rgba(16, 185, 129, 0.5);
+      --pfh-glow-gold: rgba(251, 191, 36, 0.6);
+      
+      font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      width: 100%;
+      position: relative;
+      box-sizing: border-box;
+      isolation: isolate;
+    }
+    
+    .pfh-hero-wrapper *, .pfh-hero-wrapper *::before, .pfh-hero-wrapper *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ========== SINGLE LINE HERO - 70-80px height ========== */
+    .pfh-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 80px;
+      max-height: 10vh;
+      min-height: 70px;
+      padding: 0 20px;
+      white-space: nowrap;
+      position: relative;
+ 
+    }
+
+    /* Animated background shimmer */
+    .pfh-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+     
+      animation: pfh-shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes pfh-shimmer {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+    }
+
+    /* Floating particles */
+    .pfh-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--pfh-primary-light);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: pfh-float 6s ease-in-out infinite;
+    }
+
+    .pfh-particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .pfh-particle:nth-child(2) { left: 25%; top: 70%; animation-delay: 1s; animation-duration: 7s; }
+    .pfh-particle:nth-child(3) { left: 45%; top: 30%; animation-delay: 2s; animation-duration: 5s; }
+    .pfh-particle:nth-child(4) { left: 65%; top: 60%; animation-delay: 3s; animation-duration: 8s; }
+    .pfh-particle:nth-child(5) { left: 85%; top: 40%; animation-delay: 4s; animation-duration: 6s; }
+    .pfh-particle:nth-child(6) { left: 55%; top: 15%; animation-delay: 2.5s; animation-duration: 9s; }
+
+    @keyframes pfh-float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+      50% { transform: translateY(-15px) scale(1.5); opacity: 0.6; }
+    }
+
+    /* Steps Container */
+    .pfh-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Individual Step */
+    .pfh-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      height: 100%;
+      opacity: 0.35;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .pfh-step.pfh-active {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .pfh-step.pfh-completed {
+      opacity: 0.6;
+    }
+
+    /* Icon Container */
+    .pfh-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .pfh-step.pfh-active .pfh-icon {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 
+        0 0 20px var(--pfh-glow-primary),
+        0 0 40px rgba(99, 102, 241, 0.3),
+        inset 0 0 20px rgba(99, 102, 241, 0.1);
+    }
+
+    .pfh-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--pfh-text-muted);
+      stroke-width: 1.5;
+      fill: none;
+      transition: all 0.4s ease;
+    }
+
+    .pfh-step.pfh-active .pfh-icon svg {
+      stroke: var(--pfh-text);
+      filter: drop-shadow(0 0 8px var(--pfh-glow-primary));
+    }
+
+    /* Gradient Ring Animation */
+    .pfh-icon::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 14px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--pfh-primary), var(--pfh-secondary), var(--pfh-accent));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .pfh-step.pfh-active .pfh-icon::before {
+      opacity: 1;
+      animation: pfh-ring-spin 3s linear infinite;
+    }
+
+    @keyframes pfh-ring-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Pulse Ring */
+    .pfh-icon::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 18px;
+      border: 2px solid var(--pfh-primary);
+      opacity: 0;
+    }
+
+    .pfh-step.pfh-active .pfh-icon::after {
+      animation: pfh-pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pfh-pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 0; }
+      100% { transform: scale(0.9); opacity: 0; }
+    }
+
+    /* Step Label */
+    .pfh-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--pfh-text-muted);
+      transition: all 0.4s ease;
+      letter-spacing: 0.3px;
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+
+    .pfh-step.pfh-active .pfh-label {
+      color: var(--pfh-text);
+      opacity: 1;
+      transform: translateX(0);
+      text-shadow: 0 0 20px var(--pfh-glow-primary);
+      animation: pfh-label-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes pfh-label-glow {
+      0%, 100% { text-shadow: 0 0 20px var(--pfh-glow-primary); }
+      50% { text-shadow: 0 0 30px var(--pfh-glow-primary), 0 0 40px rgba(99, 102, 241, 0.4); }
+    }
+
+    /* Connector Lines */
+    .pfh-connector {
+      width: 60px;
+      height: 3px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .pfh-connector-line {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pfh-connector-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--pfh-primary), var(--pfh-accent));
+      border-radius: 1px;
+      box-shadow: 0 0 10px var(--pfh-glow-primary);
+    }
+
+    .pfh-connector.pfh-active .pfh-connector-progress {
+      animation: pfh-line-draw 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes pfh-line-draw {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+
+    /* Traveling dot on connector */
+    .pfh-connector-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--pfh-accent);
+      border-radius: 50%;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      box-shadow: 0 0 10px var(--pfh-glow-accent), 0 0 20px var(--pfh-glow-accent);
+    }
+
+    .pfh-connector.pfh-active .pfh-connector-dot {
+      animation: pfh-dot-travel 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes pfh-dot-travel {
+      0% { left: 0; opacity: 1; }
+      100% { left: calc(100% - 6px); opacity: 0; }
+    }
+
+    /* Arrow */
+    .pfh-connector-arrow {
+      position: absolute;
+      right: -5px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid rgba(255, 255, 255, 0.15);
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      transition: all 0.4s ease;
+    }
+
+    .pfh-connector.pfh-active .pfh-connector-arrow {
+      border-left-color: var(--pfh-accent);
+      filter: drop-shadow(0 0 6px var(--pfh-glow-accent));
+    }
+
+    /* ========== ICON-SPECIFIC ANIMATIONS ========== */
+
+    /* Apply - Pen writes with trail */
+    .pfh-step[data-step="apply"].pfh-active .pfh-pen-stroke {
+      stroke-dasharray: 20;
+      stroke-dashoffset: 20;
+      animation: pfh-pen-write 0.8s ease forwards 0.2s;
+    }
+
+    @keyframes pfh-pen-write {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .pfh-pen {
+      transition: all 0.3s ease;
+    }
+
+    .pfh-step[data-step="apply"].pfh-active .pfh-pen {
+      animation: pfh-pen-dance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes pfh-pen-dance {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(3px, -2px) rotate(-5deg); }
+      50% { transform: translate(5px, 0) rotate(3deg); }
+      75% { transform: translate(2px, 1px) rotate(-2deg); }
+    }
+
+    /* Submit - Plane soars with trail */
+    .pfh-step[data-step="submit"].pfh-active .pfh-icon svg.pfh-plane {
+      animation: pfh-plane-soar 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes pfh-plane-soar {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      30% { transform: translate(4px, -6px) rotate(-15deg) scale(1.15); }
+      60% { transform: translate(8px, -3px) rotate(-5deg) scale(1.1); }
+      100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    }
+
+    /* Plane trail effect */
+    .pfh-plane-trail {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--pfh-accent));
+      border-radius: 1px;
+      opacity: 0;
+      transform: rotate(-30deg);
+      left: 5px;
+      top: 50%;
+    }
+
+    .pfh-step[data-step="submit"].pfh-active .pfh-plane-trail {
+      animation: pfh-trail-fade 0.7s ease forwards;
+    }
+
+    @keyframes pfh-trail-fade {
+      0% { opacity: 0; width: 0; }
+      30% { opacity: 0.8; width: 25px; }
+      100% { opacity: 0; width: 30px; }
+    }
+
+    /* Contact - Typing dots with glow */
+    .pfh-typing-dots {
+      display: flex;
+      gap: 3px;
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+    }
+
+    .pfh-typing-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--pfh-accent);
+      border-radius: 50%;
+      opacity: 0;
+      box-shadow: 0 0 6px var(--pfh-glow-accent);
+    }
+
+    .pfh-step[data-step="contact"].pfh-active .pfh-typing-dot {
+      animation: pfh-typing-bounce 1s ease-in-out infinite;
+    }
+
+    .pfh-step[data-step="contact"].pfh-active .pfh-typing-dot:nth-child(1) { animation-delay: 0s; }
+    .pfh-step[data-step="contact"].pfh-active .pfh-typing-dot:nth-child(2) { animation-delay: 0.15s; }
+    .pfh-step[data-step="contact"].pfh-active .pfh-typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes pfh-typing-bounce {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0) scale(1); }
+      30% { opacity: 1; transform: translateY(-5px) scale(1.3); box-shadow: 0 0 12px var(--pfh-glow-accent); }
+    }
+
+    /* WhatsApp icon pulse */
+    .pfh-whatsapp-icon {
+      position: absolute;
+      right: -6px;
+      bottom: -4px;
+      transition: all 0.3s ease;
+    }
+
+    .pfh-step[data-step="contact"].pfh-active .pfh-whatsapp-icon {
+      animation: pfh-wa-pulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pfh-wa-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.6)); }
+    }
+
+    /* Payout - Coin drops with sparkle */
+    .pfh-coin {
+      position: absolute;
+      top: 0;
+      right: 2px;
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(135deg, var(--pfh-gold), #f59e0b);
+      border-radius: 50%;
+      opacity: 0;
+      box-shadow: 0 0 8px var(--pfh-glow-gold);
+    }
+
+    .pfh-step[data-step="payout"].pfh-active .pfh-coin {
+      animation: pfh-coin-fall 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes pfh-coin-fall {
+      0% { opacity: 0; transform: translateY(-20px) rotateY(0deg) scale(0.5); }
+      40% { opacity: 1; transform: translateY(5px) rotateY(180deg) scale(1.2); }
+      60% { transform: translateY(-3px) rotateY(270deg) scale(1); }
+      80% { transform: translateY(2px) rotateY(360deg); }
+      100% { opacity: 1; transform: translateY(0) rotateY(360deg) scale(1); }
+    }
+
+    /* Sparkles around payout */
+    .pfh-sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--pfh-gold);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .pfh-sparkle:nth-child(1) { top: -5px; left: 50%; }
+    .pfh-sparkle:nth-child(2) { top: 50%; right: -5px; }
+    .pfh-sparkle:nth-child(3) { bottom: -5px; left: 50%; }
+    .pfh-sparkle:nth-child(4) { top: 50%; left: -5px; }
+
+    .pfh-step[data-step="payout"].pfh-active .pfh-sparkle {
+      animation: pfh-sparkle-burst 0.6s ease-out forwards 0.3s;
+    }
+
+    .pfh-step[data-step="payout"].pfh-active .pfh-sparkle:nth-child(1) { animation-delay: 0.3s; }
+    .pfh-step[data-step="payout"].pfh-active .pfh-sparkle:nth-child(2) { animation-delay: 0.4s; }
+    .pfh-step[data-step="payout"].pfh-active .pfh-sparkle:nth-child(3) { animation-delay: 0.5s; }
+    .pfh-step[data-step="payout"].pfh-active .pfh-sparkle:nth-child(4) { animation-delay: 0.6s; }
+
+    @keyframes pfh-sparkle-burst {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    }
+
+    /* ========== CONTACT BUTTONS ========== */
+    .pfh-contact-btns {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .pfh-contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+
+    .pfh-contact-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2;
+    }
+
+    .pfh-btn-email {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+      color: var(--pfh-text);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .pfh-btn-email:hover {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.4));
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .pfh-btn-email svg {
+      stroke: var(--pfh-primary-light);
+      fill: none;
+    }
+
+    .pfh-btn-whatsapp {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(16, 185, 129, 0.2));
+      color: var(--pfh-text);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+    }
+
+    .pfh-btn-whatsapp:hover {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.4), rgba(16, 185, 129, 0.4));
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    }
+
+    .pfh-btn-whatsapp svg {
+      fill: var(--pfh-whatsapp);
+      stroke: none;
+    }
+
+    /* ========== PAUSE BUTTON ========== */
+    .pfh-pause-btn {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 3;
+    }
+
+    .pfh-pause-btn:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .pfh-pause-btn:focus {
+      outline: 2px solid var(--pfh-primary);
+      outline-offset: 2px;
+    }
+
+    .pfh-pause-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--pfh-text);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .pfh-pause-btn .pfh-play-icon { display: none; }
+    .pfh-pause-btn.pfh-paused .pfh-pause-icon { display: none; }
+    .pfh-pause-btn.pfh-paused .pfh-play-icon { display: block; }
+
+    /* ========== TAGLINE ========== */
+    .pfh-tagline {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+
+    .pfh-tag {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--pfh-text-muted);
+      transition: all 0.3s ease;
+    }
+
+    .pfh-tag:hover {
+      background: rgba(99, 102, 241, 0.1);
+      border-color: rgba(99, 102, 241, 0.3);
+      color: var(--pfh-text);
+    }
+
+    /* ========== ACCESSIBILITY ========== */
+    .pfh-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .pfh-hero-wrapper *,
+      .pfh-hero-wrapper *::before,
+      .pfh-hero-wrapper *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      
+      .pfh-step { opacity: 0.7; }
+      .pfh-step.pfh-active { opacity: 1; }
+      .pfh-label { opacity: 1; transform: none; }
+      .pfh-connector-progress { width: 100%; }
+      .pfh-particle { display: none; }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .pfh-contact-btns {
+        display: none;
+      }
+      
+      .pfh-tagline {
+        display: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .pfh-hero {
+        height: auto;
+        min-height: 70px;
+        max-height: none;
+        flex-wrap: wrap;
+        padding: 16px 20px;
+        white-space: normal;
+      }
+      
+      .pfh-steps {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+      
+      .pfh-step {
+        padding: 8px 12px;
+      }
+      
+      .pfh-label {
+        font-size: 11px;
+      }
+      
+      .pfh-connector {
+        width: 30px;
+      }
+      
+      .pfh-pause-btn {
+        right: 10px;
+        top: 10px;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pfh-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+      }
+      
+      .pfh-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+      
+      .pfh-label {
+        font-size: 10px;
+      }
+      
+      .pfh-connector {
+        width: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Process Flow Hero - Self-contained, won't affect other page elements -->
+  <div class="pfh-hero-wrapper" role="region" aria-label="Process flow animation">
+    
+    <!-- Screen reader accessible summary -->
+    <div class="pfh-sr-only" aria-live="polite">
+      Process: Apply, Submit, Contact via Email or WhatsApp, Receive Payout
+    </div>
+    
+    <div class="pfh-hero" aria-hidden="true">
+      
+      <!-- Floating Particles -->
+      <div class="pfh-particle"></div>
+      <div class="pfh-particle"></div>
+      <div class="pfh-particle"></div>
+      <div class="pfh-particle"></div>
+      <div class="pfh-particle"></div>
+      <div class="pfh-particle"></div>
+
+      <!-- Tagline -->
+      <div class="pfh-tagline">
+        <span class="pfh-tag">Fast</span>
+        <span class="pfh-tag">Secure</span>
+        <span class="pfh-tag">Simple</span>
+      </div>
+
+      <!-- Steps Container -->
+      <div class="pfh-steps" id="pfhSteps">
+        
+        <!-- Step 1: Apply -->
+        <div class="pfh-step" data-step="apply">
+          <div class="pfh-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13" class="pfh-pen-stroke"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+            <svg viewBox="0 0 24 24" class="pfh-pen" style="position:absolute;width:14px;height:14px;right:-4px;bottom:-2px;">
+              <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" stroke="var(--pfh-accent)" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <span class="pfh-label">Apply</span>
+        </div>
+
+        <!-- Connector 1 -->
+        <div class="pfh-connector" data-connector="1">
+          <div class="pfh-connector-line">
+            <div class="pfh-connector-progress"></div>
+          </div>
+          <div class="pfh-connector-dot"></div>
+          <div class="pfh-connector-arrow"></div>
+        </div>
+
+        <!-- Step 2: Submit -->
+        <div class="pfh-step" data-step="submit">
+          <div class="pfh-icon">
+            <svg viewBox="0 0 24 24" class="pfh-plane">
+              <path d="M22 2L11 13"/>
+              <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+            <div class="pfh-plane-trail"></div>
+          </div>
+          <span class="pfh-label">Submit</span>
+        </div>
+
+        <!-- Connector 2 -->
+        <div class="pfh-connector" data-connector="2">
+          <div class="pfh-connector-line">
+            <div class="pfh-connector-progress"></div>
+          </div>
+          <div class="pfh-connector-dot"></div>
+          <div class="pfh-connector-arrow"></div>
+        </div>
+
+        <!-- Step 3: Contact -->
+        <div class="pfh-step" data-step="contact">
+          <div class="pfh-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <svg viewBox="0 0 24 24" class="pfh-whatsapp-icon" style="width:16px;height:16px;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#25d366" stroke="none"/>
+            </svg>
+            <div class="pfh-typing-dots">
+              <div class="pfh-typing-dot"></div>
+              <div class="pfh-typing-dot"></div>
+              <div class="pfh-typing-dot"></div>
+            </div>
+          </div>
+          <span class="pfh-label">Email / WhatsApp</span>
+        </div>
+
+        <!-- Connector 3 -->
+        <div class="pfh-connector" data-connector="3">
+          <div class="pfh-connector-line">
+            <div class="pfh-connector-progress"></div>
+          </div>
+          <div class="pfh-connector-dot"></div>
+          <div class="pfh-connector-arrow"></div>
+        </div>
+
+        <!-- Step 4: Payout -->
+        <div class="pfh-step" data-step="payout">
+          <div class="pfh-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+              <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+              <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+            </svg>
+            <div class="pfh-coin"></div>
+            <div class="pfh-sparkle"></div>
+            <div class="pfh-sparkle"></div>
+            <div class="pfh-sparkle"></div>
+            <div class="pfh-sparkle"></div>
+          </div>
+          <span class="pfh-label">Receive Payout</span>
+        </div>
+
+      </div>
+
+      <!-- Contact Buttons -->
+      <div class="pfh-contact-btns">
+        <a href="mailto:mnenieasylan@aol.com" class="pfh-contact-btn pfh-btn-email">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email Us
+        </a>
+        <a href="https://wa.me/27813505496" target="_blank" rel="noopener noreferrer" class="pfh-contact-btn pfh-btn-whatsapp">
+          <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+
+      
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+      
+      // Configuration
+      const TIMING = {
+        idle: 400,
+        step: 700,
+        connector: 350,
+      };
+      
+      const steps = document.querySelectorAll('.pfh-step');
+      const connectors = document.querySelectorAll('.pfh-connector');
+      const pauseBtn = document.getElementById('pfhPauseBtn');
+      
+      let isPaused = false;
+      let animationTimeout = null;
+      
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      if (prefersReducedMotion) {
+        steps.forEach(step => step.classList.add('pfh-active'));
+        connectors.forEach(conn => conn.classList.add('pfh-active'));
+        if (pauseBtn) pauseBtn.style.display = 'none';
+        return;
+      }
+      
+      function clearAllStates() {
+        steps.forEach(step => {
+          step.classList.remove('pfh-active', 'pfh-completed');
+        });
+        connectors.forEach(conn => {
+          conn.classList.remove('pfh-active');
+        });
+      }
+      
+      function activateStep(index) {
+        if (index < 0 || index >= steps.length) return;
+        
+        for (let i = 0; i < index; i++) {
+          steps[i].classList.remove('pfh-active');
+          steps[i].classList.add('pfh-completed');
+        }
+        
+        steps[index].classList.remove('pfh-completed');
+        steps[index].classList.add('pfh-active');
+        
+        for (let i = index + 1; i < steps.length; i++) {
+          steps[i].classList.remove('pfh-active', 'pfh-completed');
+        }
+      }
+      
+      function activateConnector(index) {
+        if (index < 0 || index >= connectors.length) return;
+        connectors[index].classList.add('pfh-active');
+      }
+      
+      function runSequence() {
+        if (isPaused) return;
+        
+        clearAllStates();
+        
+        animationTimeout = setTimeout(() => {
+          if (isPaused) return;
+          
+          // Step 1: Apply
+          activateStep(0);
+          
+          animationTimeout = setTimeout(() => {
+            if (isPaused) return;
+            activateConnector(0);
+            
+            animationTimeout = setTimeout(() => {
+              if (isPaused) return;
+              
+              // Step 2: Submit
+              activateStep(1);
+              
+              animationTimeout = setTimeout(() => {
+                if (isPaused) return;
+                activateConnector(1);
+                
+                animationTimeout = setTimeout(() => {
+                  if (isPaused) return;
+                  
+                  // Step 3: Contact
+                  activateStep(2);
+                  
+                  animationTimeout = setTimeout(() => {
+                    if (isPaused) return;
+                    activateConnector(2);
+                    
+                    animationTimeout = setTimeout(() => {
+                      if (isPaused) return;
+                      
+                      // Step 4: Payout
+                      activateStep(3);
+                      
+                      animationTimeout = setTimeout(() => {
+                        if (isPaused) return;
+                        runSequence();
+                      }, TIMING.step + TIMING.idle);
+                      
+                    }, TIMING.connector);
+                  }, TIMING.step + 300);
+                  
+                }, TIMING.connector);
+              }, TIMING.step);
+              
+            }, TIMING.connector);
+          }, TIMING.step);
+          
+        }, TIMING.idle);
+      }
+      
+      // Pause/Play functionality
+      if (pauseBtn) {
+        pauseBtn.addEventListener('click', function() {
+          isPaused = !isPaused;
+          this.classList.toggle('pfh-paused', isPaused);
+          this.setAttribute('aria-pressed', isPaused.toString());
+          this.setAttribute('aria-label', isPaused ? 'Play animation' : 'Pause animation');
+          
+          if (!isPaused) {
+            runSequence();
+          } else if (animationTimeout) {
+            clearTimeout(animationTimeout);
+          }
+        });
+        
+        pauseBtn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+      }
+      
+      // Pause when tab is not visible
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          if (animationTimeout) clearTimeout(animationTimeout);
+        } else if (!isPaused) {
+          runSequence();
+        }
+      });
+      
+      // Start animation
+      runSequence();
+    })();
+  </script>
+</body>
+</html>
+
 <iframe data-tally-src="https://tally.so/embed/3NjGlW?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0" title="Apply for Your Loan with 
 
 Mndeni Easy Loans (PTY) LTD
