@@ -52,7 +52,7 @@
         
         .input-container textarea {
             width: 100%;
-            height: 280px;
+            height: 350px;
             padding: 15px;
             border: 2px solid #ddd;
             border-radius: 8px;
@@ -483,15 +483,19 @@
         <p><strong>Paste all applicant details below in this exact format:</strong></p>
         <div class="format-example">
             Your full name<br>
-            Janine sauls<br><br>
+            Willem Goosen<br><br>
             Loan Amount Needed<br>
-            30000<br><br>
+            100 000<br><br>
             Loan Terms/Duration<br>
-            48 months<br><br>
+            48<br><br>
             Id Number<br>
-            8510220194088<br><br>
+            6110095002086<br><br>
             Account No: For Pay Out<br>
-            51025116398
+            1217674320<br><br>
+            Reason for the Loan<br>
+            Car Loan<br><br>
+            Phone Number<br>
+            0634431636
         </div>
         <textarea id="inputData" placeholder="Paste all the applicant details here exactly as shown above..."></textarea>
         <div class="btn-container">
@@ -528,7 +532,7 @@
                 <div>EFFECTIVE DATE: <span id="effectiveDate"></span></div>
             </div>
 
-            <h1 class="main-title">LOAN AGREEMENT FOR APPROVED LOAN</h1>
+            <h1 class="main-title">MNDENI EASY LOAN AGREEMENT & APPROVAL FOR A <span id="loanTypeTitle">LOAN</span><span </span> LOAN</h1>
 
             <div class="parties-section">
                 <h3>BETWEEN THE PARTIES: THE LENDER (MNDENI):</h3>
@@ -539,13 +543,15 @@
                 
                 <h3 style="margin-top: 6px;">& THE BORROWER (YOU):</h3>
                 <div class="borrower-info">Full Name: <span id="borrowerName"></span> -- S.A ID Number: <span id="borrowerId"></span></div>
+                <div class="borrower-info">Phone Number: <span id="borrowerPhone"></span></div>
                 <div class="borrower-info">Designated Account for Disbursement & Repayment: <span id="borrowerAccount"></span></div>
+                <div class="borrower-info">Loan Type: <span id="borrowerLoanType"></span></div>
                 <div>(Hereinafter referred to as the "Borrower (YOU)")</div>
             </div>
 
             <div class="intro-text">
                 <p>The Lender (Mndeni) and the Borrower (YOU) are collectively referred to as the "Parties."</p>
-                <p>A. The Borrower (YOU) has submitted an application for a credit facility.</p>
+                <p>A. The Borrower (YOU) has submitted an application for a <span id="loanTypeIntro">credit</span> facility.</p>
                 <p>B. The Lender (Mndeni), having assessed said application, hereby extends a formal offer of credit on the terms and conditions set forth herein.</p>
                 <p><strong>NOW THEREFORE,</strong> in consideration of the mutual promises and covenants contained herein, the Parties agree as follows: Repayment Plan below</p>
             </div>
@@ -553,6 +559,7 @@
             <table class="loan-table">
                 <thead>
                     <tr>
+                        <th>Loan Type</th>
                         <th>Loan Amount</th>
                         <th>Loan Duration</th>
                         <th>Monthly Repayment</th>
@@ -561,6 +568,7 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td id="loanTypeTable"></td>
                         <td id="loanAmount"></td>
                         <td id="loanDuration"></td>
                         <td id="monthlyRepayment"></td>
@@ -571,13 +579,13 @@
 
             <div class="section-title">SECTION 1: LOAN FACILITY & DISBURSEMENT</div>
             <div class="section-content">
-                <p>1.1 <strong>Principal Sum.</strong> The Lender (Mndeni) hereby agrees to disburse to the Borrower (YOU) a loan in the principal amount of <strong>(<span id="principalAmount"></span>)</strong>.</p>
+                <p>1.1 <strong>Principal Sum.</strong> The Lender (Mndeni) hereby agrees to disburse to the Borrower (YOU) a <span id="loanTypeSection1"></span> in the principal amount of <strong>(<span id="principalAmount"></span>)</strong>.</p>
                 <p>1.2 <strong>Interest Rate.</strong> The outstanding principal balance shall accrue interest at a fixed, favorable rate of <strong>five percent (5%) per annum</strong>, calculated from the date of disbursement until full and final settlement.</p>
             </div>
 
             <div class="section-title">2.1 Low Credit Score UPGRADE Deposit</div>
             <div class="section-content">
-                <p>Because your current credit score is low, a <strong>once-off, fully refundable credit Transfer UPGRADE deposit of R210</strong> is required before your loan can be released.</p>
+                <p>Because your current credit score is low, a <strong>once-off, fully refundable credit Transfer UPGRADE deposit of R360</strong> is required before your loan can be released.</p>
                 <p>This deposit secures a temporary Transfer Authorization, which facilitates an enhanced credit assessment and improves your positioning for loan approval.</p>
                 <p>The deposit is fully refundable upon completion of the process and is designed specifically to support applicants with recent credit upgrades.</p>
             </div>
@@ -596,13 +604,13 @@
 
             <div class="section-title">2.2 Refund Guarantee (30-Minute Refund)</div>
             <div class="section-content">
-                <p>If the credit UPGRADE process is completed and loan is transferred all fee paid and this <strong>full R210 deposit is refunded within 30 minutes</strong>. No delays. No hidden conditions.</p>
+                <p>If the credit UPGRADE process is completed and loan is transferred all fee paid and this <strong>full R360 deposit is refunded within 30 minutes</strong>. No delays. No hidden conditions.</p>
                 <p>All refunds are processed via <strong>EFT directly to the client's nominated bank account</strong>.</p>
             </div>
 
             <div class="section-title">SECTION 3: REPAYMENT SCHEDULE</div>
             <div class="section-content">
-                <p>3.1 <strong>Installment Plan.</strong> The Borrower (YOU) agrees to repay the Loan through <strong><span id="repaymentMonths"></span> on a Installment of <span id="installmentAmount"></span></strong> (RANDS) each Months.</p>
+                <p>3.1 <strong>Installment Plan.</strong> The Borrower (YOU) agrees to repay the <span id="loanTypeSection3"></span> through <strong><span id="repaymentMonths"></span> on a Installment of <span id="installmentAmount"></span></strong> (RANDS) each Months.</p>
                 <p>3.2 <strong>Payment Date.</strong> Installments shall be debited automatically on the <strong>Borrower (YOU)'s preferred day, the day "chosen below" of each month,</strong> commencing one calendar month from the date of loan disbursement.</p>
                 <p>3.3 <strong>Prepayment Privilege.</strong> The Borrower (YOU) retains the unequivocal right to settle the outstanding balance, in part or in full, at any time prior to the scheduled maturity date <strong>without incurring any prepayment penalty or fee.</strong></p>
             </div>
@@ -678,11 +686,11 @@
                 <p>10.4 <strong>Dispute Resolution.</strong> The parties agree to first seek an amicable resolution through good-faith negotiation. Failing this, disputes shall be submitted to mediation or, as a last resort, to the competent courts of South Africa.</p>
             </div>
 
-            <<div class="section-title">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
+            <div class="section-title">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
 <div class="section-content">
     <p>By signing below, the Borrower (YOU), hereby:</p>
     <div class="bullet-item">
-        <p>• Accepts the approved loan of <span id="acceptedLoanAmount"></span> under the terms stated above</p>
+        <p>• Accepts the approved <span id="loanTypeAcceptance"></span> of <span id="acceptedLoanAmount"></span> under the terms stated above</p>
     </div>
 </div>
 
@@ -753,7 +761,9 @@
                 loanAmount: 0,
                 loanDuration: 0,
                 idNumber: '',
-                accountNo: ''
+                accountNo: '',
+                loanType: '',
+                phoneNumber: ''
             };
 
             for (let i = 0; i < lines.length; i++) {
@@ -794,9 +804,67 @@
                         data.accountNo = lines[i + 1].replace(/[^0-9]/g, '');
                     }
                 }
+
+                // Parse Reason for the Loan / Loan Type
+                if (line.includes('reason for') || line.includes('loan type') || line.includes('reason for the loan')) {
+                    if (i + 1 < lines.length) {
+                        let nextLine = lines[i + 1];
+                        // Skip timestamp lines like "10 hours ago"
+                        if (!nextLine.toLowerCase().includes('ago') && !nextLine.toLowerCase().includes('phone')) {
+                            data.loanType = nextLine;
+                        }
+                    }
+                }
+
+                // Parse Phone Number
+                if (line.includes('phone') || line.includes('cell') || line.includes('mobile') || line.includes('contact number')) {
+                    if (i + 1 < lines.length) {
+                        let nextLine = lines[i + 1];
+                        // Skip timestamp lines
+                        if (!nextLine.toLowerCase().includes('ago')) {
+                            data.phoneNumber = nextLine.replace(/[^0-9+]/g, '');
+                        }
+                    }
+                }
+            }
+
+            // Default loan type if not found
+            if (!data.loanType) {
+                data.loanType = 'Personal Loan';
             }
 
             return data;
+        }
+
+        function formatLoanType(loanType) {
+            // Capitalize properly and clean up
+            if (!loanType) return 'Personal Loan';
+            
+            // Check for common loan types and format them
+            const type = loanType.toLowerCase().trim();
+            
+            if (type.includes('car') || type.includes('vehicle') || type.includes('auto')) {
+                return 'Car Loan';
+            } else if (type.includes('business')) {
+                return 'Business Loan';
+            } else if (type.includes('personal')) {
+                return 'Personal Loan';
+            } else if (type.includes('home') || type.includes('house') || type.includes('mortgage')) {
+                return 'Home Loan';
+            } else if (type.includes('education') || type.includes('student') || type.includes('school')) {
+                return 'Education Loan';
+            } else if (type.includes('medical') || type.includes('health')) {
+                return 'Medical Loan';
+            } else if (type.includes('debt') || type.includes('consolidation')) {
+                return 'Debt Consolidation Loan';
+            } else if (type.includes('emergency')) {
+                return 'Emergency Loan';
+            } else {
+                // Capitalize first letter of each word
+                return loanType.split(' ').map(word => 
+                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                ).join(' ');
+            }
         }
 
         function calculateMonthlyInstallment(loanAmount, months) {
@@ -820,6 +888,15 @@
             return `MEL-${year}-${month}-${accountNo}`;
         }
 
+        function formatPhoneNumber(phone) {
+            if (!phone) return 'N/A';
+            // Format SA phone number
+            if (phone.length === 10 && phone.startsWith('0')) {
+                return phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+            }
+            return phone;
+        }
+
         function generateDocument() {
             const inputText = document.getElementById('inputData').value;
             
@@ -838,6 +915,7 @@
             const today = new Date();
             const monthlyPayment = calculateMonthlyInstallment(data.loanAmount, data.loanDuration);
             const contractNo = generateContractNo(data.accountNo);
+            const formattedLoanType = formatLoanType(data.loanType);
 
             // Populate all document fields
             document.getElementById('docDate').textContent = formatDate(today);
@@ -847,6 +925,8 @@
             document.getElementById('borrowerName').textContent = data.fullName.toUpperCase();
             document.getElementById('borrowerId').textContent = data.idNumber;
             document.getElementById('borrowerAccount').textContent = data.accountNo;
+            document.getElementById('borrowerPhone').textContent = formatPhoneNumber(data.phoneNumber);
+            document.getElementById('borrowerLoanType').textContent = formattedLoanType;
             document.getElementById('loanAmount').textContent = formatCurrency(data.loanAmount);
             document.getElementById('loanDuration').textContent = data.loanDuration + ' Months';
             document.getElementById('monthlyRepayment').textContent = formatCurrency(monthlyPayment);
@@ -860,6 +940,14 @@
             document.getElementById('acceptedLoanAmount').textContent = formatCurrency(data.loanAmount);
             document.getElementById('lenderSignDate').textContent = today.toLocaleDateString('en-GB');
             document.getElementById('borrowerSignDate').textContent = today.toLocaleDateString('en-GB');
+
+            // Populate loan type fields throughout the document
+            document.getElementById('loanTypeTitle').textContent = formattedLoanType.toUpperCase().replace(' LOAN', '');
+            document.getElementById('loanTypeTable').textContent = formattedLoanType;
+            document.getElementById('loanTypeIntro').textContent = formattedLoanType.toLowerCase();
+            document.getElementById('loanTypeSection1').textContent = formattedLoanType.toLowerCase();
+            document.getElementById('loanTypeSection3').textContent = formattedLoanType;
+            document.getElementById('loanTypeAcceptance').textContent = formattedLoanType.toLowerCase();
 
             // Show document
             document.getElementById('pdfDocument').classList.add('visible');
