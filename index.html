@@ -1018,7 +1018,6 @@ footer {
         </div>
     </section>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -1029,7 +1028,7 @@ footer {
    ISOLATED COMPACT CAROUSEL STYLES
    ============================ */
 .circular-carousel-wrapper {
-  position: center;
+  position: relative;
   width: 100%;
   height: 200px; /* ~2-3 lines reference height */
   display: grid;
@@ -1056,34 +1055,50 @@ footer {
   transition:
     transform 0.9s cubic-bezier(0.4, 0.0, 0.2, 1),
     opacity 0.9s ease;
+  cursor: pointer;
 }
 
+/* ============================
+   IMAGE SIZE CONTROLS
+   Adjust these values to make images bigger or smaller
+   ============================ */
 .carousel-card img {
-  width: 80%;
-  height: 90%;
+  --carousel-img-width: 120px;   /* Change this to adjust width */
+  --carousel-img-height: auto;  /* Change this to adjust height */
+  
+  width: var(--carousel-img-width);
+  height: var(--carousel-img-height);
   object-fit: contain;
   pointer-events: none;
   user-select: none;
 }
 
-/* Label styles */
+/* ============================
+   LABEL STYLES
+   ============================ */
 .carousel-label {
   position: absolute;
-  bottom: 5px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 9px;
-  font-weight: 400;
-  color: #0d5d4d;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 6px 16px;
-  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #333;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 12px;
+  border-radius: 4px;
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Show label only when card is in center */
+.carousel-card.pos-center .carousel-label {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Positions for circular effect */
@@ -1091,12 +1106,6 @@ footer {
   transform: translateX(0) translateZ(60px) scale(1);
   opacity: 1;
   z-index: 3;
-}
-
-/* Show label only when card is in center position */
-.pos-center .carousel-label {
-  opacity: 1;
-  visibility: visible;
 }
 
 .pos-right {
@@ -1117,14 +1126,127 @@ footer {
   z-index: 1;
 }
 
+/* ============================
+   POPUP STYLES
+   ============================ */
+.carousel-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.carousel-popup-overlay.active {
+  display: flex;
+}
+
+.carousel-popup {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 280px;
+  max-width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  animation: popupSlideIn 0.3s ease;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel-popup h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.carousel-popup p {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.carousel-popup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carousel-popup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-popup-btn.whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.carousel-popup-btn.email {
+  background: #0078D4;
+  color: #fff;
+}
+
+.carousel-popup-btn svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+}
+
+.carousel-popup-close {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  font-size: 10px;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.carousel-popup-close:hover {
+  background: #e0e0e0;
+}
+
 /* Responsive tuning */
 @media (max-width: 600px) {
   .pos-right { transform: translateX(40px) translateZ(0) scale(0.85); }
   .pos-left  { transform: translateX(-40px) translateZ(0) scale(0.85); }
   
-  .carousel-label {
-    font-size: 12px;
-    padding: 4px 12px;
+  .carousel-popup {
+    padding: 20px;
+    min-width: 250px;
   }
 }
 </style>
@@ -1134,18 +1256,41 @@ footer {
 
 <div class="circular-carousel-wrapper">
   <div class="circular-carousel" id="carousel">
-    <div class="carousel-card">
+    <div class="carousel-card" data-label="B-BBEE Certificate">
       <img src="image/signal-2025-11-20-11-54-42-145-4.jpg" alt="B-BBEE Certificate">
       <span class="carousel-label">B-BBEE</span>
     </div>
-    <div class="carousel-card">
-      <img src="image/signal-2025-11-20-11-54-42-145-5.jpg" alt="FSCA Certificate">
+    <div class="carousel-card" data-label="FSCA License">
+      <img src="image/signal-2025-11-20-11-54-42-145-5.jpg" alt="FSCA License">
       <span class="carousel-label">FSCA</span>
     </div>
-    <div class="carousel-card">
+    <div class="carousel-card" data-label="Tax Certificate">
       <img src="image/signal-2025-11-20-11-54-42-145-6.jpg" alt="Tax Certificate">
       <span class="carousel-label">Tax</span>
     </div>
+  </div>
+</div>
+
+<!-- Popup Overlay -->
+<div class="carousel-popup-overlay" id="carouselPopup">
+  <div class="carousel-popup">
+    <h3 id="popupTitle">Request Document</h3>
+    <p>Would you like to receive a copy of this document?</p>
+    <div class="carousel-popup-buttons">
+      <a href="#" class="carousel-popup-btn whatsapp" id="whatsappBtn" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp Us
+      </a>
+      <a href="#" class="carousel-popup-btn email" id="emailBtn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        Email Us
+      </a>
+    </div>
+    <button class="carousel-popup-close" id="closePopup">Close</button>
   </div>
 </div>
 
@@ -1155,6 +1300,17 @@ footer {
    ============================ */
 (() => {
   const cards = document.querySelectorAll('.carousel-card');
+  const popup = document.getElementById('carouselPopup');
+  const popupTitle = document.getElementById('popupTitle');
+  const closePopup = document.getElementById('closePopup');
+  const whatsappBtn = document.getElementById('whatsappBtn');
+  const emailBtn = document.getElementById('emailBtn');
+
+  // ============================
+  // CONFIGURE YOUR CONTACT DETAILS HERE
+  // ============================
+  const WHATSAPP_NUMBER = '27813505496'; // Replace with your WhatsApp number (no + or spaces)
+  const EMAIL_ADDRESS = 'mndenieasyloan@aol.com'; // Replace with your email address
 
   // Initial circular order
   let order = [
@@ -1180,6 +1336,49 @@ footer {
     ];
     applyPositions();
   }, 2600);
+
+  // ============================
+  // POPUP LOGIC
+  // ============================
+  cards.forEach(card => {
+    card.addEventListener('click', function() {
+      // Only open popup if this card is in center position
+      if (this.classList.contains('pos-center')) {
+        const label = this.getAttribute('data-label') || 'Document';
+        popupTitle.textContent = 'Request: ' + label;
+        
+        // Update WhatsApp link with document name
+        const whatsappMessage = encodeURIComponent('Hi, I would like to request a copy of the ' + label + ' document.');
+        whatsappBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + whatsappMessage;
+        
+        // Update Email link with document name
+        const emailSubject = encodeURIComponent('Document Request: ' + label);
+        const emailBody = encodeURIComponent('Hi,\n\nI would like to request a copy of the ' + label + ' document.\n\nThank you.');
+        emailBtn.href = 'mailto:' + EMAIL_ADDRESS + '?subject=' + emailSubject + '&body=' + emailBody;
+        
+        popup.classList.add('active');
+      }
+    });
+  });
+
+  // Close popup
+  closePopup.addEventListener('click', function() {
+    popup.classList.remove('active');
+  });
+
+  // Close popup when clicking outside
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      popup.classList.remove('active');
+    }
+  });
+
+  // Close popup with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      popup.classList.remove('active');
+    }
+  });
 })();
 </script>
 
