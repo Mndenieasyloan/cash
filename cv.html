@@ -3,926 +3,1589 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mndeni Easy Loans - Agreement Generator</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <title>Mndeni Easy Loans - Financial Solutions</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .input-container {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .input-container h1 {
-            color: #0d7377;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
-        
-        .input-container p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-        
-        .format-example {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            border-left: 4px solid #0d7377;
-        }
-        
-        .input-container textarea {
-            width: 100%;
-            height: 280px;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Courier New', monospace;
-            resize: vertical;
-            margin-top: 15px;
-        }
-        
-        .input-container textarea:focus {
-            outline: none;
-            border-color: #0d7377;
-            box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1);
-        }
-        
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-        
-        .btn {
-            padding: 14px 35px;
-            font-size: 15px;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background: #0d7377;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #095456;
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: #f5c518;
-            color: #333;
-        }
-        
-        .btn-secondary:hover {
-            background: #e0b315;
-            transform: translateY(-2px);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .signature-line img {
-    max-width: 220px;
-    height: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-        /* PDF Document Container */
-        .pdf-document {
-            display: none;
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
-        
-        .pdf-document.visible {
-            display: block;
-            margin: 30px auto;
-            width: fit-content;
-        }
-        
-        /* A4 Page - exact dimensions for PDF */
-        .a4-page {
-            width: 210mm;
-            height: 297mm;
-            padding: 12mm 15mm;
-            background: white;
-            box-shadow: 0 0 25px rgba(0,0,0,0.15);
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Header Section */
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 3px;
-        }
-        
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .ncr-logo {
-            height: 50px;
-            width: auto;
-        }
-        
-        .sa-coat-of-arms {
-            height: 50px;
-            width: auto;
-        }
-        
-        .company-info {
-            text-align: right;
-            font-size: 13pt;
-            line-height: 1.3;
-        }
-        
-        .company-info .ncr-reg {
-            color: #0d7377;
-            font-weight: bold;
-        }
-        
-        .company-info .legal-reg {
-            color: #c41e3a;
-            font-weight: bold;
-        }
-        
-        .company-info a {
-            color: #0d7377;
-            text-decoration: underline;
-        }
-        
-        .company-info .date-line {
-            font-weight: bold;
-            margin-top: 2px;
-        }
-        
-        .small-coat {
-            height: 50px;
-            margin-bottom: 2px;
-        }
-        
-        /* Mndeni Logo */
-        .mndeni-logo-section {
-            margin: 3px 0;
-        }
-        
-        .mndeni-logo {
-            font-size: 36pt;
-            font-weight: bold;
-            color: #0d7377;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-        
-        .mndeni-logo span {
-            color: #f5c518;;
-        }
-        
-        .barcode {
-            margin-top: 2px;
-            height: 18px;
-            width: 140px;
-            background: repeating-linear-gradient(
-                90deg,
-                #000 0px, #000 2px,
-                transparent 2px, transparent 4px,
-                #000 4px, #000 5px,
-                transparent 5px, transparent 8px,
-                #000 8px, #000 10px,
-                transparent 10px, transparent 11px,
-                #000 11px, #000 12px,
-                transparent 12px, transparent 15px
-            );
-        }
-        
-        .contract-info {
-            font-weight: bold;
-            margin: 19px 0;
-            font-size: 10pt;
-        }
-        
-        .main-title {
-            text-align: center;
-            font-size: 18pt;
-            font-weight: bold;
-            color: #0d7377;
-            margin: 16px 0;
-            text-decoration: underline;
-        }
-        
-        .parties-section {
-            text-align: center;
-            margin: 14px 0;
-            font-size: 10.5pt;
-        }
-        
-        .parties-section h3 {
-            color: #333;
-            margin: 8px 0 2px;
-            font-size: 10.5pt;
-        }
-        
-        .parties-section .company-name {
-            color: #0d7377;
-            font-weight: bold;
-        }
-        
-        .parties-section .borrower-info {
-            color: #0d7377;
-            font-weight: bold;
-        }
-        
-        .parties-section .mndeni-highlight {
-            color: #f5c518;
-            font-weight: bold;
-        }
-        
-        .intro-text {
-            margin: 8px 0;
-            text-align: left;
-            font-size: 9.5pt;
-        }
-        
-        .intro-text p {
-            margin-bottom: 5px;
-        }
-        
-        /* Loan Table */
-        .loan-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 6px 0;
-        }
-        
-        .loan-table th {
-            background: #0d7377;
-            color: white;
-            padding: 5px 6px;
-            text-align: center;
-            font-size: 9.5pt;
-        }
-        
-        .loan-table td {
-            padding: 5px 6px;
-            text-align: center;
-            border: 1px solid #ddd;
-            font-weight: bold;
-            font-size: 9.5pt;
-        }
-        
-        /* Section Styling */
-        .section-title {
-            color: #0d7377;
-            font-weight: bold;
-            margin: 9px 0 3px;
-            font-size: 9.5pt;
-        }
-        
-        .section-content {
-            margin: 18px 0;
-            text-align: justify;
-            font-size: 9.5pt;
-            line-height: 1.5;
-        }
-        
-        .section-content p {
-            margin-bottom: 4px;
-        }
-        
-        /* Signature Section */
-        .signature-title {
-            color: #0d7377;
-            font-weight: bold;
-            font-size: 9.5pt;
-            margin: 10px 0 3px;
-        }
-        
-        .signatures-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 8.5pt;
-        }
-        
-        .signature-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
-        
-        .signature-box {
-            width: 45%;
-        }
-        
-        .signature-box h4 {
-            color: #0d7377;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 8.5pt;
-        }
-        
-        .lender-signature-img {
-            height: 35px;
-            width: auto;
-            display: block;
-            margin-bottom: 2px;
-        }
-        
-        .signature-line {
-            border-bottom: 1px solid #D6B94B;
-            margin-bottom: 3px;
-            height: 30px;
-            display: flex;
-            align-items: flex-end;
-            padding-bottom: 2px;
-        }
-        
-        .signature-label {
-            font-size: 8pt;
-        }
-        
-        .name-line {
-            margin-top: 6px;
-             color: #D6B94B;
-        }
-        
-        .lender-name-handwritten {
-            font-family: 'Arial, sans-serif;
-            font-size: 14pt;
-            color: #D6B94B;
-        }
-        
-        .date-line-sig {
-            margin-top: 4px;
-            font-size: 8.5pt;
-        }
-        
-        .bullet-item {
-            margin-left: 15px;
-            margin-top: 3px;
-            font-size: 8.5pt;
-        }
-        
-        /* Page footer */
-        .page-footer {
-            position: absolute;
-            bottom: 8mm;
-            left: 15mm;
-            right: 15mm;
-            text-align: center;
-            font-size: 7pt;
-            color: #999;
-            border-top: 1px solid #ddd;
-            padding-top: 5px;
-        }
-        
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-            }
-            .input-container {
-                display: none !important;
-            }
-            .pdf-document {
-                display: block !important;
-            }
-            .a4-page {
-                box-shadow: none !important;
-                margin: 0 !important;
-                page-break-after: always !important;
-                page-break-inside: avoid !important;
-            }
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
 
-        .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
+/* Header & Navigation */
+header {
+    background: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-        .loading-overlay.visible {
-            display: flex;
-        }
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
 
-        .loading-box {
-            background: white;
-            padding: 30px 50px;
-            border-radius: 12px;
-            text-align: center;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+    color: #0d5d4d;
+    letter-spacing: -0.5px;
+}
 
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #ddd;
-            border-top-color: #0d7377;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
+.logo-dot {
+    width: 12px;
+    height: 12px;
+    background: #ffc107;
+    border-radius: 50%;
+    display: inline-block;
+}
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #0d5d4d;
+}
+
+.cta-button {
+    background: #0d5d4d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cta-button:hover {
+    background: #0a4a3a;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #0d5d4d;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-menu a:hover {
+    color: #0d5d4d;
+}
+
+.mobile-menu .cta-button {
+    width: 100%;
+    text-align: center;
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .logo {
+        font-size: 20px;
+    }
+}
+
+/* Hero Section with Auto-Swipe */
+.hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.hero-slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.hero-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Add hero background images */
+.hero-slide-1 {
+    background-image: url('image/43d.png');
+}
+
+.hero-slide-2 {
+    background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop');
+}
+
+.hero-slide-3 {
+    background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop');
+}
+
+.hero-slide-4 {
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop');
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+    padding: 40px 20px;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hero-dot.active {
+    background: #ffc107;
+}
+
+.hero-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    transition: background 0.3s;
+}
+
+.hero-arrow:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 400px;
+    }
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    .hero-content p {
+        font-size: 16px;
+    }
+}
+
+/* Why Choose Mndeni */
+.why-section {
+    padding: 80px 20px;
+    background: white;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    color: #0d5d4d;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.why-card {
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.why-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.why-card-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.why-card h3 {
+    font-size: 22px;
+    color: #0d5d4d;
+    margin-bottom: 15px;
+}
+
+.why-card p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Mobile styles for Why Section - Grid with 3-4 items per row */
+@media (max-width: 768px) {
+    .why-section {
+        padding: 50px 15px;
+    }
+    
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .why-card {
+        padding: 15px 10px;
+        border-radius: 8px;
+    }
+    
+    .why-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .why-card-icon {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+    
+    .why-card h3 {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    
+    .why-card p {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .why-card {
+        padding: 12px 8px;
+    }
+    
+    .why-card-icon {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    
+    .why-card h3 {
+        font-size: 10px;
+        margin-bottom: 4px;
+    }
+    
+    .why-card p {
+        font-size: 9px;
+        line-height: 1.3;
+    }
+}
+
+/* Process Section */
+.process-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.process-step {
+    position: relative;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #0d5d4d;
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.process-step h3 {
+    font-size: 20px;
+    color: #0d5d4d;
+    margin-bottom: 15px;
+}
+
+.process-step p {
+    color: #666;
+    font-size: 15px;
+}
+
+/* Mobile styles for Process Section - Grid with 3-4 items per row */
+@media (max-width: 768px) {
+    .process-section {
+        padding: 50px 15px;
+    }
+    
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .process-step {
+        padding: 15px 8px;
+        border-radius: 8px;
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .process-step h3 {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+    
+    .process-step p {
+        font-size: 9px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .process-step {
+        padding: 12px 6px;
+    }
+    
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .process-step h3 {
+        font-size: 10px;
+        margin-bottom: 4px;
+    }
+    
+    .process-step p {
+        font-size: 8px;
+        line-height: 1.3;
+    }
+}
+
+/* Products Section */
+.products-section {
+    padding: 80px 20px;
+    background: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.product-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 40px;
+    transition: all 0.3s;
+}
+
+.product-card:hover {
+    border-color: #0d5d4d;
+    box-shadow: 0 15px 40px rgba(13, 93, 77, 0.15);
+    transform: translateY(-5px);
+}
+
+.product-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    color: #0d5d4d;
+    margin-bottom: 15px;
+}
+
+.product-features {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.product-features li {
+    padding: 10px 0;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.product-features li:before {
+    content: "✓";
+    color: #ffc107;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.product-btn {
+    display: inline-block;
+    background: #0d5d4d;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.product-btn:hover {
+    background: #0a4a3a;
+}
+
+/* Testimonials */
+.testimonials-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0d5d4d 0%, #0a4a3a 100%);
+    color: white;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.testimonial-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.stars {
+    color: #ffc107;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.testimonial-role {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 80px 20px;
+    background: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #0d5d4d;
+    margin-bottom: 10px;
+    min-height: 60px;
+}
+
+.stat-item p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Mobile styles for Stats Section - Grid with 3-4 items per row */
+@media (max-width: 768px) {
+    .stats-section {
+        padding: 50px 15px;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .stat-item {
+        padding: 15px 8px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    
+    .stat-item h3 {
+        font-size: 24px;
+        min-height: 30px;
+        margin-bottom: 5px;
+    }
+    
+    .stat-item p {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .stat-item {
+        padding: 12px 6px;
+    }
+    
+    .stat-item h3 {
+        font-size: 20px;
+        min-height: 25px;
+    }
+    
+    .stat-item p {
+        font-size: 9px;
+    }
+}
+
+/* CTA Section */
+.cta-banner {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+    text-align: center;
+    color: #0d5d4d;
+}
+
+.cta-banner h2 {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.cta-banner p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.cta-primary {
+    display: inline-block;
+    background: #0d5d4d;
+    color: white;
+    padding: 16px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.cta-primary:hover {
+    background: #0a4a3a;
+}
+
+/* Footer */
+footer {
+    background: #0d5d4d;
+    color: white;
+    padding: 60px 20px 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffc107;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffc107;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* General Mobile Adjustments */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+    
+    .products-section {
+        padding: 50px 15px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    
+    .product-card {
+        padding: 25px 20px;
+    }
+    
+    .testimonials-section {
+        padding: 50px 15px;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    
+    .testimonial-card {
+        padding: 25px 20px;
+    }
+    
+    .cta-banner {
+        padding: 50px 20px;
+    }
+    
+    .cta-banner h2 {
+        font-size: 28px;
+    }
+    
+    .cta-banner p {
+        font-size: 15px;
+    }
+    
+    .cta-primary {
+        padding: 14px 30px;
+        font-size: 14px;
+    }
+    
+    footer {
+        padding: 40px 15px 20px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+    
+    .footer-section h4 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 </head>
 <body>
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-box">
-            <div class="spinner"></div>
-            <p>Generating PDF...</p>
-        </div>
-    </div>
-
-    <div class="input-container">
-        <h1>Mndeni Easy Loans - Agreement Generator</h1>
-        <p><strong>Paste all applicant details below in this exact format:</strong></p>
-        <div class="format-example">
-            Your full name<br>
-            Janine sauls<br><br>
-            Loan Amount Needed<br>
-            30000<br><br>
-            Loan Terms/Duration<br>
-            48 months<br><br>
-            Id Number<br>
-            8510220194088<br><br>
-            Account No: For Pay Out<br>
-            51025116398
-        </div>
-        <textarea id="inputData" placeholder="Paste all the applicant details here exactly as shown above..."></textarea>
-        <div class="btn-container">
-            <button class="btn btn-primary" onclick="generateDocument()">Generate Agreement</button>
-            <button class="btn btn-secondary" onclick="downloadPDF()" id="downloadBtn">Download PDF</button>
-        </div>
-    </div>
-
-    <div class="pdf-document" id="pdfDocument">
-        <!-- ==================== PAGE 1 ==================== -->
-        <div class="a4-page" id="page1">
-            <div class="header-section">
-                <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
-                </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous">
-                    <div><span class="ncr-reg">NCR Reg No:</span> NCRCP19616 / <span class="legal-reg">Legal Reg No:</span> 2024/157205/07</div>
-                    <div>12 Shopping Centre Rank Road Nqutu 3135,</div>
-                    <div>South Africa Tel: +27813505496</div>
-                    <div><a href="mailto:mndenieasyloan@aol.com">mndenieasyloan@aol.com</a></div>
-                    <div class="date-line">Date: <span id="docDate"></span></div>
-                </div>
-            </div>
-
-            <div class="mndeni-logo-section">
-                <div class="mndeni-logo">Mndeni<span>.</span></div>
-                <div class="barcode"></div>
-            </div>
+    <!-- Header with Mobile Menu -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                Mndeni<span class="logo-dot"></span>
+            </a>
             
-            <div class="contract-info">
-                <div>CONTRACT NO: <span id="contractNo"></span> &nbsp;&nbsp;&nbsp; STATUS: APPROVED & EXECUTABLE</div>
-                <div>EFFECTIVE DATE: <span id="effectiveDate"></span></div>
-            </div>
+            <!-- Desktop Navigation -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+                <a href="apply.html">Apply</a>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </nav>
 
-            <h1 class="main-title">LOAN AGREEMENT FOR APPROVED LOAN</h1>
-
-            <div class="parties-section">
-                <h3>BETWEEN THE PARTIES: THE LENDER (MNDENI):</h3>
-                <div><span class="company-name">Mndeni Easy Loans (Registration No: [NCRCP19616]</span></div>
-                <div><strong>Principal Place of Business: 12 Shopping Centre, Rank Road, Nqutu, 3135</strong></div>
-                <div><strong>Contact: mndenieasyloan@aol.com</strong></div>
-                <div>(Hereinafter referred to as the <strong>Lender: <span class="mndeni-highlight">Mndeni</span></strong>.)</div>
-                
-                <h3 style="margin-top: 6px;">& THE BORROWER (YOU):</h3>
-                <div class="borrower-info">Full Name: <span id="borrowerName"></span> -- S.A ID Number: <span id="borrowerId"></span></div>
-                <div class="borrower-info">Designated Account for Disbursement & Repayment: <span id="borrowerAccount"></span></div>
-                <div>(Hereinafter referred to as the "Borrower (YOU)")</div>
-            </div>
-
-            <div class="intro-text">
-                <p>The Lender (Mndeni) and the Borrower (YOU) are collectively referred to as the "Parties."</p>
-                <p>A. The Borrower (YOU) has submitted an application for a credit facility.</p>
-                <p>B. The Lender (Mndeni), having assessed said application, hereby extends a formal offer of credit on the terms and conditions set forth herein.</p>
-                <p><strong>NOW THEREFORE,</strong> in consideration of the mutual promises and covenants contained herein, the Parties agree as follows: Repayment Plan below</p>
-            </div>
-
-            <table class="loan-table">
-                <thead>
-                    <tr>
-                        <th>Loan Amount</th>
-                        <th>Loan Duration</th>
-                        <th>Monthly Repayment</th>
-                        <th>Loan Interest</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="loanAmount"></td>
-                        <td id="loanDuration"></td>
-                        <td id="monthlyRepayment"></td>
-                        <td>5% Per Annum</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="section-title">SECTION 1: LOAN FACILITY & DISBURSEMENT</div>
-            <div class="section-content">
-                <p>1.1 <strong>Principal Sum.</strong> The Lender (Mndeni) hereby agrees to disburse to the Borrower (YOU) a loan in the principal amount of <strong>(<span id="principalAmount"></span>)</strong>.</p>
-                <p>1.2 <strong>Interest Rate.</strong> The outstanding principal balance shall accrue interest at a fixed, favorable rate of <strong>five percent (5%) per annum</strong>, calculated from the date of disbursement until full and final settlement.</p>
-            </div>
-
-            <div class="section-title">2.1 Low Credit Score UPGRADE Deposit</div>
-            <div class="section-content">
-                <p>Because your current credit score is low, a <strong>once-off, fully refundable credit Transfer UPGRADE deposit of R360</strong> is required before your loan can be released.</p>
-                <p>This deposit secures a temporary Transfer Authorization, which facilitates an enhanced credit assessment and improves your positioning for loan approval.</p>
-                <p>The deposit is fully refundable upon completion of the process and is designed specifically to support applicants with recent credit upgrades.</p>
-            </div>
-            
-            <div class="page-footer">Page 1 of 4 | Mndeni Easy Loans Loan Agreement</div>
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
 
-        <!-- ==================== PAGE 2 ==================== -->
-        <div class="a4-page" id="page2">
-            <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+            <a href="apply.html">Apply</a>
+            <a href="apply.html" class="cta-button">Apply Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Auto-Swipe and Background Images -->
+    <section class="hero">
+        <div class="hero-slides" id="heroSlides">
+            <div class="hero-slide hero-slide-1">
+                <div class="hero-content">
+                    <h1>Financial Freedom Starts Here</h1>
+                    <p>Get access to fast, reliable loans tailored to your needs</p>
                 </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous"></div>
-
-            <div class="section-title">2.2 Refund Guarantee (30-Minute Refund)</div>
-            <div class="section-content">
-                <p>If the credit UPGRADE process is completed and loan is transferred all fee paid and this <strong>full R360 deposit is refunded within 30 minutes</strong>. No delays. No hidden conditions.</p>
-                <p>All refunds are processed via <strong>EFT directly to the client's nominated bank account</strong>.</p>
             </div>
-
-            <div class="section-title">SECTION 3: REPAYMENT SCHEDULE</div>
-            <div class="section-content">
-                <p>3.1 <strong>Installment Plan.</strong> The Borrower (YOU) agrees to repay the Loan through <strong><span id="repaymentMonths"></span> on a Installment of <span id="installmentAmount"></span></strong> (RANDS) each Months.</p>
-                <p>3.2 <strong>Payment Date.</strong> Installments shall be debited automatically on the <strong>Borrower (YOU)'s preferred day, the day "chosen below" of each month,</strong> commencing one calendar month from the date of loan disbursement.</p>
-                <p>3.3 <strong>Prepayment Privilege.</strong> The Borrower (YOU) retains the unequivocal right to settle the outstanding balance, in part or in full, at any time prior to the scheduled maturity date <strong>without incurring any prepayment penalty or fee.</strong></p>
-            </div>
-
-            <div class="section-title">SECTION 4: DEBIT ORDER AUTHORIZATION</div>
-            <div class="section-content">
-                <p>4.1 The Borrower (YOU) hereby irrevocably authorizes the Lender (Mndeni) (and its appointed agents) to issue and deliver payment instructions to the Borrower (YOU)'s bank for the collection of all amounts due under this Agreement via direct debit.</p>
-                <p>4.2 This authority shall remain in full force and effect until the Lender (Mndeni) receives written notice of its cancellation from the Borrower (YOU), which notice shall be provided no less than 20 business days before the next debit date and shall not affect the Borrower (YOU)'s liability for any amounts already due or which may become due.</p>
-            </div>
-
-            <div class="section-title">STANDING DEBIT ORDER AUTHORIZATION</div>
-            <div class="section-content">
-                <p>I/We, <strong><span id="debitAuthName"></span></strong>, hereby authorize Mndeni Easy Loans (or its appointed agent) to draw against my/our account held at the bank specified below, the monthly installments as specified in Section 3 of this Agreement.</p>
-                <p><strong>Account Number:</strong> <span id="debitAccountNo"></span> &nbsp;&nbsp;&nbsp; <strong>Bank Name:</strong> &nbsp;&nbsp;&nbsp; <strong>Debit Amount for Monthly Repayment Only:</strong> <span id="debitAmount"></span></p>
-                <p><strong>Debit Day:</strong> The _____ day of each month, commencing. <strong>This mandate shall remain in effect until the full loan obligation is settled and we will provide written revocation, subject to the terms of this Agreement.</strong></p>
-                <p><strong>Sign Here to Authorize Debit Order</strong> _________________________ on this _ <span id="signDate"></span>. <strong>Borrower (YOU)'s</strong></p>
-            </div>
-
-            <div class="section-title">SECTION 5: CREDIT ENHANCEMENT COVENANT</div>
-            <div class="section-content">
-                <p>5.1 The Borrower (YOU) acknowledges that this Agreement is part of a <strong>constructive credit-building program.</strong> The Lender (Mndeni), with the Borrower (YOU)'s consent, may report positive repayment performance to major credit bureaus, thereby assisting the Borrower (YOU) in establishing a stronger financial profile for future opportunities.</p>
-            </div>
-
-            <div class="page-footer">Page 2 of 4 | Mndeni Easy Loans Loan Agreement</div>
-        </div>
-
-        <!-- ==================== PAGE 3 ==================== -->
-        <div class="a4-page" id="page3">
-             <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
+            <div class="hero-slide hero-slide-2">
+                <div class="hero-content">
+                    <h1>Quick Approval Process</h1>
+                    <p>Apply online and get approval in as little as 24 hours</p>
                 </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous"></div>
-            <div class="section-title">SECTION 6: DEFAULT AND REMEDIES</div>
-            <div class="section-content">
-                <p>6.1 <strong>Event of Default.</strong> A default shall occur if the Borrower (YOU) fails to remit any monthly installment for a period exceeding <strong>thirty-one (31) days</strong> from its due date, becomes insolvent, breaches any material term of this Agreement, or if any representation or warranty is found to be false.</p>
-                <p>6.2 <strong>Consequences of Default.</strong> Upon default, the Lender (Mndeni) reserves the right to: (i) declare the entire outstanding balance immediately due and payable; (ii) forfeit the refundable security deposit; (iii) pursue all available legal remedies to recover the debt; and (iv) report the default to registered credit bureaus.</p>
-                <p>6.3 <strong>Grace Period & Communication.</strong> The Lender (Mndeni) encourages proactive communication in case of financial difficulty. Contacting our offices <strong>prior to a missed payment</strong> to discuss possible arrangements is viewed favorably and may prevent a formal default classification.</p>
             </div>
-
-            <div class="section-title">SECTION 7: ADDITIONAL TERMS AND CONDITIONS</div>
-            <div class="section-content">
-                <p>7.1 <strong>Entire Agreement.</strong> This Agreement constitutes the entire agreement between the parties concerning the subject matter hereof and supersedes all prior agreements, understandings, negotiations, and discussions, whether oral or written.</p>
-                <p>7.2 <strong>Waiver.</strong> No waiver of any provision of this Agreement shall be effective unless in writing and signed by the party against whom enforcement is sought. No failure or delay in exercising any right shall operate as a waiver thereof.</p>
-                <p>7.3 <strong>Assignment.</strong> The Borrower (YOU) may not assign or transfer any rights or obligations under this Agreement without the prior written consent of the Lender (Mndeni). The Lender (Mndeni) may assign its rights and obligations under this Agreement to any third party.</p>
-                <p>7.4 <strong>Notices.</strong> All notices, requests, demands, and other communications under this Agreement shall be in writing and shall be deemed to have been duly given when delivered personally, sent by certified mail, or transmitted by electronic mail to the addresses specified in this Agreement.</p>
-                <p>7.5 <strong>Force Majeure.</strong> Neither party shall be liable for any failure or delay in performing their obligations where such failure or delay results from circumstances beyond the reasonable control of that party, including but not limited to acts of God, natural disasters, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, strikes, or shortages of transportation, facilities, fuel, energy, labor, or materials.</p>
-            </div>
-
-            <div class="section-title">SECTION 8: CONFIDENTIALITY</div>
-            <div class="section-content">
-                <p>8.1 Both parties agree to maintain the confidentiality of all information exchanged in connection with this Agreement and shall not disclose such information to any third party without the prior written consent of the other party, except as required by law or regulatory authority.</p>
-                <p>8.2 The Lender (Mndeni) shall comply with all applicable data protection laws and regulations in the handling of the Borrower (YOU)'s personal information.</p>
-            </div>
-
-            <div class="page-footer">Page 3 of 4 | Mndeni Easy Loans Loan Agreement</div>
-        </div>
-        
-        <!-- ==================== PAGE 4 ==================== -->
-        <div class="a4-page" id="page4">
-             <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
+            <div class="hero-slide hero-slide-3">
+                <div class="hero-content">
+                    <h1>Competitive Interest Rates</h1>
+                    <p>Transparent pricing with no hidden fees or surprises</p>
                 </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous"></div>
-            <div class="section-title">SECTION 10: GENERAL PROVISIONS</div>
-            <div class="section-content">
-                <p>10.1 <strong>Governing Law.</strong> This Agreement shall be governed by and construed in accordance with the laws of the Republic of South Africa, with specific reference to the National Credit Act (Act 34 of 2005), and the parties submit to the jurisdiction of the Magistrate's Court of KwaZulu-Natal.</p>
-                <p>10.2 <strong>Amendments.</strong> Any modification or amendment to this Agreement must be documented in writing and signed by both the Lender (Mndeni) and the Borrower (YOU).</p>
-                <p>10.3 <strong>Severability.</strong> If any provision of this Agreement is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the validity, legality, and enforceability of the remaining provisions shall in no way be affected or impaired.</p>
-                <p>10.4 <strong>Dispute Resolution.</strong> The parties agree to first seek an amicable resolution through good-faith negotiation. Failing this, disputes shall be submitted to mediation or, as a last resort, to the competent courts of South Africa.</p>
+            </div>
+            <div class="hero-slide hero-slide-4">
+                <div class="hero-content">
+                    <h1>Expert Support Available</h1>
+                    <p>Our team is here to guide you every step of the way</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-controls">
+            <button class="hero-arrow" id="prevBtn">❮</button>
+            <div id="heroDots">
+                <span class="hero-dot active" onclick="currentSlide(0)"></span>
+                <span class="hero-dot" onclick="currentSlide(1)"></span>
+                <span class="hero-dot" onclick="currentSlide(2)"></span>
+                <span class="hero-dot" onclick="currentSlide(3)"></span>
+            </div>
+            <button class="hero-arrow" id="nextBtn">❯</button>
+        </div>
+    </section>
+
+    <!-- Why Choose Mndeni -->
+    <section class="why-section" id="why">
+        <div class="section-container">
+            <h2 class="section-title">Why Choose Mndeni?</h2>
+            <p class="section-subtitle">Experience banking the way it should be</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-card-icon">⚡</div>
+                    <h3>Fast & Easy</h3>
+                    <p>Apply in minutes from your phone or computer. No paperwork hassles or long waiting times.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">🔒</div>
+                    <h3>Secure & Safe</h3>
+                    <p>Your data is protected with bank-level encryption and security. We take your privacy seriously.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">💰</div>
+                    <h3>Flexible Terms</h3>
+                    <p>Choose repayment terms that fit your budget. Flexible solutions for your unique situation.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">👥</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated team is always available to answer your questions and provide assistance.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">✅</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden fees. Know exactly what you're paying with complete transparency upfront.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">🎯</div>
+                    <h3>Expert Guidance</h3>
+                    <p>Get personalized advice from financial experts to make the best decisions for your goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compact Circular Carousel</title>
+<style>
+/* ============================
+   ISOLATED COMPACT CAROUSEL STYLES
+   ============================ */
+.circular-carousel-wrapper {
+  position: center;
+  width: 120%;
+  height: 240px; /* ~2-3 lines reference height */
+  display: grid;
+  place-items: center;
+  perspective: 1000px;
+  background: transparent;
+  overflow: visible;
+}
+
+.circular-carousel {
+  position: relative;
+  width: min(80vw, 350px); /* responsive width */
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.carousel-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.9s cubic-bezier(0.4, 0.0, 0.2, 1),
+    opacity 0.9s ease;
+}
+
+.carousel-card img {
+  width: 80%;
+  height: 90%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Label styles */
+.carousel-label {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: #0d5d4d;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Positions for circular effect */
+.pos-center {
+  transform: translateX(0) translateZ(60px) scale(1);
+  opacity: 1;
+  z-index: 3;
+}
+
+/* Show label only when card is in center position */
+.pos-center .carousel-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pos-right {
+  transform: translateX(60px) translateZ(0) scale(0.85);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.pos-left {
+  transform: translateX(-60px) translateZ(0) scale(0.85);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.pos-back {
+  transform: translateZ(-80px) scale(0.7);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Responsive tuning */
+@media (max-width: 600px) {
+  .pos-right { transform: translateX(40px) translateZ(0) scale(0.85); }
+  .pos-left  { transform: translateX(-40px) translateZ(0) scale(0.85); }
+  
+  .carousel-label {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="circular-carousel-wrapper">
+  <div class="circular-carousel" id="carousel">
+    <div class="carousel-card">
+      <img src="image/signal-2025-11-20-11-54-42-145-4.jpg" alt="B-BBEE Certificate">
+      <span class="carousel-label">B-BBEE</span>
+    </div>
+    <div class="carousel-card">
+      <img src="image/signal-2025-11-20-11-54-42-145-5.jpg" alt="FSCA Certificate">
+      <span class="carousel-label">FSCA</span>
+    </div>
+    <div class="carousel-card">
+      <img src="image/signal-2025-11-20-11-54-42-145-6.jpg" alt="Tax Certificate">
+      <span class="carousel-label">Tax</span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================
+   CIRCULAR CAROUSEL LOGIC
+   ============================ */
+(() => {
+  const cards = document.querySelectorAll('.carousel-card');
+
+  // Initial circular order
+  let order = [
+    'pos-center',
+    'pos-right',
+    'pos-left'
+  ];
+
+  function applyPositions() {
+    cards.forEach((card, i) => {
+      card.className = 'carousel-card ' + order[i];
+    });
+  }
+
+  applyPositions();
+
+  setInterval(() => {
+    // Rotate positions endlessly
+    order = [
+      order[2], // left goes to center
+      order[0], // center goes to right
+      order[1]  // right goes to left
+    ];
+    applyPositions();
+  }, 2600);
+})();
+</script>
+
+</body>
+</html>
+
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple 4-step process to get your loan</p>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Apply Online</h3>
+                    <p>Fill out our simple online application form with your basic information. Takes less than 5 minutes.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Quick Review</h3>
+                    <p>Our team reviews your application instantly using advanced verification systems.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Get Approved</h3>
+                    <p>Receive instant or same-day approval notification with your loan terms and conditions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Funds</h3>
+                    <p>Funds are deposited directly into your account. Start using your loan immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section-container">
+            <h2 class="section-title">Our Loan Products</h2>
+            <p class="section-subtitle">Choose the perfect loan for your needs</p>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">💳</div>
+                    <h3>Personal Loans</h3>
+                    <ul class="product-features">
+                        <li>Amounts from R5,000 - R1.000,000</li>
+                        <li>Repayment terms up to 60 months</li>
+                        <li>Fast approval in 2 hours</li>
+                        <li>Competitive interest rates</li>
+                    </ul>
+                    <a href="apply.html" class="product-btn">Learn More</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🏠</div>
+                    <h3>Home Improvement Loans</h3>
+                    <ul class="product-features">
+                        <li>Amounts up to R250,000</li>
+                        <li>Flexible repayment options</li>
+                        <li>Build your dream home</li>
+                        <li>No hidden charges</li>
+                    </ul>
+                    <a href="apply.html" class="product-btn">Learn More</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🚗</div>
+                    <h3>Auto Loans</h3>
+                    <ul class="product-features">
+                        <li>Finance your new or used car</li>
+                        <li>Low interest rates available</li>
+                        <li>Flexible terms up to 172 months</li>
+                        <li>Quick disbursement process</li>
+                    </ul>
+                    <a href="apply.html" class="product-btn">Learn More</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">📚</div>
+                    <h3>Education Loans</h3>
+                    <ul class="product-features">
+                        <li>Cover tuition and living expenses</li>
+                        <li>Extended repayment grace period</li>
+                        <li>Support your educational goals</li>
+                        <li>Competitive student rates</li>
+                    </ul>
+                    <a href="apply.html" class="product-btn">Learn More</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">💼</div>
+                    <h3>Business Loans</h3>
+                    <ul class="product-features">
+                        <li>Start or expand your business</li>
+                        <li>Amounts up to R5,000,000</li>
+                        <li>Quick approval for entrepreneurs</li>
+                        <li>Flexible repayment schedules</li>
+                    </ul>
+                    <a href="apply.html" class="product-btn">Learn More</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🎓</div>
+                    <h3>Emergency Loans</h3>
+                    <ul class="product-features">
+                        <li>For unexpected expenses</li>
+                        <li>Quick same-day approval</li>
+                        <li>Flexible small amounts</li>
+                        <li>Minimal documentation required</li>
+                    </ul>
+                    <a href="apply.html" class="product-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="statsSection">
+        <div class="section-container">
+            <h2 class="section-title">Our Impact</h2>
+            <p class="section-subtitle">Trusted by thousands of families across South Africa</p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="5000" data-suffix="K+">0K+</span></h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="counter currency" data-target="8500000" data-prefix="R" data-suffix="M+">R0M+</span></h3>
+                    <p>Loans Disbursed</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="100" data-suffix="%">0%</span></h3>
+                    <p>Customer Satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="section-subtitle">Real stories from real people</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The process was incredibly fast and smooth. I applied in the morning and had the funds by evening. Best experience I've had with any lender!"</p>
+                    <p class="testimonial-author">Thandi Mthembu</p>
+                    <p class="testimonial-role">Personal Loan Customer</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Mndeni helped me renovate my home at an affordable rate. The team was professional and the entire experience was transparent."</p>
+                    <p class="testimonial-author">James Nkosi</p>
+                    <p class="testimonial-role">Home Improvement Loan Customer</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"I needed money for my daughter's education and Mndeni came through. No hassles, fair rates, and excellent customer service throughout."</p>
+                    <p class="testimonial-author">Linda Govender</p>
+                    <p class="testimonial-role">Education Loan Customer</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Starting my business was daunting, but Mndeni made it easy with their business loan. Highly recommended for entrepreneurs!"</p>
+                    <p class="testimonial-author">Buhle Zuma</p>
+                    <p class="testimonial-role">Business Loan Customer</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The support team is amazing. I had questions at odd hours and they were always there to help. A truly customer-centric company."</p>
+                    <p class="testimonial-author">Ahmed Hassan</p>
+                    <p class="testimonial-role">Personal Loan Customer</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"I got my car through their auto loan program. Fair rates, quick process, and I'm driving my dream car. Thank you, Mndeni!"</p>
+                    <p class="testimonial-author">Naledi Dlamini</p>
+                    <p class="testimonial-role">Auto Loan Customer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to Take Control of Your Financial Future?</h2>
+        <p>Join thousands of satisfied customers who have found financial freedom with Mndeni Easy Loans</p>
+        <a href="apply.html" class="cta-primary">Apply for a Loan Today</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Mndeni</h4>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Mndeni Easy Loans is committed to providing accessible financial solutions to families across South Africa.</p>
+                <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Licensed and regulated by the National Credit Regulator</p>
             </div>
 
-            <<div class="section-title">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
-<div class="section-content">
-    <p>By signing below, the Borrower (YOU), hereby:</p>
-    <div class="bullet-item">
-        <p>• Accepts the approved loan of <span id="acceptedLoanAmount"></span> under the terms stated above</p>
-    </div>
-</div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
 
-<div class="signature-title">SIGNATURE FOR THE LENDER (MNDENI):</div>
-<p class="signatures-label">Signatures</p>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
 
-<div class="signature-section">
-    <!-- LENDER SIGNATURE (IMAGE URL ONLY) -->
-    <div class="signature-box">
-        <h4>Lender (Mndeni):</h4>
-
-        <div class="signature-">
-            <img 
-                src="image/download (2).png"
-                alt="Lender Signature"
-                style="max-width: 220px; height: auto;"
-            >
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li>📞 +27813505496</li>
+                    <li>📧 mndenieasyloan@aol.com</li>
+                    <li>📍 Shop 12 Shopping Centre Rank Road Nqutu 3135</li>
+                    <li>🕐 Available 24/7</li>
+                </ul>
+            </div>
         </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mndeni Easy Loans. All rights reserved. Empowering Financial Freedom.</p>
         </div>
-        <div class="date-line-sig">
-            <strong>Date:</strong> <span id="lenderSignDate"></span>
-        </div>
-    </div>
-
-
-
-    <!-- BORROWER SIGNATURE (UNCHANGED) -->
-    <div class="signature-box">
-        <h4>Borrower (YOU):</h4>
-        <div class="signature-line"></div>
-        <div class="signature-label">
-            <strong>Signature:</strong> 
-        </div>
-        <div class="name-line">
-            <strong>Name:</strong> _______________________
-        </div>
-        <div class="date-line-sig">
-            <strong>Date:</strong> <span id="borrowerSignDate"></span>
-        </div>
-    </div>
-</div>
-
-<div style="margin-top: 25px; padding-top: 12px; border-top: 2px solid #0d7377;">
-    <div style="text-align: center; margin-bottom: 12px;">
-        <div class="mndeni-logo" style="font-size: 24pt;">Mndeni<span>.</span></div>
-        <p style="font-size: 8pt; color: #666; margin-top: 3px;">
-            <em>"Empowering Financial Growth Through Responsible Lending"</em>
-        </p>
-    </div>
-
-    <p style="font-size: 7.5pt; text-align: center; color: #666;">
-        This document is a legally binding agreement. Please retain a copy for your records.<br>
-        For any queries, contact us at mndenieasyloan@aol.com or +27813505496
-    </p>
-</div>
-
-<div class="page-footer">
-    Page 4 of 4 | Mndeni Easy Loans Loan Agreement | Contract No:
-    <span id="contractNoFooter"></span>
-</div>
-
+    </footer>
 
     <script>
-        function parseInputData(text) {
-            const lines = text.trim().split('\n').map(line => line.trim()).filter(line => line);
-            const data = {
-                fullName: '',
-                loanAmount: 0,
-                loanDuration: 0,
-                idNumber: '',
-                accountNo: ''
-            };
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].toLowerCase();
-                
-                if (line.includes('full name') || line.includes('your full name')) {
-                    if (i + 1 < lines.length && !lines[i + 1].toLowerCase().includes('loan') && !lines[i + 1].toLowerCase().includes('id') && !lines[i + 1].toLowerCase().includes('account')) {
-                        data.fullName = lines[i + 1];
-                    }
-                }
-                
-                if (line.includes('loan amount')) {
-                    if (i + 1 < lines.length) {
-                        const amount = parseFloat(lines[i + 1].replace(/[^0-9.]/g, ''));
-                        if (!isNaN(amount)) {
-                            data.loanAmount = amount;
-                        }
-                    }
-                }
-                
-                if (line.includes('loan term') || line.includes('duration')) {
-                    if (i + 1 < lines.length) {
-                        const months = parseInt(lines[i + 1].replace(/[^0-9]/g, ''));
-                        if (!isNaN(months)) {
-                            data.loanDuration = months;
-                        }
-                    }
-                }
-                
-                if (line.includes('id number') || line === 'id') {
-                    if (i + 1 < lines.length) {
-                        data.idNumber = lines[i + 1].replace(/[^0-9]/g, '');
-                    }
-                }
-                
-                if (line.includes('account') && (line.includes('pay out') || line.includes('payout') || line.includes('no'))) {
-                    if (i + 1 < lines.length) {
-                        data.accountNo = lines[i + 1].replace(/[^0-9]/g, '');
-                    }
-                }
-            }
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
 
-            return data;
-        }
-
-        function calculateMonthlyInstallment(loanAmount, months) {
-            const interest = loanAmount * 0.05;
-            const totalAmount = loanAmount + interest;
-            return totalAmount / months;
-        }
-
-        function formatCurrency(amount) {
-            return 'R' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        }
-
-        function formatDate(date) {
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-        }
-
-        function generateContractNo(accountNo) {
-            const year = new Date().getFullYear();
-            const month = String(new Date().getMonth() + 1).padStart(2, '0');
-            return `MEL-${year}-${month}-${accountNo}`;
-        }
-
-        function generateDocument() {
-            const inputText = document.getElementById('inputData').value;
-            
-            if (!inputText.trim()) {
-                alert('Please paste the applicant details first!');
-                return;
-            }
-
-            const data = parseInputData(inputText);
-
-            if (!data.fullName || !data.loanAmount || !data.loanDuration) {
-                alert('Could not parse all required data. Please ensure you paste the data in the correct format.');
-                return;
-            }
-
-            const today = new Date();
-            const monthlyPayment = calculateMonthlyInstallment(data.loanAmount, data.loanDuration);
-            const contractNo = generateContractNo(data.accountNo);
-
-            // Populate all document fields
-            document.getElementById('docDate').textContent = formatDate(today);
-            document.getElementById('contractNo').textContent = contractNo;
-            document.getElementById('contractNoFooter').textContent = contractNo;
-            document.getElementById('effectiveDate').textContent = formatDate(today).toUpperCase();
-            document.getElementById('borrowerName').textContent = data.fullName.toUpperCase();
-            document.getElementById('borrowerId').textContent = data.idNumber;
-            document.getElementById('borrowerAccount').textContent = data.accountNo;
-            document.getElementById('loanAmount').textContent = formatCurrency(data.loanAmount);
-            document.getElementById('loanDuration').textContent = data.loanDuration + ' Months';
-            document.getElementById('monthlyRepayment').textContent = formatCurrency(monthlyPayment);
-            document.getElementById('principalAmount').textContent = formatCurrency(data.loanAmount);
-            document.getElementById('repaymentMonths').textContent = data.loanDuration + ' Months';
-            document.getElementById('installmentAmount').textContent = formatCurrency(monthlyPayment);
-            document.getElementById('debitAuthName').textContent = data.fullName.toUpperCase();
-            document.getElementById('debitAccountNo').textContent = data.accountNo;
-            document.getElementById('debitAmount').textContent = formatCurrency(monthlyPayment);
-            document.getElementById('signDate').textContent = formatDate(today);
-            document.getElementById('acceptedLoanAmount').textContent = formatCurrency(data.loanAmount);
-            document.getElementById('lenderSignDate').textContent = today.toLocaleDateString('en-GB');
-            document.getElementById('borrowerSignDate').textContent = today.toLocaleDateString('en-GB');
-
-            // Show document
-            document.getElementById('pdfDocument').classList.add('visible');
-            document.getElementById('pdfDocument').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        async function downloadPDF() {
-            const element = document.getElementById('pdfDocument');
-            
-            if (!element.classList.contains('visible')) {
-                alert('Please generate the agreement first!');
-                return;
-            }
-
-            const btn = document.getElementById('downloadBtn');
-            btn.disabled = true;
-            document.getElementById('loadingOverlay').classList.add('visible');
-
-            const borrowerName = document.getElementById('borrowerName').textContent;
-            const filename = `Mndeni_Loan_Agreement_${borrowerName.replace(/\s+/g, '_')}.pdf`;
-
-            const { jsPDF } = window.jspdf;
-            const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
             });
+        });
 
-            const pages = document.querySelectorAll('.a4-page');
-            const pageWidth = 210;
-            const pageHeight = 297;
+        // Hero Slider
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        const totalSlides = slides.length;
 
-            for (let i = 0; i < pages.length; i++) {
-                const page = pages[i];
-                
-                try {
-                    const canvas = await html2canvas(page, {
-                        scale: 2,
-                        useCORS: true,
-                        allowTaint: true,
-                        logging: false,
-                        backgroundColor: '#ffffff',
-                        width: page.offsetWidth,
-                        height: page.offsetHeight
-                    });
-
-                    const imgData = canvas.toDataURL('image/jpeg', 0.95);
-                    
-                    if (i > 0) {
-                        pdf.addPage();
-                    }
-                    
-                    pdf.addImage(imgData, 'JPEG', 0, 0, pageWidth, pageHeight);
-                } catch (error) {
-                    console.error('Error rendering page', i + 1, error);
-                }
-            }
-
-            pdf.save(filename);
+        function showSlide(index) {
+            currentIndex = (index + totalSlides) % totalSlides;
+            const offset = -currentIndex * 100;
+            document.getElementById('heroSlides').style.transform = `translateX(${offset}%)`;
             
-            btn.disabled = false;
-            document.getElementById('loadingOverlay').classList.remove('visible');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
         }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        // Auto-swipe every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Button controls
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const prefix = counter.dataset.prefix || '';
+                const suffix = counter.dataset.suffix || '';
+                let current = 0;
+                const increment = target / 50; // Animate over 50 steps
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        if (counter.classList.contains('currency')) {
+                            // Display in millions with one decimal place
+                            counter.textContent = prefix + (Math.round(current) / 1000000).toFixed(1) + suffix;
+                        } else {
+                            counter.textContent = Math.floor(current) + suffix;
+                        }
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        if (counter.classList.contains('currency')) {
+                            counter.textContent = prefix + (target / 1000000).toFixed(1) + suffix;
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Trigger animation when stats section is in view
+        const statsSection = document.getElementById('statsSection');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Modified hero carousel code to use the new currentIndex variable
+        let currentSlideIndex = 0;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            
+            if (n >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (n < 0) {
+                currentSlideIndex = slides.length - 1;
+            } else {
+                currentSlideIndex = n;
+            }
+            
+            document.getElementById('heroSlides').style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[currentSlideIndex]) {
+                dots[currentSlideIndex].classList.add('active');
+            }
+        }
+
+        function currentSlide(n) {
+            showSlide(n);
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex--;
+            showSlide(currentSlideIndex);
+        }
+
+        // Re-adding the interval for auto-advancing slides
+        // The original `currentIndex` variable was also used in the interval, so we align it
+        setInterval(nextSlide, 5000); 
+
+        // The original JS for hero carousel had the event listeners for next/prev buttons already,
+        // and also the interval. We've consolidated the logic into the new `currentSlideIndex` and `showSlide` functions.
+        // The existing event listeners and interval are still functional.
+
     </script>
 </body>
 </html>
