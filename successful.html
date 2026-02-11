@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Successful - Mndeni Easy Loans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         * {
             margin: 0;
@@ -13,38 +14,34 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f8;
             color: #333;
-            line-height: 1.6;
-            background: #f8f9fa;
         }
 
         header {
-            background: white;
+            background: #ffffff;
             padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .header-container {
             max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin: auto;
             padding: 0 20px;
+            display: flex;
+            align-items: center;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            text-decoration: none;
             font-size: 24px;
             font-weight: 800;
             color: #0d5d4d;
-            letter-spacing: -0.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .logo-dot {
@@ -52,119 +49,145 @@
             height: 12px;
             background: #ffc107;
             border-radius: 50%;
-            display: inline-block;
         }
 
         .success-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 100px 20px;
             text-align: center;
-            padding: 120px 20px;
         }
 
         .success-icon {
             font-size: 80px;
-            color: #0d5d4d;
             margin-bottom: 20px;
         }
 
         .success-title {
             font-size: 36px;
-            font-weight: 800;
             color: #0d5d4d;
-            margin-bottom: 20px;
+            font-weight: 800;
+            margin-bottom: 15px;
         }
 
         .success-message {
             font-size: 18px;
+            margin-bottom: 50px;
             color: #555;
-            margin-bottom: 40px;
         }
 
         .contact-buttons {
             display: flex;
             flex-direction: column;
-            gap: 20px;
             align-items: center;
+            gap: 20px;
         }
 
-        .contact-btn {
-            background: #0d5d4d;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
+        .btn {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .contact-btn:hover {
-            background: #0a4a3a;
-        }
-
-        .contact-info {
+            gap: 12px;
+            padding: 15px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 16px;
-            color: #333;
-            margin-top: -10px;
+            transition: 0.3s ease;
+            min-width: 260px;
+            justify-content: center;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+        }
+
+        .email-btn {
+            background: #0d5d4d;
+            color: white;
+        }
+
+        .email-btn:hover {
+            background: #083c31;
+            transform: translateY(-2px);
+        }
+
+        .btn img {
+            width: 22px;
+            height: 22px;
         }
 
         footer {
             background: #0d5d4d;
             color: white;
-            padding: 60px 20px 20px;
             text-align: center;
+            padding: 50px 20px 20px;
+            margin-top: 80px;
         }
 
-        @media (max-width: 768px) {
-            .success-title {
-                font-size: 28px;
+        @media(max-width:768px){
+            .success-title{
+                font-size:28px;
             }
 
-            .success-message {
-                font-size: 16px;
-            }
-
-            .success-section {
-                padding: 80px 20px;
+            .success-section{
+                padding:70px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                Mndeni<span class="logo-dot"></span>
-            </a>
-        </div>
-    </header>
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            Mndeni <span class="logo-dot"></span>
+        </a>
+    </div>
+</header>
 
-    <!-- Success Section -->
-    <section class="success-section">
-        <div class="success-icon">✅</div>
-        <h1 class="success-title">Application Successful!</h1>
-        <p class="success-message">
-            Congratulations! Your loan application has been successfully submitted.<br>
-            To proceed with your loan, please contact our team via WhatsApp +27687777411 or Email: mndenieasyloan@aol.com.
-        </p>
-        <div class="contact-buttons">
-          
-            </a>
-            <div class="contact-info">Or send us an email: <a href="mailto:mndenieasyloan@aol.com">mndenieasyloan@aol.com</a></div>
-        </div>
-    </section>
+<section class="success-section">
+    <div class="success-icon">✅</div>
+    <h1 class="success-title">Application Successful!</h1>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Mndeni Easy Loans. All rights reserved.</p>
-    </footer>
+    <p class="success-message">
+        Your loan application has been submitted successfully.<br>
+        To proceed, contact us directly via WhatsApp or Email below.
+    </p>
+
+    <div class="contact-buttons">
+
+        <!-- WhatsApp 1 -->
+        <a class="btn whatsapp-btn" 
+           href="https://wa.me/27687777411" 
+           target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            Chat on WhatsApp (+27 68 777 7411)
+        </a>
+
+        <!-- WhatsApp 2 -->
+        <a class="btn whatsapp-btn" 
+           href="https://wa.me/27813505496" 
+           target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            Chat on WhatsApp (+27 81 350 5496)
+        </a>
+
+        <!-- Email Button -->
+        <a class="btn email-btn" 
+           href="mailto:mndenieasyloan@aol.com?subject=Loan Application Follow Up">
+            📧 Send Email (mndenieasyloan@aol.com)
+        </a>
+
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Mndeni Easy Loans. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
