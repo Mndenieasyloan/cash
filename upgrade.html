@@ -111,11 +111,6 @@
             transform: none;
         }
         
-        .signature-line img {
-    max-width: 220px;
-    height: auto;
-}
-
         /* PDF Document Container */
         .pdf-document {
             display: none;
@@ -129,11 +124,11 @@
             width: fit-content;
         }
         
-        /* A4 Page - exact dimensions for PDF */
+        /* A4 Page - adjusted padding to maximize space safely */
         .a4-page {
             width: 210mm;
             height: 297mm;
-            padding: 12mm 15mm;
+            padding: 10mm 15mm; 
             background: white;
             box-shadow: 0 0 25px rgba(0,0,0,0.15);
             margin-bottom: 25px;
@@ -141,12 +136,12 @@
             overflow: hidden;
         }
         
-        /* Header Section */
+        /* Header Section - Page 1 */
         .header-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
         
         .logo-section {
@@ -155,212 +150,139 @@
             gap: 8px;
         }
         
-        .ncr-logo {
-            height: 50px;
-            width: auto;
-        }
-        
-        .sa-coat-of-arms {
-            height: 50px;
-            width: auto;
-        }
+        .ncr-logo { height: 45px; width: auto; }
+        .sa-coat-of-arms { height: 45px; width: auto; }
+        .small-coat { height: 45px; margin-bottom: 2px; }
         
         .company-info {
             text-align: right;
-            font-size: 13pt;
-            line-height: 1.3;
+            font-size: 11pt;
+            line-height: 1.2;
         }
         
-        .company-info .ncr-reg {
-            color: #0d7377;
-            font-weight: bold;
-        }
+        .company-info .ncr-reg { color: #0d7377; font-weight: bold; }
+        .company-info .legal-reg { color: #c41e3a; font-weight: bold; }
+        .company-info a { color: #0d7377; text-decoration: underline; }
+        .company-info .date-line { font-weight: bold; margin-top: 2px; }
         
-        .company-info .legal-reg {
-            color: #c41e3a;
-            font-weight: bold;
+        /* Compact Header for Pages 2 & 3 */
+        .secondary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #0d7377;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
         }
-        
-        .company-info a {
-            color: #0d7377;
-            text-decoration: underline;
-        }
-        
-        .company-info .date-line {
-            font-weight: bold;
-            margin-top: 2px;
-        }
-        
-        .small-coat {
-            height: 50px;
-            margin-bottom: 2px;
-        }
-        
+        .secondary-header .logos img { height: 35px; margin-right: 5px; }
+        .secondary-header .doc-ref { font-size: 9pt; font-weight: bold; color: #555; text-align: right; }
+
         /* Mndeni Logo */
-        .mndeni-logo-section {
-            margin: 3px 0;
-        }
-        
+        .mndeni-logo-section { margin: 2px 0; }
         .mndeni-logo {
-            font-size: 36pt;
+            font-size: 32pt;
             font-weight: bold;
             color: #0d7377;
             letter-spacing: -2px;
             line-height: 1;
         }
-        
-        .mndeni-logo span {
-            color: #f5c518;;
-        }
+        .mndeni-logo span { color: #f5c518; }
         
         .barcode {
             margin-top: 2px;
-            height: 18px;
+            height: 15px;
             width: 140px;
-            background: repeating-linear-gradient(
-                90deg,
-                #000 0px, #000 2px,
-                transparent 2px, transparent 4px,
-                #000 4px, #000 5px,
-                transparent 5px, transparent 8px,
-                #000 8px, #000 10px,
-                transparent 10px, transparent 11px,
-                #000 11px, #000 12px,
-                transparent 12px, transparent 15px
-            );
+            background: repeating-linear-gradient(90deg, #000 0px, #000 2px, transparent 2px, transparent 4px, #000 4px, #000 5px, transparent 5px, transparent 8px, #000 8px, #000 10px, transparent 10px, transparent 11px, #000 11px, #000 12px, transparent 12px, transparent 15px);
         }
         
         .contract-info {
             font-weight: bold;
-            margin: 19px 0;
-            font-size: 10pt;
+            margin: 12px 0;
+            font-size: 9.5pt;
         }
         
         .main-title {
             text-align: center;
-            font-size: 18pt;
+            font-size: 15pt;
             font-weight: bold;
             color: #0d7377;
-            margin: 16px 0;
+            margin: 10px 0;
             text-decoration: underline;
         }
         
         .parties-section {
             text-align: center;
-            margin: 14px 0;
-            font-size: 10.5pt;
+            margin: 10px 0;
+            font-size: 9.5pt;
         }
         
-        .parties-section h3 {
-            color: #333;
-            margin: 8px 0 2px;
-            font-size: 10.5pt;
-        }
-        
-        .parties-section .company-name {
-            color: #0d7377;
-            font-weight: bold;
-        }
-        
-        .parties-section .borrower-info {
-            color: #0d7377;
-            font-weight: bold;
-        }
-        
-        .parties-section .mndeni-highlight {
-            color: #f5c518;
-            font-weight: bold;
-        }
+        .parties-section h3 { color: #333; margin: 4px 0 2px; font-size: 9.5pt; }
+        .parties-section .company-name { color: #0d7377; font-weight: bold; }
+        .parties-section .borrower-info { color: #0d7377; font-weight: bold; }
+        .parties-section .mndeni-highlight { color: #f5c518; font-weight: bold; }
         
         .intro-text {
             margin: 8px 0;
             text-align: left;
-            font-size: 9.5pt;
+            font-size: 8.5pt;
         }
-        
-        .intro-text p {
-            margin-bottom: 5px;
-        }
+        .intro-text p { margin-bottom: 4px; }
         
         /* Loan Table */
         .loan-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 6px 0;
+            margin: 8px 0;
         }
-        
         .loan-table th {
             background: #0d7377;
             color: white;
-            padding: 5px 6px;
+            padding: 5px;
             text-align: center;
-            font-size: 9.5pt;
+            font-size: 8.5pt;
         }
-        
         .loan-table td {
-            padding: 5px 6px;
+            padding: 5px;
             text-align: center;
             border: 1px solid #ddd;
             font-weight: bold;
-            font-size: 9.5pt;
+            font-size: 8.5pt;
         }
         
         /* Section Styling */
         .section-title {
             color: #0d7377;
             font-weight: bold;
-            margin: 9px 0 3px;
-            font-size: 9.5pt;
+            margin: 12px 0 4px;
+            font-size: 9pt;
+            text-transform: uppercase;
         }
         
         .section-content {
-            margin: 18px 0;
+            margin: 0 0 10px;
             text-align: justify;
-            font-size: 9.5pt;
-            line-height: 1.5;
+            font-size: 8.5pt;
+            line-height: 1.4;
         }
+        .section-content p { margin-bottom: 5px; }
         
-        .section-content p {
-            margin-bottom: 4px;
+        /* Debit Order Box Styling */
+        .debit-order-box {
+            background: #faf9f5;
+            border: 1px solid #d6b94b;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
         }
-        
+        .debit-order-box .section-title { margin-top: 0; color: #b89a26; }
+
         /* Signature Section */
-        .signature-title {
-            color: #0d7377;
-            font-weight: bold;
-            font-size: 9.5pt;
-            margin: 10px 0 3px;
-        }
+        .signature-title { color: #0d7377; font-weight: bold; font-size: 9pt; margin: 15px 0 5px; }
+        .signatures-label { font-weight: bold; margin-bottom: 5px; font-size: 8.5pt; }
         
-        .signatures-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 8.5pt;
-        }
-        
-        .signature-section {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
-        }
-        
-        .signature-box {
-            width: 45%;
-        }
-        
-        .signature-box h4 {
-            color: #0d7377;
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 8.5pt;
-        }
-        
-        .lender-signature-img {
-            height: 35px;
-            width: auto;
-            display: block;
-            margin-bottom: 2px;
-        }
+        .signature-section { display: flex; justify-content: space-between; margin-top: 10px; }
+        .signature-box { width: 45%; }
+        .signature-box h4 { color: #0d7377; font-weight: bold; margin-bottom: 8px; font-size: 8.5pt; }
         
         .signature-line {
             border-bottom: 1px solid #D6B94B;
@@ -371,31 +293,11 @@
             padding-bottom: 2px;
         }
         
-        .signature-label {
-            font-size: 8pt;
-        }
+        .signature-label { font-size: 8pt; }
+        .name-line { margin-top: 6px; color: #333; font-size: 8.5pt; }
+        .date-line-sig { margin-top: 4px; font-size: 8.5pt; }
         
-        .name-line {
-            margin-top: 6px;
-             color: #D6B94B;
-        }
-        
-        .lender-name-handwritten {
-            font-family: 'Arial, sans-serif;
-            font-size: 14pt;
-            color: #D6B94B;
-        }
-        
-        .date-line-sig {
-            margin-top: 4px;
-            font-size: 8.5pt;
-        }
-        
-        .bullet-item {
-            margin-left: 15px;
-            margin-top: 3px;
-            font-size: 8.5pt;
-        }
+        .bullet-item { margin-left: 15px; margin-top: 3px; font-size: 8.5pt; }
         
         /* Page footer */
         .page-footer {
@@ -412,17 +314,9 @@
         
         /* Print Styles */
         @media print {
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-            }
-            .input-container {
-                display: none !important;
-            }
-            .pdf-document {
-                display: block !important;
-            }
+            body { background: white; padding: 0; margin: 0; }
+            .input-container { display: none !important; }
+            .pdf-document { display: block !important; }
             .a4-page {
                 box-shadow: none !important;
                 margin: 0 !important;
@@ -431,43 +325,18 @@
             }
         }
 
+        /* Loading Overlay */
         .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 9999;
         }
-
-        .loading-overlay.visible {
-            display: flex;
-        }
-
-        .loading-box {
-            background: white;
-            padding: 30px 50px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
+        .loading-overlay.visible { display: flex; }
+        .loading-box { background: white; padding: 30px 50px; border-radius: 12px; text-align: center; }
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #ddd;
-            border-top-color: #0d7377;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
+            width: 40px; height: 40px; border: 4px solid #ddd; border-top-color: #0d7377;
+            border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px;
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -505,7 +374,6 @@
     </div>
 
     <div class="pdf-document" id="pdfDocument">
-        <!-- ==================== PAGE 1 ==================== -->
         <div class="a4-page" id="page1">
             <div class="header-section">
                 <div class="logo-section">
@@ -516,7 +384,7 @@
                     <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous">
                     <div><span class="ncr-reg">NCR Reg No:</span> NCRCP19616 / <span class="legal-reg">Legal Reg No:</span> 2024/157205/07</div>
                     <div>12 Shopping Centre Rank Road Nqutu 3135,</div>
-                    <div>South Africa Tel: +27813505496</div>
+                    <div>South Africa Tel: +27813505496/0687777411)</div>
                     <div><a href="mailto:mndenieasyloan@aol.com">mndenieasyloan@aol.com</a></div>
                     <div class="date-line">Date: <span id="docDate"></span></div>
                 </div>
@@ -532,11 +400,11 @@
                 <div>EFFECTIVE DATE: <span id="effectiveDate"></span></div>
             </div>
 
-            <h1 class="main-title">MNDENI EASY LOAN AGREEMENT & APPROVAL FOR A <span id="loanTypeTitle">LOAN</span><span </span> LOAN</h1>
+            <h1 class="main-title">MNDENI EASY LOAN AGREEMENT & APPROVAL FOR A <span id="loanTypeTitle">LOAN</span> LOAN</h1>
 
             <div class="parties-section">
                 <h3>BETWEEN THE PARTIES: THE LENDER (MNDENI):</h3>
-                <div><span class="company-name">Mndeni Easy Loans (Registration No: [NCRCP19616]</span></div>
+                <div><span class="company-name">Mndeni Easy Loans (Registration No: NCRCP19616)</span></div>
                 <div><strong>Principal Place of Business: 12 Shopping Centre, Rank Road, Nqutu, 3135</strong></div>
                 <div><strong>Contact: mndenieasyloan@aol.com</strong></div>
                 <div>(Hereinafter referred to as the <strong>Lender: <span class="mndeni-highlight">Mndeni</span></strong>.)</div>
@@ -579,191 +447,180 @@
 
             <div class="section-title">SECTION 1: LOAN FACILITY & DISBURSEMENT</div>
             <div class="section-content">
-                <p>1.1 <strong>Principal Sum.</strong> The Lender (Mndeni) hereby agrees to disburse to the Borrower (YOU) a <span id="loanTypeSection1"></span> in the principal amount of <strong>(<span id="principalAmount"></span>)</strong>.</p>
-                <p>1.2 <strong>Interest Rate.</strong> The outstanding principal balance shall accrue interest at a fixed, favorable rate of <strong>five percent (5%) per annum</strong>, calculated from the date of disbursement until full and final settlement.</p>
+                <p>1.1 <strong>Principal Sum.</strong> The Lender (Mndeni) hereby agrees to disburse to the Borrower (YOU) a <span id="loanTypeSection1"></span> in the principal amount of <strong><span id="principalAmount"></span></strong>.</p>
+                <p>1.2 <strong>Interest Rate.</strong> The outstanding principal balance shall accrue interest at a fixed rate of <strong>five percent (5%) per annum</strong>, calculated from the date of disbursement until full and final settlement.</p>
             </div>
 
-            <div class="section-title">2.1 Low Credit Score UPGRADE Deposit</div>
+            <div class="section-title">SECTION 2: BAD CREDIT ASSURANCE / SECURITY DEPOSIT</div>
             <div class="section-content">
-                <p>Because your current credit score is low, a <strong>once-off, fully refundable credit Transfer UPGRADE deposit of R360</strong> is required before your loan can be released.</p>
-                <p>This deposit secures a temporary Transfer Authorization, which facilitates an enhanced credit assessment and improves your positioning for loan approval.</p>
-                <p>The deposit is fully refundable upon completion of the process and is designed specifically to support applicants with recent credit upgrades.</p>
+                <p><strong>2.1 Bad Credit Assurance Security Deposit</strong><br>
+                Because the Borrower (YOU) has previously taken loans with other companies and defaulted, resulting in multiple default records on their credit profile, a <strong>once-off, fully refundable Bad Credit Assurance Security Deposit of R360</strong> is required before the loan can be released.</p>
+                <p>This deposit is required due to the Borrower's adverse credit history and serves as financial security for the Lender (Mndeni).</p>
+                <p>The Security Deposit is held as protection in case the Borrower (YOU) fails to make a monthly repayment due to unforeseen financial difficulties. In the event of default, the deposit, together with any interest earned thereon, may be used to cover an unpaid monthly installment.</p>
+                <p>This deposit is not a credit upgrade fee. It is a security measure required because of previous loan defaults.</p>
+                
+                <p><strong>2.2 Refund of Security Deposit</strong><br>
+Upon successful completion and full repayment of the loan, the <strong>R360 Security Deposit, together with any interest earned</strong>, will be refunded to the Borrower within 30 minutes of final payment confirmation. 
+
+The refund will be processed via EFT to the Borrower’s nominated bank account. This refund is subject only to the loan being fully settled and no outstanding amounts being due.</p>
+                <p>All refunds are processed via <strong>EFT directly to the Borrower's nominated bank account</strong>.</p>
             </div>
             
-            <div class="page-footer">Page 1 of 4 | Mndeni Easy Loans Loan Agreement</div>
+            <div class="page-footer">Page 1 of 3 | Mndeni Easy Loans Loan Agreement</div>
         </div>
 
-        <!-- ==================== PAGE 2 ==================== -->
         <div class="a4-page" id="page2">
-            <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
+            <div class="secondary-header">
+                <div class="logos">
+                    <img src="image/img14.jpg" alt="NCR Logo" crossorigin="anonymous">
+                    <img src="image/img16.jpg" alt="SA Coat of Arms" crossorigin="anonymous">
                 </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous"></div>
-
-            <div class="section-title">2.2 Refund Guarantee (30-Minute Refund)</div>
-            <div class="section-content">
-                <p>If the credit UPGRADE process is completed and loan is transferred all fee paid and this <strong>full R360 deposit is refunded within 30 minutes</strong>. No delays. No hidden conditions.</p>
-                <p>All refunds are processed via <strong>EFT directly to the client's nominated bank account</strong>.</p>
+                <div class="doc-ref">
+                    Mndeni Easy Loans | Contract No: <span id="contractNoPage2"></span>
+                </div>
             </div>
 
             <div class="section-title">SECTION 3: REPAYMENT SCHEDULE</div>
             <div class="section-content">
-                <p>3.1 <strong>Installment Plan.</strong> The Borrower (YOU) agrees to repay the <span id="loanTypeSection3"></span> through <strong><span id="repaymentMonths"></span> on a Installment of <span id="installmentAmount"></span></strong> (RANDS) each Months.</p>
-                <p>3.2 <strong>Payment Date.</strong> Installments shall be debited automatically on the <strong>Borrower (YOU)'s preferred day, the day "chosen below" of each month,</strong> commencing one calendar month from the date of loan disbursement.</p>
-                <p>3.3 <strong>Prepayment Privilege.</strong> The Borrower (YOU) retains the unequivocal right to settle the outstanding balance, in part or in full, at any time prior to the scheduled maturity date <strong>without incurring any prepayment penalty or fee.</strong></p>
+                <p>3.1 <strong>Installment Plan.</strong> The Borrower (YOU) agrees to repay the <span id="loanTypeSection3"></span> over <strong><span id="repaymentMonths"></span></strong> in installments of <strong><span id="installmentAmount"></span></strong> each month.</p>
+                <p>3.2 <strong>Payment Date.</strong> Installments shall be debited automatically on the Borrower (YOU)'s chosen day of each month, commencing one calendar month from the date of loan disbursement.</p>
+                <p>3.3 <strong>Prepayment Privilege.</strong> The Borrower (YOU) may settle the outstanding balance, in part or in full, at any time prior to the scheduled maturity date without incurring any prepayment penalty or fee.</p>
             </div>
 
             <div class="section-title">SECTION 4: DEBIT ORDER AUTHORIZATION</div>
             <div class="section-content">
-                <p>4.1 The Borrower (YOU) hereby irrevocably authorizes the Lender (Mndeni) (and its appointed agents) to issue and deliver payment instructions to the Borrower (YOU)'s bank for the collection of all amounts due under this Agreement via direct debit.</p>
-                <p>4.2 This authority shall remain in full force and effect until the Lender (Mndeni) receives written notice of its cancellation from the Borrower (YOU), which notice shall be provided no less than 20 business days before the next debit date and shall not affect the Borrower (YOU)'s liability for any amounts already due or which may become due.</p>
+                <p>4.1 The Borrower (YOU) hereby authorizes the Lender (Mndeni) (and its appointed agents) to issue and deliver payment instructions to the Borrower (YOU)'s bank for the collection of all amounts due under this Agreement via direct debit.</p>
+                <p>4.2 This authority shall remain in full force and effect until the Lender (Mndeni) receives written notice of cancellation from the Borrower (YOU), provided no less than 20 business days before the next debit date. Cancellation does not remove liability for amounts already due.</p>
             </div>
 
-            <div class="section-title">STANDING DEBIT ORDER AUTHORIZATION</div>
-            <div class="section-content">
-                <p>I/We, <strong><span id="debitAuthName"></span></strong>, hereby authorize Mndeni Easy Loans (or its appointed agent) to draw against my/our account held at the bank specified below, the monthly installments as specified in Section 3 of this Agreement.</p>
-                <p><strong>Account Number:</strong> <span id="debitAccountNo"></span> &nbsp;&nbsp;&nbsp; <strong>Bank Name:</strong> &nbsp;&nbsp;&nbsp; <strong>Debit Amount for Monthly Repayment Only:</strong> <span id="debitAmount"></span></p>
-                <p><strong>Debit Day:</strong> The _____ day of each month, commencing. <strong>This mandate shall remain in effect until the full loan obligation is settled and we will provide written revocation, subject to the terms of this Agreement.</strong></p>
-                <p><strong>Sign Here to Authorize Debit Order</strong> _________________________ on this _ <span id="signDate"></span>. <strong>Borrower (YOU)'s</strong></p>
+            <div class="debit-order-box">
+                <div class="section-title">STANDING DEBIT ORDER AUTHORIZATION</div>
+                <div class="section-content" style="margin-bottom: 0;">
+                    <p>I/We, <strong><span id="debitAuthName"></span></strong>, hereby authorize Mndeni Easy Loans (or its appointed agent) to draw against my/our account held at the bank specified below, the monthly installments as specified in Section 3 of this Agreement.</p>
+                    <p><strong>Account Number:</strong> <span id="debitAccountNo"></span> &nbsp;&nbsp;&nbsp; <strong>Bank Name:</strong> ____________________</p>
+                    <p><strong>Debit Amount for Monthly Repayment Only:</strong> <span id="debitAmount"></span></p>
+                    <p><strong>Debit Day:</strong> The _____ day of each month, commencing. <strong>This mandate shall remain in effect until the full loan obligation is settled, subject to the terms of this Agreement.</strong></p>
+                    <p style="margin-top: 10px;"><strong>Sign Here to Authorize Debit Order:</strong> _________________________ &nbsp;&nbsp;&nbsp; <strong>Date:</strong> <span id="signDate"></span></p>
+                    <p><strong>Borrower (YOU)</strong></p>
+                </div>
             </div>
 
             <div class="section-title">SECTION 5: CREDIT ENHANCEMENT COVENANT</div>
             <div class="section-content">
-                <p>5.1 The Borrower (YOU) acknowledges that this Agreement is part of a <strong>constructive credit-building program.</strong> The Lender (Mndeni), with the Borrower (YOU)'s consent, may report positive repayment performance to major credit bureaus, thereby assisting the Borrower (YOU) in establishing a stronger financial profile for future opportunities.</p>
+                <p>5.1 The Borrower (YOU) acknowledges that this Agreement may assist in rebuilding their credit profile. The Lender (Mndeni), with the Borrower (YOU)'s consent, may report positive repayment performance to registered credit bureaus to support future credit improvement.</p>
             </div>
 
-            <div class="page-footer">Page 2 of 4 | Mndeni Easy Loans Loan Agreement</div>
-        </div>
-
-        <!-- ==================== PAGE 3 ==================== -->
-        <div class="a4-page" id="page3">
-             <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
-                </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous"></div>
             <div class="section-title">SECTION 6: DEFAULT AND REMEDIES</div>
             <div class="section-content">
-                <p>6.1 <strong>Event of Default.</strong> A default shall occur if the Borrower (YOU) fails to remit any monthly installment for a period exceeding <strong>thirty-one (31) days</strong> from its due date, becomes insolvent, breaches any material term of this Agreement, or if any representation or warranty is found to be false.</p>
-                <p>6.2 <strong>Consequences of Default.</strong> Upon default, the Lender (Mndeni) reserves the right to: (i) declare the entire outstanding balance immediately due and payable; (ii) forfeit the refundable security deposit; (iii) pursue all available legal remedies to recover the debt; and (iv) report the default to registered credit bureaus.</p>
-                <p>6.3 <strong>Grace Period & Communication.</strong> The Lender (Mndeni) encourages proactive communication in case of financial difficulty. Contacting our offices <strong>prior to a missed payment</strong> to discuss possible arrangements is viewed favorably and may prevent a formal default classification.</p>
+                <p>6.1 <strong>Event of Default.</strong> A default shall occur if the Borrower (YOU) fails to remit any monthly installment for more than thirty-one (31) days from its due date, becomes insolvent, breaches any material term of this Agreement, or if any representation is found to be false.</p>
+                <p>6.2 <strong>Consequences of Default.</strong> Upon default, the Lender (Mndeni) reserves the right to:<br>
+                (i) Declare the entire outstanding balance immediately due and payable;<br>
+                (ii) Apply the Security Deposit, including any interest earned, toward any unpaid installment;<br>
+                (iii) Pursue all available legal remedies to recover the debt; and<br>
+                (iv) Report the default to registered credit bureaus.</p>
+                <p>6.3 <strong>Grace Period & Communication.</strong> The Lender (Mndeni) encourages communication in case of financial difficulty. Contacting the office before missing a payment may help prevent formal default classification.</p>
+            </div>
+
+            <div class="page-footer">Page 2 of 3 | Mndeni Easy Loans Loan Agreement</div>
+        </div>
+        
+        <div class="a4-page" id="page3">
+            <div class="secondary-header">
+                <div class="logos">
+                    <img src="image/img14.jpg" alt="NCR Logo" crossorigin="anonymous">
+                    <img src="image/img16.jpg" alt="SA Coat of Arms" crossorigin="anonymous">
+                </div>
+                <div class="doc-ref">
+                    Mndeni Easy Loans | Contract No: <span id="contractNoPage3"></span>
+                </div>
             </div>
 
             <div class="section-title">SECTION 7: ADDITIONAL TERMS AND CONDITIONS</div>
             <div class="section-content">
-                <p>7.1 <strong>Entire Agreement.</strong> This Agreement constitutes the entire agreement between the parties concerning the subject matter hereof and supersedes all prior agreements, understandings, negotiations, and discussions, whether oral or written.</p>
-                <p>7.2 <strong>Waiver.</strong> No waiver of any provision of this Agreement shall be effective unless in writing and signed by the party against whom enforcement is sought. No failure or delay in exercising any right shall operate as a waiver thereof.</p>
-                <p>7.3 <strong>Assignment.</strong> The Borrower (YOU) may not assign or transfer any rights or obligations under this Agreement without the prior written consent of the Lender (Mndeni). The Lender (Mndeni) may assign its rights and obligations under this Agreement to any third party.</p>
-                <p>7.4 <strong>Notices.</strong> All notices, requests, demands, and other communications under this Agreement shall be in writing and shall be deemed to have been duly given when delivered personally, sent by certified mail, or transmitted by electronic mail to the addresses specified in this Agreement.</p>
-                <p>7.5 <strong>Force Majeure.</strong> Neither party shall be liable for any failure or delay in performing their obligations where such failure or delay results from circumstances beyond the reasonable control of that party, including but not limited to acts of God, natural disasters, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, strikes, or shortages of transportation, facilities, fuel, energy, labor, or materials.</p>
+                <p>7.1 <strong>Entire Agreement.</strong> This Agreement constitutes the entire agreement between the Parties.</p>
+                <p>7.2 <strong>Waiver.</strong> No waiver of any provision shall be effective unless in writing and signed.</p>
+                <p>7.3 <strong>Assignment.</strong> The Borrower (YOU) may not transfer obligations without written consent. The Lender (Mndeni) may assign its rights.</p>
+                <p>7.4 <strong>Notices.</strong> All notices must be in writing and properly delivered.</p>
+                <p>7.5 <strong>Force Majeure.</strong> Neither party shall be liable for delays caused by circumstances beyond reasonable control.</p>
             </div>
 
             <div class="section-title">SECTION 8: CONFIDENTIALITY</div>
             <div class="section-content">
-                <p>8.1 Both parties agree to maintain the confidentiality of all information exchanged in connection with this Agreement and shall not disclose such information to any third party without the prior written consent of the other party, except as required by law or regulatory authority.</p>
-                <p>8.2 The Lender (Mndeni) shall comply with all applicable data protection laws and regulations in the handling of the Borrower (YOU)'s personal information.</p>
+                <p>8.1 Both Parties agree to maintain confidentiality of information exchanged under this Agreement.</p>
+                <p>8.2 The Lender (Mndeni) shall comply with applicable data protection laws in handling the Borrower's personal information.</p>
             </div>
 
-            <div class="page-footer">Page 3 of 4 | Mndeni Easy Loans Loan Agreement</div>
-        </div>
-        
-        <!-- ==================== PAGE 4 ==================== -->
-        <div class="a4-page" id="page4">
-             <div class="logo-section">
-                    <img src="image/img14.jpg" alt="NCR Logo" class="ncr-logo" crossorigin="anonymous">
-                    <img src="image/img16.jpg" alt="SA Coat of Arms" class="sa-coat-of-arms" crossorigin="anonymous">
-                </div>
-                <div class="company-info">
-                    <img src="image/img18.jpg" alt="SA Coat of Arms" class="small-coat" crossorigin="anonymous"></div>
             <div class="section-title">SECTION 10: GENERAL PROVISIONS</div>
             <div class="section-content">
-                <p>10.1 <strong>Governing Law.</strong> This Agreement shall be governed by and construed in accordance with the laws of the Republic of South Africa, with specific reference to the National Credit Act (Act 34 of 2005), and the parties submit to the jurisdiction of the Magistrate's Court of KwaZulu-Natal.</p>
-                <p>10.2 <strong>Amendments.</strong> Any modification or amendment to this Agreement must be documented in writing and signed by both the Lender (Mndeni) and the Borrower (YOU).</p>
-                <p>10.3 <strong>Severability.</strong> If any provision of this Agreement is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the validity, legality, and enforceability of the remaining provisions shall in no way be affected or impaired.</p>
-                <p>10.4 <strong>Dispute Resolution.</strong> The parties agree to first seek an amicable resolution through good-faith negotiation. Failing this, disputes shall be submitted to mediation or, as a last resort, to the competent courts of South Africa.</p>
+                <p>10.1 <strong>Governing Law.</strong> This Agreement shall be governed by the laws of the Republic of South Africa, with reference to the National Credit Act (Act 34 of 2005). The Parties submit to the jurisdiction of the Magistrate's Court of KwaZulu-Natal.</p>
+                <p>10.2 <strong>Amendments.</strong> Any amendment must be in writing and signed by both Parties.</p>
+                <p>10.3 <strong>Severability.</strong> If any provision is found invalid, the remaining provisions remain enforceable.</p>
+                <p>10.4 <strong>Dispute Resolution.</strong> The Parties agree to attempt good-faith negotiation before mediation or court proceedings.</p>
             </div>
 
-            <div class="section-title">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
-<div class="section-content">
-    <p>By signing below, the Borrower (YOU), hereby:</p>
-    <div class="bullet-item">
-        <p>• Accepts the approved <span id="loanTypeAcceptance"></span> of <span id="acceptedLoanAmount"></span> under the terms stated above</p>
+            <div class="section-title" style="margin-top: 20px;">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
+            <div class="section-content">
+                <p>By signing below, the Borrower (YOU) hereby:</p>
+                <div class="bullet-item">
+                    <p>• Accepts the approved <span id="loanTypeAcceptance"></span> of <strong><span id="acceptedLoanAmount"></span></strong> under the terms stated above</p>
+                    <p>• Accepts the R360 refundable Bad Credit Assurance Security Deposit</p>
+                </div>
+            </div>
+
+            <div class="signature-title">SIGNATURE FOR THE LENDER (MNDENI):</div>
+            <p class="signatures-label">Signatures</p>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <h4>Lender (Mndeni):</h4>
+                    <div class="signature-">
+                        <img src="image/download (2).png" alt="Lender Signature" style="max-width: 200px; height: auto;">
+                    </div>
+                    <div class="date-line-sig">
+                        <strong>Date:</strong> <span id="lenderSignDate"></span>
+                    </div>
+                </div>
+
+                <div class="signature-box">
+                    <h4>Borrower (YOU):</h4>
+                    <div class="signature-line" style="margin-top: 35px;"></div>
+                    <div class="signature-label">
+                        <strong>Signature:</strong> 
+                    </div>
+                    <div class="name-line">
+                        <strong>Name:</strong> _______________________
+                    </div>
+                    <div class="date-line-sig">
+                        <strong>Date:</strong> <span id="borrowerSignDate"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 35px; padding-top: 15px; border-top: 2px solid #0d7377;">
+                <div style="text-align: center; margin-bottom: 12px;">
+                    <div class="mndeni-logo" style="font-size: 24pt;">Mndeni<span>.</span></div>
+                    <p style="font-size: 8.5pt; color: #666; margin-top: 3px;">
+                        <em>"Empowering Financial Growth Through Responsible Lending"</em>
+                    </p>
+                </div>
+
+                <p style="font-size: 8pt; text-align: center; color: #666;">
+                    This document is a legally binding agreement. Please retain a copy for your records.<br>
+                    For any queries, contact us at mndenieasyloan@aol.com or +27813505496
+                </p>
+            </div>
+
+            <div class="page-footer">
+                Page 3 of 3 | Mndeni Easy Loans Loan Agreement | Contract No: <span id="contractNoFooter"></span>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="signature-title">SIGNATURE FOR THE LENDER (MNDENI):</div>
-<p class="signatures-label">Signatures</p>
-
-<div class="signature-section">
-    <!-- LENDER SIGNATURE (IMAGE URL ONLY) -->
-    <div class="signature-box">
-        <h4>Lender (Mndeni):</h4>
-
-        <div class="signature-">
-            <img 
-                src="image/download (2).png"
-                alt="Lender Signature"
-                style="max-width: 220px; height: auto;"
-            >
-        </div>
-        </div>
-        <div class="date-line-sig">
-            <strong>Date:</strong> <span id="lenderSignDate"></span>
-        </div>
-    </div>
-
-
-
-    <!-- BORROWER SIGNATURE (UNCHANGED) -->
-    <div class="signature-box">
-        <h4>Borrower (YOU):</h4>
-        <div class="signature-line"></div>
-        <div class="signature-label">
-            <strong>Signature:</strong> 
-        </div>
-        <div class="name-line">
-            <strong>Name:</strong> _______________________
-        </div>
-        <div class="date-line-sig">
-            <strong>Date:</strong> <span id="borrowerSignDate"></span>
-        </div>
-    </div>
-</div>
-
-<div style="margin-top: 25px; padding-top: 12px; border-top: 2px solid #0d7377;">
-    <div style="text-align: center; margin-bottom: 12px;">
-        <div class="mndeni-logo" style="font-size: 24pt;">Mndeni<span>.</span></div>
-        <p style="font-size: 8pt; color: #666; margin-top: 3px;">
-            <em>"Empowering Financial Growth Through Responsible Lending"</em>
-        </p>
-    </div>
-
-    <p style="font-size: 7.5pt; text-align: center; color: #666;">
-        This document is a legally binding agreement. Please retain a copy for your records.<br>
-        For any queries, contact us at mndenieasyloan@aol.com or +27813505496
-    </p>
-</div>
-
-<div class="page-footer">
-    Page 4 of 4 | Mndeni Easy Loans Loan Agreement | Contract No:
-    <span id="contractNoFooter"></span>
-</div>
-
 
     <script>
         function parseInputData(text) {
             const lines = text.trim().split('\n').map(line => line.trim()).filter(line => line);
             const data = {
-                fullName: '',
-                loanAmount: 0,
-                loanDuration: 0,
-                idNumber: '',
-                accountNo: '',
-                loanType: '',
-                phoneNumber: ''
+                fullName: '', loanAmount: 0, loanDuration: 0, idNumber: '', accountNo: '', loanType: '', phoneNumber: ''
             };
 
             for (let i = 0; i < lines.length; i++) {
@@ -774,97 +631,57 @@
                         data.fullName = lines[i + 1];
                     }
                 }
-                
                 if (line.includes('loan amount')) {
                     if (i + 1 < lines.length) {
                         const amount = parseFloat(lines[i + 1].replace(/[^0-9.]/g, ''));
-                        if (!isNaN(amount)) {
-                            data.loanAmount = amount;
-                        }
+                        if (!isNaN(amount)) data.loanAmount = amount;
                     }
                 }
-                
                 if (line.includes('loan term') || line.includes('duration')) {
                     if (i + 1 < lines.length) {
                         const months = parseInt(lines[i + 1].replace(/[^0-9]/g, ''));
-                        if (!isNaN(months)) {
-                            data.loanDuration = months;
-                        }
+                        if (!isNaN(months)) data.loanDuration = months;
                     }
                 }
-                
                 if (line.includes('id number') || line === 'id') {
-                    if (i + 1 < lines.length) {
-                        data.idNumber = lines[i + 1].replace(/[^0-9]/g, '');
-                    }
+                    if (i + 1 < lines.length) data.idNumber = lines[i + 1].replace(/[^0-9]/g, '');
                 }
-                
                 if (line.includes('account') && (line.includes('pay out') || line.includes('payout') || line.includes('no'))) {
-                    if (i + 1 < lines.length) {
-                        data.accountNo = lines[i + 1].replace(/[^0-9]/g, '');
-                    }
+                    if (i + 1 < lines.length) data.accountNo = lines[i + 1].replace(/[^0-9]/g, '');
                 }
-
-                // Parse Reason for the Loan / Loan Type
                 if (line.includes('reason for') || line.includes('loan type') || line.includes('reason for the loan')) {
                     if (i + 1 < lines.length) {
                         let nextLine = lines[i + 1];
-                        // Skip timestamp lines like "10 hours ago"
                         if (!nextLine.toLowerCase().includes('ago') && !nextLine.toLowerCase().includes('phone')) {
                             data.loanType = nextLine;
                         }
                     }
                 }
-
-                // Parse Phone Number
                 if (line.includes('phone') || line.includes('cell') || line.includes('mobile') || line.includes('contact number')) {
                     if (i + 1 < lines.length) {
                         let nextLine = lines[i + 1];
-                        // Skip timestamp lines
                         if (!nextLine.toLowerCase().includes('ago')) {
                             data.phoneNumber = nextLine.replace(/[^0-9+]/g, '');
                         }
                     }
                 }
             }
-
-            // Default loan type if not found
-            if (!data.loanType) {
-                data.loanType = 'Personal Loan';
-            }
-
+            if (!data.loanType) data.loanType = 'Personal Loan';
             return data;
         }
 
         function formatLoanType(loanType) {
-            // Capitalize properly and clean up
             if (!loanType) return 'Personal Loan';
-            
-            // Check for common loan types and format them
             const type = loanType.toLowerCase().trim();
-            
-            if (type.includes('car') || type.includes('vehicle') || type.includes('auto')) {
-                return 'Car Loan';
-            } else if (type.includes('business')) {
-                return 'Business Loan';
-            } else if (type.includes('personal')) {
-                return 'Personal Loan';
-            } else if (type.includes('home') || type.includes('house') || type.includes('mortgage')) {
-                return 'Home Loan';
-            } else if (type.includes('education') || type.includes('student') || type.includes('school')) {
-                return 'Education Loan';
-            } else if (type.includes('medical') || type.includes('health')) {
-                return 'Medical Loan';
-            } else if (type.includes('debt') || type.includes('consolidation')) {
-                return 'Debt Consolidation Loan';
-            } else if (type.includes('emergency')) {
-                return 'Emergency Loan';
-            } else {
-                // Capitalize first letter of each word
-                return loanType.split(' ').map(word => 
-                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                ).join(' ');
-            }
+            if (type.includes('car') || type.includes('vehicle') || type.includes('auto')) return 'Car Loan';
+            else if (type.includes('business')) return 'Business Loan';
+            else if (type.includes('personal')) return 'Personal Loan';
+            else if (type.includes('home') || type.includes('house') || type.includes('mortgage')) return 'Home Loan';
+            else if (type.includes('education') || type.includes('student') || type.includes('school')) return 'Education Loan';
+            else if (type.includes('medical') || type.includes('health')) return 'Medical Loan';
+            else if (type.includes('debt') || type.includes('consolidation')) return 'Debt Consolidation Loan';
+            else if (type.includes('emergency')) return 'Emergency Loan';
+            else return loanType.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
         }
 
         function calculateMonthlyInstallment(loanAmount, months) {
@@ -890,7 +707,6 @@
 
         function formatPhoneNumber(phone) {
             if (!phone) return 'N/A';
-            // Format SA phone number
             if (phone.length === 10 && phone.startsWith('0')) {
                 return phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
             }
@@ -917,9 +733,11 @@
             const contractNo = generateContractNo(data.accountNo);
             const formattedLoanType = formatLoanType(data.loanType);
 
-            // Populate all document fields
+            // Populate document fields
             document.getElementById('docDate').textContent = formatDate(today);
             document.getElementById('contractNo').textContent = contractNo;
+            document.getElementById('contractNoPage2').textContent = contractNo;
+            document.getElementById('contractNoPage3').textContent = contractNo;
             document.getElementById('contractNoFooter').textContent = contractNo;
             document.getElementById('effectiveDate').textContent = formatDate(today).toUpperCase();
             document.getElementById('borrowerName').textContent = data.fullName.toUpperCase();
@@ -941,7 +759,7 @@
             document.getElementById('lenderSignDate').textContent = today.toLocaleDateString('en-GB');
             document.getElementById('borrowerSignDate').textContent = today.toLocaleDateString('en-GB');
 
-            // Populate loan type fields throughout the document
+            // Populate loan type fields
             document.getElementById('loanTypeTitle').textContent = formattedLoanType.toUpperCase().replace(' LOAN', '');
             document.getElementById('loanTypeTable').textContent = formattedLoanType;
             document.getElementById('loanTypeIntro').textContent = formattedLoanType.toLowerCase();
@@ -949,7 +767,6 @@
             document.getElementById('loanTypeSection3').textContent = formattedLoanType;
             document.getElementById('loanTypeAcceptance').textContent = formattedLoanType.toLowerCase();
 
-            // Show document
             document.getElementById('pdfDocument').classList.add('visible');
             document.getElementById('pdfDocument').scrollIntoView({ behavior: 'smooth' });
         }
