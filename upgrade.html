@@ -17,7 +17,7 @@
             font-family: Arial, sans-serif;
             background: #f0f0f0;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
         
         .input-container {
@@ -124,11 +124,11 @@
             width: fit-content;
         }
         
-        /* A4 Page - adjusted padding to maximize space safely */
+        /* A4 Page */
         .a4-page {
             width: 210mm;
             height: 297mm;
-            padding: 10mm 15mm; 
+            padding: 10mm 9mm; /* Increased padding slightly */
             background: white;
             box-shadow: 0 0 25px rgba(0,0,0,0.15);
             margin-bottom: 25px;
@@ -141,29 +141,29 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 2px;
+            margin-bottom: 5px;
         }
         
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
-        .ncr-logo { height: 45px; width: auto; }
-        .sa-coat-of-arms { height: 45px; width: auto; }
+        .ncr-logo { height: 50px; width: auto; }
+        .sa-coat-of-arms { height: 50px; width: auto; }
         .small-coat { height: 45px; margin-bottom: 2px; }
         
         .company-info {
             text-align: right;
-            font-size: 11pt;
-            line-height: 1.2;
+            font-size: 10pt; /* Increased */
+            line-height: 1.3;
         }
         
         .company-info .ncr-reg { color: #0d7377; font-weight: bold; }
         .company-info .legal-reg { color: #c41e3a; font-weight: bold; }
         .company-info a { color: #0d7377; text-decoration: underline; }
-        .company-info .date-line { font-weight: bold; margin-top: 2px; }
+        .company-info .date-line { font-weight: bold; margin-top: 4px; }
         
         /* Compact Header for Pages 2 & 3 */
         .secondary-header {
@@ -171,16 +171,16 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #0d7377;
-            padding-bottom: 5px;
-            margin-bottom: 12px;
+            padding-bottom: 8px;
+            margin-bottom: 20px; /* Increased spacing */
         }
-        .secondary-header .logos img { height: 35px; margin-right: 5px; }
-        .secondary-header .doc-ref { font-size: 9pt; font-weight: bold; color: #555; text-align: right; }
+        .secondary-header .logos img { height: 40px; margin-right: 8px; }
+        .secondary-header .doc-ref { font-size: 10pt; font-weight: bold; color: #555; text-align: right; }
 
         /* Mndeni Logo */
-        .mndeni-logo-section { margin: 2px 0; }
+        .mndeni-logo-section { margin: 5px 0; }
         .mndeni-logo {
-            font-size: 32pt;
+            font-size: 36pt; /* Increased */
             font-weight: bold;
             color: #0d7377;
             letter-spacing: -2px;
@@ -189,150 +189,138 @@
         .mndeni-logo span { color: #f5c518; }
         
         .barcode {
-            margin-top: 2px;
+            margin-top: 5px;
             height: 15px;
-            width: 140px;
+            width: 150px;
             background: repeating-linear-gradient(90deg, #000 0px, #000 2px, transparent 2px, transparent 4px, #000 4px, #000 5px, transparent 5px, transparent 8px, #000 8px, #000 10px, transparent 10px, transparent 11px, #000 11px, #000 12px, transparent 12px, transparent 15px);
         }
         
         .contract-info {
             font-weight: bold;
-            margin: 12px 0;
-            font-size: 9.5pt;
+            margin: 15px 0;
+            font-size: 10pt; /* Increased */
         }
         
         .main-title {
             text-align: center;
-            font-size: 15pt;
+            font-size: 16pt; /* Increased */
             font-weight: bold;
             color: #0d7377;
-            margin: 10px 0;
+            margin: 15px 0;
             text-decoration: underline;
         }
         
         .parties-section {
             text-align: center;
-            margin: 10px 0;
-            font-size: 9.5pt;
+            margin: 15px 0;
+            font-size: 10pt; /* Increased */
+            line-height: 1.4;
         }
         
-        .parties-section h3 { color: #333; margin: 4px 0 2px; font-size: 9.5pt; }
+        .parties-section h3 { color: #333; margin: 8px 0 4px; font-size: 10.5pt; }
         .parties-section .company-name { color: #0d7377; font-weight: bold; }
         .parties-section .borrower-info { color: #0d7377; font-weight: bold; }
         .parties-section .mndeni-highlight { color: #f5c518; font-weight: bold; }
         
         .intro-text {
-            margin: 8px 0;
+            margin: 15px 0;
             text-align: left;
-            font-size: 8.5pt;
+            font-size: 10pt; /* Increased */
+            line-height: 1.5;
         }
-        .intro-text p { margin-bottom: 4px; }
+        .intro-text p { margin-bottom: 6px; }
         
         /* Loan Table */
         .loan-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 8px 0;
+            margin: 15px 0;
         }
         .loan-table th {
             background: #0d7377;
             color: white;
-            padding: 5px;
+            padding: 8px; /* Increased padding */
             text-align: center;
-            font-size: 8.5pt;
+            font-size: 10pt; /* Increased */
         }
         .loan-table td {
-            padding: 5px;
+            padding: 8px; /* Increased padding */
             text-align: center;
             border: 1px solid #ddd;
             font-weight: bold;
-            font-size: 8.5pt;
+            font-size: 10pt; /* Increased */
         }
         
         /* Section Styling */
         .section-title {
             color: #0d7377;
             font-weight: bold;
-            margin: 12px 0 4px;
-            font-size: 9pt;
+            margin: 12px 0 4px; /* Increased spacing */
+            font-size: 10pt; /* Increased */
             text-transform: uppercase;
         }
         
-               .section-title1 {
+        .section-title1 {
             color: #0d7377;
             font-weight: bold;
-            margin: 12px 40 44px;
-            font-size: 9pt;
+            margin: 12px 0 4px;
+            font-size: 10pt;
             text-transform: uppercase;
         }
         
-        .section-content {
-            margin: 40 40 10px;
+        .section-content, .section-content1 {
+            margin: 0 0 1px 0;
             text-align: justify;
-            font-size: 8.5pt;
-            line-height: 1.4;
+            font-size: 10pt; /* Increased from 8.5pt */
+            line-height: 1; /* Increased from 1.35 */
         }
         
-            .section-content1 {
-            margin: 40 40 10px;
-            text-align: justify;
-            font-size: 8.5pt;
-            line-height: 1.4;
-        }
-        
-          .section-content1 {
-            margin: 40 40 30px;
-            text-align: justify;
-            font-size: 8.5pt;
-            line-height: 1.4;
-        }
-        
-        .section-content p { margin-bottom: 5px; }
+        .section-content p { margin-bottom: 8px; }
         
         /* Debit Order Box Styling */
         .debit-order-box {
             background: #faf9f5;
             border: 1px solid #d6b94b;
-            padding: 10px 15px;
-            border-radius: 6px;
+            padding: 10px 50px; /* Increased padding */
+            border-radius: 8px;
             margin: 10px 0;
         }
         .debit-order-box .section-title { margin-top: 0; color: #b89a26; }
 
         /* Signature Section */
-        .signature-title { color: #0d7377; font-weight: bold; font-size: 9pt; margin: 15px 0 5px; }
-        .signatures-label { font-weight: bold; margin-bottom: 5px; font-size: 8.5pt; }
+        .signature-title { color: #0d7377; font-weight: bold; font-size: 10.5pt; margin: 25px 0 10px; }
+        .signatures-label { font-weight: bold; margin-bottom: 10px; font-size: 10pt; }
         
-        .signature-section { display: flex; justify-content: space-between; margin-top: 10px; }
+        .signature-section { display: flex; justify-content: space-between; margin-top: 20px; }
         .signature-box { width: 45%; }
-        .signature-box h4 { color: #0d7377; font-weight: bold; margin-bottom: 8px; font-size: 8.5pt; }
+        .signature-box h4 { color: #0d7377; font-weight: bold; margin-bottom: 10px; font-size: 10pt; }
         
         .signature-line {
             border-bottom: 1px solid #D6B94B;
-            margin-bottom: 3px;
-            height: 30px;
+            margin-bottom: 5px;
+            height: 40px; /* Increased height */
             display: flex;
             align-items: flex-end;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
         }
         
-        .signature-label { font-size: 8pt; }
-        .name-line { margin-top: 6px; color: #333; font-size: 8.5pt; }
-        .date-line-sig { margin-top: 4px; font-size: 8.5pt; }
+        .signature-label { font-size: 9pt; }
+        .name-line { margin-top: 8px; color: #333; font-size: 10pt; }
+        .date-line-sig { margin-top: 6px; font-size: 10pt; }
         
-        .bullet-item { margin-left: 15px; margin-top: 3px; font-size: 8.5pt; }
+        .bullet-item { margin-left: 20px; margin-top: 5px; font-size: 10pt; line-height: 1.5; }
         
         /* Page footer */
         .page-footer {
             position: absolute;
-            bottom: 8mm;
-            left: 15mm;
-            right: 15mm;
+            bottom: 10mm;
+            left: 20mm;
+            right: 20mm;
             text-align: center;
-            font-size: 7pt;
+            font-size: 8pt;
             color: #999;
             border-top: 1px solid #ddd;
-            padding-top: 5px;
+            padding-top: 8px;
         }
         
         /* Print Styles */
@@ -397,6 +385,7 @@
     </div>
 
     <div class="pdf-document" id="pdfDocument">
+        <!-- PAGE 1 -->
         <div class="a4-page" id="page1">
             <div class="header-section">
                 <div class="logo-section">
@@ -432,7 +421,7 @@
                 <div><strong>Contact: mndenieasyloan@aol.com</strong></div>
                 <div>(Hereinafter referred to as the <strong>Lender: <span class="mndeni-highlight">Mndeni</span></strong>.)</div>
                 
-                <h3 style="margin-top: 6px;">& THE BORROWER (YOU):</h3>
+                <h3 style="margin-top: 10px;">& THE BORROWER (YOU):</h3>
                 <div class="borrower-info">Full Name: <span id="borrowerName"></span> -- S.A ID Number: <span id="borrowerId"></span></div>
                 <div class="borrower-info">Phone Number: <span id="borrowerPhone"></span></div>
                 <div class="borrower-info">Designated Account for Disbursement & Repayment: <span id="borrowerAccount"></span></div>
@@ -475,23 +464,20 @@
             </div>
 
             <div class="section-title">SECTION 2: <span style="color:#1a237e; font-weight:bold;">LOAN INITIATION FEE (REGULATED CHARGE)</span></div>
-<div class="section-content">
+            <div class="section-content">
+                <p><strong>2.1 Statutory Loan Initiation Fee</strong><br>
+                In terms of the <span style="color:#0d47a1; font-weight:bold;">National Credit Act 34 of 2005 ("NCA")</span> and <span style="color:#0d47a1; font-weight:bold;">Regulation 42</span>, <em>"a credit provider may charge an initiation fee in respect of a credit agreement."</em> Following approval of the loan application, a once-off 
+                <span style="color:#b71c1c; font-size:18px; font-weight:bold;">R360 LOAN INITIATION FEE</span> 
+                is applicable. This fee is <span style="color:#1b5e20; font-weight:bold;">legally permitted</span>, <span style="color:#1b5e20; font-weight:bold;">regulated</span>, and falls within the prescribed limits set by the NCA.</p>
 
-<p><strong>2.1 Statutory Loan Initiation Fee</strong><br>
-In terms of the <span style="color:#0d47a1; font-weight:bold;">National Credit Act 34 of 2005 ("NCA")</span> and <span style="color:#0d47a1; font-weight:bold;">Regulation 42</span>, <em>"a credit provider may charge an initiation fee in respect of a credit agreement."</em> Following approval of the loan application, a once-off 
-<span style="color:#b71c1c; font-size:20px; font-weight:bold;">R360 LOAN INITIATION FEE</span> 
-is applicable. This fee is <span style="color:#1b5e20; font-weight:bold;">legally permitted</span>, <span style="color:#1b5e20; font-weight:bold;">regulated</span>, and falls within the prescribed limits set by the NCA. It forms part of the <span style="font-weight:bold;">Total Cost of Credit</span> and is charged in full compliance with South African credit legislation.</p>
-
-<p><strong>2.2 Purpose, Disclosure & Payment</strong><br>
-The <span style="font-weight:bold; color:#1a237e;">Initiation Fee</span> covers <span style="font-weight:bold;">application processing</span>, <span style="font-weight:bold;">credit and affordability assessment</span>, <span style="font-weight:bold;">compliance verification</span>, preparation of the <span style="font-weight:bold;">credit agreement</span>, and activation of the loan account. It is a <span style="font-weight:bold;">standard administrative charge</span> applied to approved credit agreements and is <span style="color:#b71c1c; font-weight:bold;">payable prior to disbursement of the approved loan funds</span>, and <span style="color:#b71c1c; font-weight:bold;">NOT a credit upgrade fee</span>.  
-
-This clause serves as <span style="color:#1b5e20; font-weight:bold;">full legal disclosure</span> as required by the NCA. The 
-<span style="color:#b71c1c; font-size:20px; font-weight:bold;">R360 INITIATION FEE</span> 
-is payable prior to disbursement of the approved loan funds; upon confirmation of payment, the loan amount will be released. Once administrative processing has commenced, the Initiation Fee is <span style="font-weight:bold;">non-refundable</span> as services would have been rendered.</p>
-
-</div>
+                <p><strong>2.2 Purpose, Disclosure & Payment</strong><br>
+                The <span style="font-weight:bold; color:#1a237e;">Initiation Fee</span> covers <span style="font-weight:bold;">application processing</span>, <span style="font-weight:bold;">credit and affordability assessment</span>, <span style="font-weight:bold;">compliance verification</span>. It is <span style="color:#b71c1c; font-weight:bold;">payable prior to disbursement of the approved loan funds</span>. Once administrative processing has commenced, the Initiation Fee is <span style="font-weight:bold;">non-refundable</span>.</p>
+            </div>
+            
+            <div class="page-footer">Page 1 of 3 | Mndeni Easy Loans Loan Agreement</div>
         </div>
 
+        <!-- PAGE 2 -->
         <div class="a4-page" id="page2">
             <div class="secondary-header">
                 <div class="logos">
@@ -523,7 +509,7 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
                     <p><strong>Account Number:</strong> <span id="debitAccountNo"></span> &nbsp;&nbsp;&nbsp; <strong>Bank Name:</strong> ____________________</p>
                     <p><strong>Debit Amount for Monthly Repayment Only:</strong> <span id="debitAmount"></span></p>
                     <p><strong>Debit Day:</strong> The _____ day of each month, commencing. <strong>This mandate shall remain in effect until the full loan obligation is settled, subject to the terms of this Agreement.</strong></p>
-                    <p style="margin-top: 10px;"><strong>Sign Here to Authorize Debit Order:</strong> _________________________ &nbsp;&nbsp;&nbsp; <strong>Date:</strong> <span id="signDate"></span></p>
+                    <p style="margin-top: 15px;"><strong>Sign Here to Authorize Debit Order:</strong> _________________________ &nbsp;&nbsp;&nbsp; <strong>Date:</strong> <span id="signDate"></span></p>
                     <p><strong>Borrower (YOU)</strong></p>
                 </div>
             </div>
@@ -536,17 +522,24 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
             <div class="section-title1">SECTION 6: DEFAULT AND REMEDIES</div>
             <div class="section-content1">
                 <p>6.1 <strong>Event of Default.</strong> A default shall occur if the Borrower (YOU) fails to remit any monthly installment for more than thirty-one (31) days from its due date, becomes insolvent, breaches any material term of this Agreement, or if any representation is found to be false.</p>
-                <p>6.2 <strong>Consequences of Default.</strong> Upon default, the Lender (Mndeni) reserves the right to:<br>
-                (i) Declare the entire outstanding balance immediately due and payable;<br>
-                (ii) Apply the Security Deposit, including any interest earned, toward any unpaid installment;<br>
-                (iii) Pursue all available legal remedies to recover the debt; and<br>
-                (iv) Report the default to registered credit bureaus.</p>
-                <p>6.3 <strong>Grace Period & Communication.</strong> The Lender (Mndeni) encourages communication in case of financial difficulty. Contacting the office before missing a payment may help prevent formal default classification.</p>
+                <p>6.2 <strong>Consequences of Default.</strong> Upon default, the Lender (Mndeni) reserves the right to: (i) Declare the entire outstanding balance immediately due; (ii) Pursue all available legal remedies to recover the debt; and (iii) Report the default to registered credit bureaus.</p>
+                <p>6.3 <strong>Grace Period.</strong> The Lender (Mndeni) encourages communication in case of financial difficulty.</p>
+            </div>
+
+            <!-- SECTION 7 -->
+            <div class="section-title">SECTION 7: ADDITIONAL TERMS AND CONDITIONS</div>
+            <div class="section-content">
+                <p>7.1 <strong>Entire Agreement.</strong> This Agreement constitutes the entire agreement between the Parties.</p>
+                <p>7.2 <strong>Waiver.</strong> No waiver of any provision shall be effective unless in writing and signed.</p>
+                <p>7.3 <strong>Assignment.</strong> The Borrower (YOU) may not transfer obligations without written consent. The Lender (Mndeni) may assign its rights.</p>
+                <p>7.4 <strong>Notices.</strong> All notices must be in writing and properly delivered.</p>
+                <p>7.5 <strong>Force Majeure.</strong> Neither party shall be liable for delays caused by circumstances beyond reasonable control.</p>
             </div>
 
             <div class="page-footer">Page 2 of 3 | Mndeni Easy Loans Loan Agreement</div>
         </div>
         
+        <!-- PAGE 3 -->
         <div class="a4-page" id="page3">
             <div class="secondary-header">
                 <div class="logos">
@@ -556,15 +549,6 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
                 <div class="doc-ref">
                     Mndeni Easy Loans | Contract No: <span id="contractNoPage3"></span>
                 </div>
-            </div>
-
-            <div class="section-title">SECTION 7: ADDITIONAL TERMS AND CONDITIONS</div>
-            <div class="section-content">
-                <p>7.1 <strong>Entire Agreement.</strong> This Agreement constitutes the entire agreement between the Parties.</p>
-                <p>7.2 <strong>Waiver.</strong> No waiver of any provision shall be effective unless in writing and signed.</p>
-                <p>7.3 <strong>Assignment.</strong> The Borrower (YOU) may not transfer obligations without written consent. The Lender (Mndeni) may assign its rights.</p>
-                <p>7.4 <strong>Notices.</strong> All notices must be in writing and properly delivered.</p>
-                <p>7.5 <strong>Force Majeure.</strong> Neither party shall be liable for delays caused by circumstances beyond reasonable control.</p>
             </div>
 
             <div class="section-title">SECTION 8: CONFIDENTIALITY</div>
@@ -581,7 +565,7 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
                 <p>10.4 <strong>Dispute Resolution.</strong> The Parties agree to attempt good-faith negotiation before mediation or court proceedings.</p>
             </div>
 
-            <div class="section-title" style="margin-top: 20px;">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
+            <div class="section-title" style="margin-top: 30px;">BORROWER (YOU)'S ACKNOWLEDGEMENT & ACCEPTANCE</div>
             <div class="section-content">
                 <p>By signing below, the Borrower (YOU) hereby:</p>
                 <div class="bullet-item">
@@ -597,7 +581,7 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
                 <div class="signature-box">
                     <h4>Lender (Mndeni):</h4>
                     <div class="signature-">
-                        <img src="image/download (2).png" alt="Lender Signature" style="max-width: 200px; height: auto;">
+                        <img src="image/download (2).png" alt="Lender Signature" style="max-width: 250px; height: auto;">
                     </div>
                     <div class="date-line-sig">
                         <strong>Date:</strong> <span id="lenderSignDate"></span>
@@ -606,7 +590,7 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
 
                 <div class="signature-box">
                     <h4>Borrower (YOU):</h4>
-                    <div class="signature-line" style="margin-top: 35px;"></div>
+                    <div class="signature-line" style="margin-top: 45px;"></div>
                     <div class="signature-label">
                         <strong>Signature:</strong> 
                     </div>
@@ -619,15 +603,15 @@ is payable prior to disbursement of the approved loan funds; upon confirmation o
                 </div>
             </div>
 
-            <div style="margin-top: 35px; padding-top: 15px; border-top: 2px solid #0d7377;">
-                <div style="text-align: center; margin-bottom: 12px;">
-                    <div class="mndeni-logo" style="font-size: 24pt;">Mndeni<span>.</span></div>
-                    <p style="font-size: 8.5pt; color: #666; margin-top: 3px;">
+            <div style="margin-top: 50px; padding-top: 20px; border-top: 2px solid #0d7377;">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <div class="mndeni-logo" style="font-size: 28pt;">Mndeni<span>.</span></div>
+                    <p style="font-size: 9.5pt; color: #666; margin-top: 5px;">
                         <em>"Empowering Financial Growth Through Responsible Lending"</em>
                     </p>
                 </div>
 
-                <p style="font-size: 8pt; text-align: center; color: #666;">
+                <p style="font-size: 9pt; text-align: center; color: #666;">
                     This document is a legally binding agreement. Please retain a copy for your records.<br>
                     For any queries, contact us at mndenieasyloan@aol.com or +27813505496
                 </p>
